@@ -5,42 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HubSpot Multi-Portal Consolidation Guide — Bare Bayside Labs</title>
   <style>
-    /* BBL Report Theme */
+    /* BBL Report Theme — matches barebaysidelabs.com */
     :root {
       --bg: #080c14;
-      --surface: #0d1117;
-      --surface2: #161b22;
-      --border: rgba(255,255,255,0.06);
-      --text: #e6edf3;
-      --text2: #8b949e;
+      --surface: #0d1525;
+      --surface2: #131e30;
+      --border: rgba(99,179,237,0.15);
+      --border-subtle: rgba(255,255,255,0.04);
+      --text: #e2e8f0;
+      --text2: #c4d5e8;
+      --muted: #64748b;
+      --subtle: #475569;
       --emerald: #34d399;
       --sky: #38bdf8;
       --gold: #f59e0b;
+      --gold-bright: #f5c542;
       --red: #f87171;
       --purple: #a78bfa;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
       padding: 40px 20px;
+      overflow-x: hidden;
     }
+
+    a { color: var(--sky); text-decoration: none; transition: color 0.25s; }
+    a:hover { color: #7dd3fc; }
+
+    ::selection { background: rgba(56,189,248,0.25); color: var(--text); }
 
     .report {
       max-width: 780px;
       margin: 0 auto;
     }
 
+    .gradient-text {
+      background: linear-gradient(135deg, #e2e8f0 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p { color: var(--text2); }
+
     /* Header */
     .report-header {
       text-align: center;
       padding: 48px 32px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-subtle);
       border-radius: 16px;
       background: var(--surface);
       margin-bottom: 32px;
@@ -53,17 +78,21 @@
 
     .report-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      letter-spacing: 3px;
+      font-size: clamp(36px, 5vw, 48px);
+      letter-spacing: 4px;
       color: var(--text);
+      text-transform: uppercase;
+      line-height: 1.05;
       margin-bottom: 8px;
     }
 
     .report-subtitle {
-      font-size: 15px;
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
       color: var(--text2);
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto;
+      line-height: 1.6;
     }
 
     .report-meta {
@@ -79,8 +108,8 @@
     /* Table of Contents */
     .toc {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
       padding: 32px;
       margin-bottom: 32px;
     }
@@ -97,9 +126,11 @@
       color: var(--sky);
       text-decoration: none;
       display: block;
-      padding: 6px 0;
-      font-size: 15px;
-      border-bottom: 1px solid var(--border);
+      padding: 8px 0;
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: color 0.25s;
     }
 
     .toc a:hover { color: var(--emerald); }
@@ -113,39 +144,43 @@
 
     /* Sections */
     .section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 24px;
+      background: rgba(13,21,37,0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 36px;
+      margin-bottom: 28px;
     }
 
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      letter-spacing: 2px;
-      color: var(--emerald);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
+      font-size: clamp(24px, 3vw, 28px);
+      letter-spacing: 3px;
+      color: var(--sky);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .section-subtitle {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 1px;
-      color: var(--sky);
-      margin: 24px 0 12px;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--emerald);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 28px 0 16px;
     }
 
     .section p {
       margin-bottom: 16px;
-      color: var(--text);
+      color: var(--text2);
     }
 
     .section ul, .section ol {
       margin: 12px 0 16px 20px;
-      color: var(--text);
+      color: var(--text2);
     }
 
     .section li {
@@ -154,23 +189,31 @@
 
     /* Cards */
     .card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 28px;
       margin-bottom: 16px;
+      transition: border-color 0.4s cubic-bezier(0.32,0.72,0,1), transform 0.4s cubic-bezier(0.32,0.72,0,1);
+    }
+
+    .card:hover {
+      border-color: rgba(56,189,248,0.2);
+      transform: translateY(-4px);
     }
 
     .card-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 1px;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.05;
       margin-bottom: 12px;
     }
 
     .card p {
       color: var(--text2);
-      font-size: 15px;
+      font-size: 16px;
       margin-bottom: 8px;
     }
 
@@ -183,11 +226,17 @@
     }
 
     .hub-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 24px;
       text-align: center;
+      transition: border-color 0.4s cubic-bezier(0.32,0.72,0,1), transform 0.4s cubic-bezier(0.32,0.72,0,1);
+    }
+
+    .hub-card:hover {
+      border-color: rgba(56,189,248,0.2);
+      transform: translateY(-4px);
     }
 
     .hub-card .hub-icon {
@@ -197,15 +246,17 @@
 
     .hub-card .hub-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
     .hub-card .hub-desc {
-      font-size: 13px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
       color: var(--text2);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     /* Stats grid */
@@ -218,9 +269,10 @@
 
     .stat {
       text-align: center;
-      padding: 16px;
-      background: var(--bg);
-      border-radius: 8px;
+      padding: 20px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
     }
 
     .stat-value {
@@ -247,23 +299,26 @@
       width: 100%;
       border-collapse: collapse;
       margin: 16px 0;
-      font-size: 14px;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
     }
 
     th {
       text-align: left;
-      padding: 10px 12px;
+      padding: 12px 14px;
       border-bottom: 2px solid var(--border);
       font-family: 'DM Mono', monospace;
       font-size: 12px;
       letter-spacing: 1px;
-      color: var(--text2);
+      color: var(--muted);
+      text-transform: uppercase;
     }
 
     td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
       vertical-align: top;
+      color: var(--text2);
     }
 
     tr.highlight td {
@@ -273,11 +328,11 @@
 
     /* Phase cards */
     .phase {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
       border-left: 4px solid var(--emerald);
     }
 
@@ -297,8 +352,10 @@
 
     .phase-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 1px;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.05;
     }
 
     .phase-timing {
@@ -317,10 +374,10 @@
     /* Callout boxes */
     .callout {
       border-left: 3px solid var(--gold);
-      padding: 16px 20px;
-      margin: 16px 0;
+      padding: 20px 24px;
+      margin: 20px 0;
       background: rgba(245, 158, 11, 0.05);
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 12px 12px 0;
     }
 
     .callout.danger {
@@ -349,14 +406,15 @@
     .flow {
       font-family: 'DM Mono', monospace;
       font-size: 13px;
-      background: var(--bg);
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
       padding: 24px;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow-x: auto;
       white-space: pre;
       line-height: 1.5;
-      color: var(--text2);
-      margin: 16px 0;
+      color: var(--muted);
+      margin: 20px 0;
     }
 
     /* Checklist */
@@ -367,11 +425,11 @@
     }
 
     .checklist li {
-      padding: 8px 0 8px 28px;
+      padding: 10px 0 10px 28px;
       position: relative;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-subtle);
       color: var(--text2);
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .checklist li::before {
@@ -394,11 +452,12 @@
     .eyebrow {
       display: inline-block;
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: 2px;
-      padding: 4px 12px;
+      text-transform: uppercase;
+      padding: 8px 18px;
       border-radius: 100px;
-      margin-bottom: 8px;
+      margin-bottom: 20px;
     }
 
     .eyebrow-emerald { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); color: var(--emerald); }
@@ -411,21 +470,23 @@
     .comparison {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 16px 0;
+      gap: 20px;
+      margin: 20px 0;
     }
 
     .comparison-col {
-      background: var(--bg);
-      border-radius: 10px;
-      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 24px;
     }
 
     .comparison-col h4 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     .comparison-col.before h4 { color: var(--red); }
@@ -445,61 +506,69 @@
     /* CTA section */
     .cta-section {
       text-align: center;
-      padding: 48px 32px;
-      background: var(--surface);
-      border: 1px solid var(--emerald);
-      border-radius: 16px;
+      padding: 72px 48px;
+      background: rgba(13,21,37,0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
       margin-top: 32px;
     }
 
     .cta-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+      font-size: clamp(28px, 4vw, 36px);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 16px;
     }
 
     .cta-button {
       display: inline-block;
-      padding: 16px 40px;
+      padding: 18px 40px;
       background: linear-gradient(135deg, var(--emerald), var(--sky));
       color: var(--bg);
       font-family: 'Bebas Neue', sans-serif;
       font-size: 18px;
       letter-spacing: 2px;
       text-decoration: none;
-      border-radius: 8px;
-      margin-top: 20px;
+      text-transform: uppercase;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: transform 0.25s cubic-bezier(0.32,0.72,0,1);
     }
+
+    .cta-button:hover { transform: translateY(-2px); color: var(--bg); }
 
     /* Footer */
     .report-footer {
       text-align: center;
-      padding: 24px;
-      font-size: 13px;
-      color: var(--text2);
+      padding: 32px;
+      font-size: 14px;
+      color: var(--muted);
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
-      body { padding: 16px 12px; }
-      .section { padding: 20px; }
+    @media (max-width: 768px) {
+      body { padding: 16px 12px; font-size: 16px; }
+      .section { padding: 24px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .hub-grid { grid-template-columns: 1fr; }
       .comparison { grid-template-columns: 1fr; }
       .report-meta { flex-direction: column; gap: 8px; }
-      .report-title { font-size: 28px; }
+      .cta-section { padding: 48px 24px; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="report">
 
     <!-- HEADER -->
     <div class="report-header">
-      <div class="report-title">HUBSPOT MULTI-PORTAL CONSOLIDATION GUIDE</div>
+      <div class="report-title gradient-text">HUBSPOT MULTI-PORTAL CONSOLIDATION GUIDE</div>
       <div class="report-subtitle">How to merge 3-4 separate HubSpot accounts into one unified system without losing data, breaking emails, or confusing your team.</div>
       <div class="report-meta">
         <span>APRIL 2026</span>
@@ -1310,8 +1379,9 @@
 
     <!-- FOOTER -->
     <div class="report-footer">
-      <p>Prepared by Bare Bayside Labs — Marketing systems that actually work.</p>
-      <p style="margin-top: 8px; font-family: 'DM Mono', monospace; font-size: 11px;">barebaysidelabs.com</p>
+      <p style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--text); text-transform: uppercase;">Bare Bayside Labs</p>
+      <p style="margin-top: 4px; color: var(--muted);">Marketing systems that actually work.</p>
+      <p style="margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; color: var(--subtle);">barebaysidelabs.com</p>
     </div>
 
   </div>

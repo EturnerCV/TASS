@@ -39,7 +39,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -75,7 +75,7 @@ h6 { font-size: 18px; }
 
 .mono {
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 1px;
   color: var(--muted);
 }
@@ -115,7 +115,7 @@ h6 { font-size: 18px; }
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-link {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: var(--muted);
   text-decoration: none;
@@ -128,7 +128,7 @@ h6 { font-size: 18px; }
 /* === BREADCRUMB === */
 .breadcrumb {
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 1px;
   color: var(--text2);
   margin-bottom: 20px;
@@ -148,7 +148,7 @@ h6 { font-size: 18px; }
 .eyebrow {
   display: inline-block;
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
   border-radius: 100px;
@@ -256,7 +256,7 @@ h6 { font-size: 18px; }
   display: block;
   padding: 10px 12px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text2);
   text-decoration: none;
   border-radius: 8px;
@@ -275,7 +275,7 @@ h6 { font-size: 18px; }
 
 .sidebar-group-label {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: var(--subtle);
   text-transform: uppercase;
@@ -288,7 +288,7 @@ h6 { font-size: 18px; }
   display: block;
   padding: 6px 12px;
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   text-decoration: none;
   border-radius: 6px;
@@ -312,14 +312,14 @@ table {
   border-collapse: collapse;
   margin: 20px 0;
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
 }
 th {
   text-align: left;
   padding: 12px 14px;
   border-bottom: 2px solid var(--border);
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: var(--muted);
   text-transform: uppercase;
@@ -347,7 +347,7 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 
 .callout-label {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   margin-bottom: 8px;
   font-weight: 600;
@@ -383,7 +383,7 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 .stat-value.negative { color: var(--red); }
 .stat-label {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin-top: 8px;
   letter-spacing: 1px;
@@ -415,14 +415,14 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 }
 .step-nav-btn .step-label {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: var(--muted);
   text-transform: uppercase;
 }
 .step-nav-btn .step-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   letter-spacing: 1px;
   color: var(--text);
   text-transform: uppercase;
@@ -461,7 +461,7 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 }
 .persona-role {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: var(--muted);
   margin-bottom: 16px;
@@ -576,28 +576,86 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 }
 .guide-card .card-num {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 2px;
-  color: var(--muted);
+  color: var(--gold);
 }
 .guide-card .card-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  letter-spacing: 1px;
+  font-size: 20px;
+  letter-spacing: 2px;
   color: var(--text);
   text-transform: uppercase;
 }
 .guide-card .card-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text2);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 .guide-card .card-arrow {
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--emerald);
   margin-top: auto;
   letter-spacing: 1px;
+}
+
+/* === WORKFLOW STRIP === */
+.workflow-strip {
+  display: flex;
+  gap: 0;
+  margin: 32px 0;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.workflow-step {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.workflow-step .ws-box {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-align: center;
+  min-width: 120px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.workflow-step:hover .ws-box {
+  border-color: rgba(56,189,248,0.3);
+  transform: translateY(-2px);
+}
+.workflow-step .ws-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+.workflow-step .ws-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--text);
+  text-transform: uppercase;
+  display: block;
+}
+.workflow-arrow {
+  color: var(--emerald);
+  font-size: 20px;
+  padding: 0 6px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* === NAV LOGO === */
+.nav-logo {
+  height: 32px;
+  margin-right: 12px;
 }
 
 /* === RISK TABLE === */
