@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HubSpot Multi-Portal Consolidation Guide — Bare Bayside Labs</title>
+  <style>
+    /* BBL Report Theme */
+    :root {
+      --bg: #080c14;
+      --surface: #0d1117;
+      --surface2: #161b22;
+      --border: rgba(255,255,255,0.06);
+      --text: #e6edf3;
+      --text2: #8b949e;
+      --emerald: #34d399;
+      --sky: #38bdf8;
+      --gold: #f59e0b;
+      --red: #f87171;
+      --purple: #a78bfa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .report {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .report-header {
+      text-align: center;
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      margin-bottom: 32px;
+    }
+
+    .report-header img {
+      height: 48px;
+      margin-bottom: 24px;
+    }
+
+    .report-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 3px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .report-subtitle {
+      font-size: 15px;
+      color: var(--text2);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .report-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    /* Table of Contents */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .toc-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: var(--emerald);
+      margin-bottom: 16px;
+    }
+
+    .toc a {
+      color: var(--sky);
+      text-decoration: none;
+      display: block;
+      padding: 6px 0;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc a:hover { color: var(--emerald); }
+
+    .toc a span.toc-num {
+      font-family: 'DM Mono', monospace;
+      color: var(--text2);
+      font-size: 12px;
+      margin-right: 12px;
+    }
+
+    /* Sections */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: var(--emerald);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-subtitle {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: var(--sky);
+      margin: 24px 0 12px;
+    }
+
+    .section p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .section ul, .section ol {
+      margin: 12px 0 16px 20px;
+      color: var(--text);
+    }
+
+    .section li {
+      margin-bottom: 8px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--text2);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    /* Hub cards */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .hub-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hub-card .hub-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .hub-card .hub-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .hub-card .hub-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.4;
+    }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 16px;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .stat-value.positive { color: var(--emerald); }
+    .stat-value.neutral { color: var(--sky); }
+    .stat-value.warning { color: var(--gold); }
+    .stat-value.negative { color: var(--red); }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text2);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* Comparison table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--text2);
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr.highlight td {
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    /* Phase cards */
+    .phase {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--emerald);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .phase-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--emerald);
+      line-height: 1;
+    }
+
+    .phase-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    .phase-timing {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text2);
+    }
+
+    .phase p, .phase ul {
+      color: var(--text2);
+      font-size: 15px;
+    }
+
+    .phase li { margin-bottom: 6px; }
+
+    /* Callout boxes */
+    .callout {
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      margin: 16px 0;
+      background: rgba(245, 158, 11, 0.05);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .callout.danger {
+      border-left-color: var(--red);
+      background: rgba(248, 113, 113, 0.05);
+    }
+
+    .callout.success {
+      border-left-color: var(--emerald);
+      background: rgba(52, 211, 153, 0.05);
+    }
+
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .callout.danger .callout-label { color: var(--red); }
+    .callout .callout-label { color: var(--gold); }
+    .callout.success .callout-label { color: var(--emerald); }
+
+    /* Flow diagram */
+    .flow {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      background: var(--bg);
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.5;
+      color: var(--text2);
+      margin: 16px 0;
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .checklist li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      color: var(--text2);
+      font-size: 15px;
+    }
+
+    .checklist li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--emerald);
+      border-radius: 3px;
+    }
+
+    /* Risk table */
+    .risk-high { color: var(--red); font-weight: 600; }
+    .risk-med { color: var(--gold); font-weight: 600; }
+    .risk-low { color: var(--emerald); }
+
+    /* Eyebrow labels */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+
+    .eyebrow-emerald { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); color: var(--emerald); }
+    .eyebrow-sky { background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.25); color: var(--sky); }
+    .eyebrow-gold { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); color: var(--gold); }
+    .eyebrow-red { background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.2); color: var(--red); }
+    .eyebrow-purple { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.25); color: var(--purple); }
+
+    /* Before/After comparison */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .comparison-col {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .comparison-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .comparison-col.before h4 { color: var(--red); }
+    .comparison-col.after h4 { color: var(--emerald); }
+
+    .comparison-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .comparison-col li {
+      font-size: 14px;
+      color: var(--text2);
+      padding: 4px 0;
+    }
+
+    /* CTA section */
+    .cta-section {
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--surface);
+      border: 1px solid var(--emerald);
+      border-radius: 16px;
+      margin-top: 32px;
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--emerald), var(--sky));
+      color: var(--bg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    .report-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body { padding: 16px 12px; }
+      .section { padding: 20px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hub-grid { grid-template-columns: 1fr; }
+      .comparison { grid-template-columns: 1fr; }
+      .report-meta { flex-direction: column; gap: 8px; }
+      .report-title { font-size: 28px; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="report">
+
+    <!-- HEADER -->
+    <div class="report-header">
+      <div class="report-title">HUBSPOT MULTI-PORTAL CONSOLIDATION GUIDE</div>
+      <div class="report-subtitle">How to merge 3-4 separate HubSpot accounts into one unified system without losing data, breaking emails, or confusing your team.</div>
+      <div class="report-meta">
+        <span>APRIL 2026</span>
+        <span>6-8 WEEK TIMELINE</span>
+        <span>PREPARED BY BARE BAYSIDE LABS</span>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+      <div class="toc-title">CONTENTS</div>
+      <a href="#exec"><span class="toc-num">01</span> Executive Summary</a>
+      <a href="#platform"><span class="toc-num">02</span> HubSpot Platform Overview</a>
+      <a href="#current"><span class="toc-num">03</span> Current State: How Multi-Portal Breaks</a>
+      <a href="#target"><span class="toc-num">04</span> Target State: One Portal, Multiple Brands</a>
+      <a href="#migration"><span class="toc-num">05</span> Migration Strategy (6 Phases)</a>
+      <a href="#migrates"><span class="toc-num">06</span> What Migrates vs. What Doesn't</a>
+      <a href="#email"><span class="toc-num">07</span> Email Domain Protection</a>
+      <a href="#users"><span class="toc-num">08</span> User &amp; Seat Migration</a>
+      <a href="#risks"><span class="toc-num">09</span> Risk Register</a>
+      <a href="#cost"><span class="toc-num">10</span> Cost Analysis</a>
+      <a href="#sandbox"><span class="toc-num">11</span> Sandbox &amp; Testing</a>
+    </div>
+
+    <!-- 01: EXECUTIVE SUMMARY -->
+    <div class="section" id="exec">
+      <div class="section-title">01 — EXECUTIVE SUMMARY</div>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value negative">3-4</div>
+          <div class="stat-label">SEPARATE PORTALS</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value warning">2-4x</div>
+          <div class="stat-label">DUPLICATE CONTACTS</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value positive">1</div>
+          <div class="stat-label">UNIFIED PORTAL</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value neutral">6-8</div>
+          <div class="stat-label">WEEKS TO COMPLETE</div>
+        </div>
+      </div>
+
+      <p><strong>The problem:</strong> The company runs 3-4 separate HubSpot accounts, one for each product line. When a customer buys Product A and later buys Product B, they exist as two completely separate contacts in two separate systems. Nobody has the full picture. Marketing sends duplicate emails. Service can't see cross-product history. Reporting is fragmented. And you're paying for the same customer's data multiple times.</p>
+
+      <p><strong>The solution:</strong> Consolidate all portals into a single HubSpot Enterprise account using Business Units (Brands). Each product line keeps its own branding, emails, forms, and reporting, but everything shares one CRM database. One contact record per customer, with full visibility across all products.</p>
+
+      <p><strong>The outcome:</strong> Cross-sell opportunities become visible. Customer service gets the full picture. Marketing stops sending duplicates. Reporting works company-wide. And you stop paying for the same contact 3-4 times over.</p>
+
+      <div class="callout success">
+        <div class="callout-label">KEY BENEFIT</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">Every customer who buys across product lines currently costs you money (duplicate contact charges), time (repeated service conversations), and revenue (missed cross-sell opportunities). Consolidation fixes all three.</p>
+      </div>
+    </div>
+
+    <!-- 02: PLATFORM OVERVIEW -->
+    <div class="section" id="platform">
+      <div class="section-title">02 — HUBSPOT PLATFORM OVERVIEW</div>
+
+      <p>HubSpot is built as one platform with 7 products (called "Hubs") that all plug into a shared database. Here's what each one does:</p>
+
+      <div class="hub-grid">
+        <div class="hub-card">
+          <div class="hub-name">SMART CRM</div>
+          <div class="hub-desc">The shared database. Contacts, companies, deals, tickets — all in one place. This is the foundation everything else plugs into.</div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-name">MARKETING HUB</div>
+          <div class="hub-desc">Email campaigns, lead scoring, ads, landing pages, forms. Attracts and nurtures leads until they're ready to buy.</div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-name">SALES HUB</div>
+          <div class="hub-desc">Deal pipelines, email sequences, meeting booking, forecasting. Helps sales reps close deals faster.</div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-name">SERVICE HUB</div>
+          <div class="hub-desc">Tickets, knowledge base, customer feedback. Turns support interactions into happy, loyal customers.</div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-name">CONTENT HUB</div>
+          <div class="hub-desc">Website builder, blog, SEO tools. Manages your web presence with AI-powered content generation.</div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-name">DATA HUB</div>
+          <div class="hub-desc">Data sync, deduplication, warehouse connectors. Keeps everything clean and connected to external tools.</div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-name">COMMERCE HUB</div>
+          <div class="hub-desc">Quotes, invoices, payments, subscriptions. Handles B2B transactions directly from the CRM.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">WHY THIS MATTERS FOR CONSOLIDATION</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">All 7 hubs share the same CRM database. When a contact interacts with marketing, talks to sales, opens a support ticket, and makes a payment — it's all on one record. This is exactly why consolidating into one portal works: one database, one customer, full visibility.</p>
+      </div>
+
+      <div class="section-subtitle">HOW DATA FLOWS BETWEEN HUBS</div>
+      <div class="flow">  Visitor downloads guide     --> Content Hub tracks the visit
+  Form submission             --> Marketing Hub scores the lead
+  Lead reaches threshold      --> Sales Hub gets the qualified lead
+  Deal closes with quote      --> Commerce Hub sends the invoice
+  Customer needs help         --> Service Hub has full purchase history
+  Throughout                  --> Data Hub keeps everything clean
+  Throughout                  --> Breeze AI assists with writing & routing</div>
+    </div>
+
+    <!-- 03: CURRENT STATE -->
+    <div class="section" id="current">
+      <div class="section-title">03 — CURRENT STATE: HOW MULTI-PORTAL BREAKS</div>
+
+      <p>Right now, each product line operates from its own separate HubSpot portal. Each portal is a completely isolated system — separate database, separate contacts, separate everything.</p>
+
+      <div class="section-subtitle">MEET CUSTOMER JANE</div>
+      <p>Jane is a real customer who buys across your product lines. Here's what her experience looks like today:</p>
+
+      <div class="card">
+        <div class="card-title" style="color: var(--red);">THE CURRENT REALITY</div>
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>WHAT HAPPENS</th>
+          </tr>
+          <tr>
+            <td>Jane buys Product A</td>
+            <td>Contact created in <strong>Portal 1</strong>. Deal tracked. Service team assigned.</td>
+          </tr>
+          <tr>
+            <td>Jane buys Product B (6 months later)</td>
+            <td>Brand new contact created in <strong>Portal 2</strong>. Portal 1 has no idea.</td>
+          </tr>
+          <tr>
+            <td>Jane contacts Product B support</td>
+            <td>Service rep in Portal 2 can't see her Product A history. Jane repeats everything.</td>
+          </tr>
+          <tr>
+            <td>Marketing sends campaigns</td>
+            <td>Portal 1 sends Jane a Product A email. Same day, Portal 2 sends a Product B email. Jane is annoyed.</td>
+          </tr>
+          <tr>
+            <td>Leadership asks for customer count</td>
+            <td>Portal 1 says 5,000. Portal 2 says 3,000. But 1,500 are the same people. Real count? Nobody knows.</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section-subtitle">SIX THINGS THAT BREAK</div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-red">PROBLEM 1</span>
+        <div class="card-title">DUPLICATE CUSTOMER RECORDS</div>
+        <p>The same person exists as 2, 3, or 4 separate contacts. Each version has an incomplete picture. No single source of truth about any customer.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-red">PROBLEM 2</span>
+        <div class="card-title">BLIND SPOT IN SERVICE</div>
+        <p>When Jane calls about Product B, the service rep can't see her Product A ticket from last month. She has to explain everything again. Slow resolution, poor experience.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-red">PROBLEM 3</span>
+        <div class="card-title">DUPLICATE MARKETING EMAILS</div>
+        <p>Each portal's marketing team operates independently. Jane gets bombarded with emails from multiple portals. She unsubscribes from one — but still gets emails from the others.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-gold">PROBLEM 4</span>
+        <div class="card-title">NO CROSS-SELL VISIBILITY</div>
+        <p>The Product A team has no idea which of their customers also use Product B. "Customers who bought A but not C" campaigns? Impossible across separate portals.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-gold">PROBLEM 5</span>
+        <div class="card-title">INFLATED COSTS</div>
+        <p>HubSpot charges per marketing contact per portal. Jane's record in Portal 1, Portal 2, and Portal 3 means you're paying for her three times. Plus 3-4 separate subscription fees.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-gold">PROBLEM 6</span>
+        <div class="card-title">IMPOSSIBLE COMPANY-WIDE REPORTING</div>
+        <p>Revenue per customer across all products? Total unique customers? Customer acquisition cost? There's no single dashboard that can answer these because the data lives in separate databases.</p>
+      </div>
+    </div>
+
+    <!-- 04: TARGET STATE -->
+    <div class="section" id="target">
+      <div class="section-title">04 — TARGET STATE: ONE PORTAL, MULTIPLE BRANDS</div>
+
+      <p>After consolidation, all product lines operate from one HubSpot Enterprise portal. Each product line becomes a "Brand" (formerly called Business Unit) within that portal.</p>
+
+      <div class="comparison">
+        <div class="comparison-col before">
+          <h4>BEFORE (MULTI-PORTAL)</h4>
+          <ul>
+            <li>3-4 separate databases</li>
+            <li>Duplicate contacts everywhere</li>
+            <li>Deal history split across portals</li>
+            <li>Each portal sends its own emails</li>
+            <li>Per-portal reporting only</li>
+            <li>3-4 separate invoices</li>
+            <li>Paying for duplicates</li>
+          </ul>
+        </div>
+        <div class="comparison-col after">
+          <h4>AFTER (UNIFIED PORTAL)</h4>
+          <ul>
+            <li>1 shared database</li>
+            <li>1 contact per customer</li>
+            <li>All deals on one timeline</li>
+            <li>Brand-separated email campaigns</li>
+            <li>Cross-brand + per-brand reports</li>
+            <li>1 invoice</li>
+            <li>Paying once per person</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-subtitle">HOW BUSINESS UNITS (BRANDS) WORK</div>
+      <p>Think of it as "departments within one office" instead of "separate offices."</p>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-emerald">SEPARATED PER BRAND</span>
+        <div class="card-title">WHAT EACH BRAND GETS</div>
+        <p>Logo and colour scheme, email templates, forms, landing pages, subscription preferences (customers choose which brands to hear from), blog, reporting dashboards, marketing campaigns, and social media accounts.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-sky">SHARED ACROSS ALL BRANDS</span>
+        <div class="card-title">WHAT STAYS UNIFIED</div>
+        <p>The CRM database (contacts, companies), deal pipelines (filtered by brand), ticket pipelines, workflows, users and permissions, integrations, custom objects, and cross-brand reporting.</p>
+      </div>
+
+      <div class="section-subtitle">CUSTOMER JANE — AFTER CONSOLIDATION</div>
+      <div class="card">
+        <div class="card-title" style="color: var(--emerald);">THE NEW REALITY</div>
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>WHAT HAPPENS</th>
+          </tr>
+          <tr class="highlight">
+            <td>Jane buys Product A</td>
+            <td>Single contact created. Deal in Product A pipeline. Business Unit = Product A.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Jane buys Product B</td>
+            <td>Same contact. New deal in Product B pipeline. Business Unit adds Product B.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Jane contacts support</td>
+            <td>Service rep sees ALL of Jane's history — both products, all tickets, full timeline.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Marketing sends campaigns</td>
+            <td>One subscription centre. Jane controls which brands she hears from. No duplicates.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Leadership asks for data</td>
+            <td>One dashboard: true customer count, total revenue per customer, cross-sell rates.</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section-subtitle">CONTACT TAGGING</div>
+      <p>Each contact gets a "Business Unit" property with multiple checkboxes. Jane would have both "Product A" and "Product B" checked. This is how marketing filters campaigns, sales filters pipelines, and reports segment by product line.</p>
+
+      <div class="callout success">
+        <div class="callout-label">CROSS-SELL UNLOCKED</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">With one database, you can finally run "customers who bought Product A but not Product B" campaigns. You can see total lifetime value across all products. You can identify your most valuable customers regardless of which product they started with.</p>
+      </div>
+    </div>
+
+    <!-- 05: MIGRATION STRATEGY -->
+    <div class="section" id="migration">
+      <div class="section-title">05 — MIGRATION STRATEGY (6 PHASES)</div>
+
+      <p>Total timeline: 6-8 weeks from kickoff to full email volume. Each phase has a verification checkpoint before the next phase starts.</p>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">1</div>
+          <div>
+            <div class="phase-title">AUDIT &amp; MAP</div>
+            <div class="phase-timing">WEEK 1-2</div>
+          </div>
+        </div>
+        <p>Know exactly what exists in every portal before touching anything.</p>
+        <ul>
+          <li>Inventory all portals: contacts, companies, deals, tickets, custom objects, properties, workflows, email templates, forms, lists, pipelines</li>
+          <li>Map property names across portals — same data stored under different field names?</li>
+          <li>Identify duplicate contacts across portals (export email lists, compare)</li>
+          <li>Document every integration connected to each portal</li>
+          <li>Document email sending domains and authentication status</li>
+        </ul>
+        <div class="callout">
+          <div class="callout-label">WATCH OUT FOR</div>
+          <p style="margin:0; color: var(--text2); font-size: 14px;">Properties with the same name but different field types (e.g., "Status" as free text in Portal 1, dropdown in Portal 2). These CANNOT auto-migrate and must be resolved manually before migration.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">2</div>
+          <div>
+            <div class="phase-title">CHOOSE TARGET PORTAL</div>
+            <div class="phase-timing">WEEK 2</div>
+          </div>
+        </div>
+        <p>Decide which portal becomes the consolidated home for all data. Three options:</p>
+        <ul>
+          <li><strong>Keep the biggest portal</strong> — Least migration work, most data stays in place. Best when one portal is clearly the largest.</li>
+          <li><strong>Keep the best-configured portal</strong> — Cleanest data, best workflows. Best when quality matters more than size.</li>
+          <li><strong>Fresh Enterprise portal</strong> — Clean start, migrate everything in. Most work but cleanest result. Best when all existing portals are messy.</li>
+        </ul>
+        <p>Score each option on: record count, data quality, workflow sophistication, email domain reputation age, integration count, and team familiarity. Highest score wins.</p>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">3</div>
+          <div>
+            <div class="phase-title">SANDBOX TESTING</div>
+            <div class="phase-timing">WEEK 3-4</div>
+          </div>
+        </div>
+        <p>Run a complete test migration in a sandbox environment before touching production data.</p>
+        <ul>
+          <li>Create a Standard Sandbox in the target portal (Enterprise required)</li>
+          <li>Install the HubSpot-to-HubSpot Migrator app (by Datawarehouse.io)</li>
+          <li>Migrate one source portal into the sandbox as a test run</li>
+          <li>Verify: contacts, deals, tickets, associations, custom objects, properties</li>
+          <li>Test Business Unit assignment and brand-filtered lists</li>
+          <li>Test email sending from each brand domain</li>
+          <li>Document everything that doesn't migrate automatically</li>
+        </ul>
+        <div class="callout success">
+          <div class="callout-label">WHY SANDBOX FIRST</div>
+          <p style="margin:0; color: var(--text2); font-size: 14px;">If something goes wrong in a sandbox, nothing is affected. If something goes wrong in production, you're dealing with broken customer data, missed emails, and angry teams. Always test first.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">4</div>
+          <div>
+            <div class="phase-title">PRE-MIGRATION PREP</div>
+            <div class="phase-timing">WEEK 4-5</div>
+          </div>
+        </div>
+        <p>Set up everything in the target portal that can't be auto-migrated.</p>
+        <ul>
+          <li>Create Business Units — one per product line</li>
+          <li>Configure email sending domains for all brands (DKIM, SPF, DMARC)</li>
+          <li>Rebuild reports, dashboards, knowledge base articles, chatflows, playbooks</li>
+          <li>Set up teams and permissions (who can see what)</li>
+          <li>Install deduplication tool (Insycle or Koalify)</li>
+          <li>Export safety backups from ALL source portals (CSV)</li>
+          <li><strong>Freeze source portals</strong> — no new records from this point</li>
+        </ul>
+        <div class="callout danger">
+          <div class="callout-label">CRITICAL</div>
+          <p style="margin:0; color: var(--text2); font-size: 14px;">Add email domains to the new portal BEFORE removing them from old portals. Both can be authenticated simultaneously. Removing a domain before the new portal is ready means emails will go to spam.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">5</div>
+          <div>
+            <div class="phase-title">EXECUTE MIGRATION</div>
+            <div class="phase-timing">WEEK 5-6</div>
+          </div>
+        </div>
+        <p>Move all data from source portals into the target. Migrate one portal at a time, verify, then move to the next.</p>
+        <ul>
+          <li>Run migration tool for Portal 1 → Target. Verify record counts. Spot-check 20+ records.</li>
+          <li>Run migration tool for Portal 2 → Target. Verify. Spot-check.</li>
+          <li>Run migration tool for Portal 3 → Target. Verify. Spot-check.</li>
+          <li>Run deduplication — merge duplicate contacts (email match) and companies (domain match)</li>
+          <li>Assign Business Unit tags to all migrated records</li>
+          <li>Reconnect integrations to target portal</li>
+          <li>Invite users and assign seats/teams</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">6</div>
+          <div>
+            <div class="phase-title">EMAIL WARM-UP &amp; GO-LIVE</div>
+            <div class="phase-timing">WEEK 6-8</div>
+          </div>
+        </div>
+        <p>Do NOT blast full email volume on day one. Email providers need to see a gradual increase from the new sending source.</p>
+
+        <table>
+          <tr>
+            <th>WEEK</th>
+            <th>WHO TO EMAIL</th>
+            <th>VOLUME</th>
+          </tr>
+          <tr>
+            <td>Week 1</td>
+            <td>Contacts who opened/clicked in last 30 days</td>
+            <td>~25%</td>
+          </tr>
+          <tr>
+            <td>Week 2</td>
+            <td>Expand to 60-day engaged contacts</td>
+            <td>~50%</td>
+          </tr>
+          <tr>
+            <td>Week 3</td>
+            <td>Expand to 90-day engaged contacts</td>
+            <td>~75%</td>
+          </tr>
+          <tr>
+            <td>Week 4</td>
+            <td>Full contact list</td>
+            <td>100%</td>
+          </tr>
+        </table>
+
+        <div class="callout">
+          <div class="callout-label">KEEP OLD PORTALS FOR 90 DAYS</div>
+          <p style="margin:0; color: var(--text2); font-size: 14px;">Don't delete source portals. Keep them read-only for 90 days as a reference and safety net. After 90 days, downgrade to free tier to stop licensing charges while preserving the data.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06: WHAT MIGRATES -->
+    <div class="section" id="migrates">
+      <div class="section-title">06 — WHAT MIGRATES VS. WHAT DOESN'T</div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-emerald">AUTO-MIGRATES</span>
+        <div class="card-title">HANDLED BY THE MIGRATION TOOL</div>
+        <p>Contacts, Companies, Deals, Tickets, Custom Objects, Properties (all custom fields), Associations (all links between records), Lists, Forms (structure only), Workflows, Marketing Emails, Pipelines, Users/Owners, Engagements (meetings, tasks, notes, calls, emails, SMS), Files &amp; Attachments, Line Items &amp; Products, Currencies, Deal Splits.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-gold">MUST BE MANUALLY RECREATED</span>
+        <div class="card-title">REBUILD THESE IN THE TARGET PORTAL</div>
+        <p>Reports &amp; Dashboards, CTAs, Landing Page Designs, Website Pages, Blog Posts, Email Template Designs, Knowledge Base Articles, Chatflows, Meeting Links, Custom Surveys, Brand Kits, Playbooks, Snippets, Saved Views, Team Structure, Permissions Configuration.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-red">LOST PERMANENTLY</span>
+        <div class="card-title">CANNOT BE MIGRATED OR RECREATED</div>
+        <p>Marketing email campaign performance data (historical open/click rates), Historical web traffic analytics, Properties with the same name but different field types across portals (must resolve before migration).</p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">PLANNING TIP</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">Screenshot or export your best-performing email campaign data before migration. The campaigns themselves migrate, but their performance metrics don't. Keep records of your top subject lines, open rates, and click rates for reference.</p>
+      </div>
+    </div>
+
+    <!-- 07: EMAIL DOMAIN PROTECTION -->
+    <div class="section" id="email">
+      <div class="section-title">07 — EMAIL DOMAIN PROTECTION</div>
+
+      <p>Email is the highest-risk area of this migration. Get it wrong and your emails go to spam. Here's how to protect your sending reputation.</p>
+
+      <div class="section-subtitle">PER-DOMAIN SETUP (REPEAT FOR EACH BRAND)</div>
+
+      <table>
+        <tr>
+          <th>STEP</th>
+          <th>ACTION</th>
+          <th>WHAT IT DOES</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Add sending domain in target portal</td>
+          <td>Tells HubSpot "I want to send email from this domain"</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Create 2 DKIM CNAME records in DNS</td>
+          <td>Proves emails actually come from your domain (not spoofed)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Add HubSpot to existing SPF record</td>
+          <td>Authorises HubSpot's servers to send on your behalf</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Verify DMARC policy</td>
+          <td>Tells email providers what to do with emails that fail checks</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Wait for DNS propagation (10 min - 48 hrs)</td>
+          <td>DNS records spread across the internet</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Send test emails to Gmail, Outlook, Yahoo</td>
+          <td>Verify delivery + check headers for authentication pass</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Begin warm-up schedule</td>
+          <td>Gradually increase volume over 4 weeks</td>
+        </tr>
+      </table>
+
+      <div class="callout danger">
+        <div class="callout-label">NEVER DO THIS</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">Never remove a domain from the old portal before it's fully set up and warmed up on the new portal. Both portals can have the same domain authenticated simultaneously — this is safe and expected during transition.</p>
+      </div>
+
+      <div class="callout danger">
+        <div class="callout-label">SPF RECORD WARNING</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">You can only have ONE SPF record per domain. Don't create a new one — add <code>include:hubspot.com</code> to your existing SPF record. Creating a duplicate SPF record will break email authentication for ALL your email, not just HubSpot.</p>
+      </div>
+    </div>
+
+    <!-- 08: USER & SEAT MIGRATION -->
+    <div class="section" id="users">
+      <div class="section-title">08 — USER &amp; SEAT MIGRATION</div>
+
+      <p>Every person who uses HubSpot needs a "seat" — this is their access pass. Different seat types give access to different tools.</p>
+
+      <div class="section-subtitle">SEAT TYPES EXPLAINED</div>
+      <table>
+        <tr>
+          <th>SEAT TYPE</th>
+          <th>WHAT IT GIVES ACCESS TO</th>
+          <th>WHO NEEDS IT</th>
+        </tr>
+        <tr>
+          <td><strong>Core Seat</strong></td>
+          <td>Basic CRM access — view/edit contacts, companies, deals</td>
+          <td>Everyone who uses HubSpot</td>
+        </tr>
+        <tr>
+          <td><strong>Sales Seat</strong></td>
+          <td>Core + Sales Hub tools (sequences, forecasting, quotes)</td>
+          <td>Sales reps and sales managers</td>
+        </tr>
+        <tr>
+          <td><strong>Service Seat</strong></td>
+          <td>Core + Service Hub tools (tickets, knowledge base, SLAs)</td>
+          <td>Support reps and service managers</td>
+        </tr>
+      </table>
+
+      <div class="section-subtitle">THREE APPROACHES</div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-emerald">RECOMMENDED</span>
+        <div class="card-title">OPTION 1: INVITE USERS TO NEW PORTAL</div>
+        <p>Invite the same email addresses to the target portal. Assign seats. Configure permissions. Simplest approach — everyone gets a fresh login to the consolidated system.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-sky">ALTERNATIVE</span>
+        <div class="card-title">OPTION 2: TRANSFER SEATS</div>
+        <p>If keeping an existing portal as the target, transfer core seats between users. Good when the target portal already has most of the right people.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow eyebrow-purple">OPPORTUNITY</span>
+        <div class="card-title">OPTION 3: RESTRUCTURE TEAMS</div>
+        <p>Use migration as an opportunity to redesign teams and permissions around Business Units. Create team structures that match the new brand-based organisation. Takes more planning but results in a cleaner setup.</p>
+      </div>
+    </div>
+
+    <!-- 09: RISK REGISTER -->
+    <div class="section" id="risks">
+      <div class="section-title">09 — RISK REGISTER</div>
+
+      <table>
+        <tr>
+          <th>RISK</th>
+          <th>LIKELIHOOD</th>
+          <th>IMPACT</th>
+          <th>MITIGATION</th>
+        </tr>
+        <tr>
+          <td>Duplicate contacts not fully resolved</td>
+          <td class="risk-high">HIGH</td>
+          <td class="risk-high">HIGH</td>
+          <td>Run dedup tool before AND after migration. Use fuzzy matching (name + company + phone), not just email.</td>
+        </tr>
+        <tr>
+          <td>Email reputation drops (spam)</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-high">CRITICAL</td>
+          <td>Follow 4-week warm-up strictly. Start with engaged contacts only. Monitor daily.</td>
+        </tr>
+        <tr>
+          <td>Workflows fire incorrectly</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-high">HIGH</td>
+          <td>Migrate all workflows PAUSED. Activate one by one after testing with sample records.</td>
+        </tr>
+        <tr>
+          <td>Property type conflicts</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-high">HIGH</td>
+          <td>Complete property mapping table before migration. Resolve all conflicts in advance.</td>
+        </tr>
+        <tr>
+          <td>Integration failures</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-med">MEDIUM</td>
+          <td>Document all integrations. Reconnect and test each one. Allow 1-2 days for debugging.</td>
+        </tr>
+        <tr>
+          <td>Lost deal/ticket associations</td>
+          <td class="risk-low">LOW</td>
+          <td class="risk-high">CRITICAL</td>
+          <td>Verify association counts pre vs post migration. Spot-check 20+ random records.</td>
+        </tr>
+        <tr>
+          <td>User adoption resistance</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-med">MEDIUM</td>
+          <td>Training before go-live. Per-team "where to find your stuff" guides. Migration champion per team.</td>
+        </tr>
+        <tr>
+          <td>Temporary cost spike</td>
+          <td class="risk-high">HIGH</td>
+          <td class="risk-low">LOW</td>
+          <td>Budget for 2-3 months of overlap (old + new portals). Downgrade old portals after 90-day hold.</td>
+        </tr>
+      </table>
+
+      <div class="callout success">
+        <div class="callout-label">ROLLBACK PLAN</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">If migration goes critically wrong: stop all activity in the target portal, re-activate source portals, resume operations from source portals, diagnose the issue, fix in sandbox, and retry. This is why source portals are kept read-only for 90 days — they're your safety net.</p>
+      </div>
+    </div>
+
+    <!-- 10: COST ANALYSIS -->
+    <div class="section" id="cost">
+      <div class="section-title">10 — COST ANALYSIS</div>
+
+      <div class="section-subtitle">CURRENT COSTS (MULTI-PORTAL)</div>
+      <table>
+        <tr>
+          <th>COST ITEM</th>
+          <th>PER PORTAL</th>
+          <th>x PORTALS</th>
+          <th>MONTHLY TOTAL</th>
+        </tr>
+        <tr>
+          <td>HubSpot subscription</td>
+          <td>$___/mo</td>
+          <td>x ___</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Sales seats</td>
+          <td>$___/seat</td>
+          <td>x ___ seats</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Service seats</td>
+          <td>$___/seat</td>
+          <td>x ___ seats</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Marketing contacts (duplicates)</td>
+          <td>$___/tier</td>
+          <td>x ___</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Add-ons</td>
+          <td>$___</td>
+          <td>x ___</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr class="highlight">
+          <td><strong>TOTAL CURRENT</strong></td>
+          <td></td>
+          <td></td>
+          <td><strong>$___/mo</strong></td>
+        </tr>
+      </table>
+
+      <div class="section-subtitle">PROJECTED COSTS (SINGLE PORTAL)</div>
+      <table>
+        <tr>
+          <th>COST ITEM</th>
+          <th>MONTHLY COST</th>
+        </tr>
+        <tr>
+          <td>HubSpot Enterprise (1 subscription)</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Business Units add-on (per brand)</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Sales seats (deduplicated)</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Service seats (deduplicated)</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr>
+          <td>Marketing contacts (deduplicated — no duplicates)</td>
+          <td>$___/mo</td>
+        </tr>
+        <tr class="highlight">
+          <td><strong>TOTAL PROJECTED</strong></td>
+          <td><strong>$___/mo</strong></td>
+        </tr>
+      </table>
+
+      <div class="section-subtitle">ONE-TIME MIGRATION COSTS</div>
+      <table>
+        <tr>
+          <th>ITEM</th>
+          <th>COST</th>
+        </tr>
+        <tr>
+          <td>HubSpot-to-HubSpot Migrator (Datawarehouse.io)</td>
+          <td>Contact for pricing</td>
+        </tr>
+        <tr>
+          <td>Deduplication tool (Insycle or Koalify) — 3 months</td>
+          <td>~$200-500/mo</td>
+        </tr>
+        <tr>
+          <td>Managed migration service (optional)</td>
+          <td>$5,000-15,000</td>
+        </tr>
+        <tr>
+          <td>Internal team time (6-8 weeks)</td>
+          <td>Allocated from existing headcount</td>
+        </tr>
+      </table>
+
+      <div class="callout success">
+        <div class="callout-label">EXPECTED ROI</div>
+        <p style="margin:0; color: var(--text2); font-size: 15px;">Most companies save 30-50% on HubSpot licensing after consolidation (eliminating duplicate subscriptions and duplicate contact charges). The migration typically pays for itself within 3-6 months of the new reduced billing.</p>
+      </div>
+    </div>
+
+    <!-- 11: SANDBOX & TESTING -->
+    <div class="section" id="sandbox">
+      <div class="section-title">11 — SANDBOX &amp; TESTING</div>
+
+      <p>HubSpot Enterprise includes a sandbox environment — a practice copy of your portal where you can test changes without affecting production.</p>
+
+      <div class="section-subtitle">WHAT IS A SANDBOX?</div>
+      <p>Think of it as a "draft mode" for your HubSpot portal. You can break things, test migrations, try new workflows — all without affecting your real data or real customers. If something goes wrong, just delete the sandbox and start fresh.</p>
+
+      <div class="section-subtitle">HOW TO SET ONE UP</div>
+      <ol>
+        <li>Go to <strong>Settings</strong> (gear icon)</li>
+        <li>Click <strong>Account Management</strong> in the left sidebar</li>
+        <li>Click <strong>Sandboxes</strong></li>
+        <li>Click <strong>Create Sandbox</strong></li>
+        <li>Choose "Standard Sandbox" and give it a name (e.g., "Migration Test")</li>
+      </ol>
+
+      <div class="section-subtitle">KEY FEATURES</div>
+      <table>
+        <tr>
+          <th>FEATURE</th>
+          <th>DETAIL</th>
+        </tr>
+        <tr>
+          <td>Deploy to Production</td>
+          <td>Push tested changes (workflows, properties, forms) directly to your live portal</td>
+        </tr>
+        <tr>
+          <td>Configuration copy</td>
+          <td>Sandbox copies your portal's setup (properties, pipelines, workflows) but starts with empty data</td>
+        </tr>
+        <tr>
+          <td>Isolation</td>
+          <td>Nothing in the sandbox affects production — safe to experiment</td>
+        </tr>
+        <tr>
+          <td>Availability</td>
+          <td>Enterprise tier only. Legacy sandboxes were sunset March 2026.</td>
+        </tr>
+      </table>
+
+      <div class="section-subtitle">ALTERNATIVE: FREE DEVELOPER PORTAL</div>
+      <p>If you need additional testing space, you can create a free developer portal at <strong>developers.hubspot.com</strong>. It won't have Business Units (that requires Enterprise), but it's useful for testing API integrations and basic data flows.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title">READY TO CONSOLIDATE?</div>
+      <p style="color: var(--text2); max-width: 500px; margin: 0 auto;">This guide covers the strategy. The next step is a detailed audit of your specific portals to build a migration plan tailored to your data, workflows, and team structure.</p>
+      <a href="#" class="cta-button">BOOK A CONSULTATION</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="report-footer">
+      <p>Prepared by Bare Bayside Labs — Marketing systems that actually work.</p>
+      <p style="margin-top: 8px; font-family: 'DM Mono', monospace; font-size: 11px;">barebaysidelabs.com</p>
+    </div>
+
+  </div>
+</body>
+</html>
