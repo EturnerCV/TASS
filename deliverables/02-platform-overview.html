@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform Overview — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+      <div class="nav-links">
+        <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+        <a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a>
+        <a href="15-risk-register.html" class="nav-link">RISKS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AURORA HEADER -->
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Understand<span>/</span>Platform Overview</div>
+      <span class="eyebrow eyebrow-red">CHAPTER 02</span>
+      <h1 class="gradient-text">HUBSPOT PLATFORM OVERVIEW</h1>
+      <p class="mono">8 MIN READ</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE LAYOUT -->
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+
+      <!-- MAIN CONTENT -->
+      <article class="article-main">
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before diving into consolidation strategy, it helps to understand what HubSpot actually is and how its pieces fit together. This chapter gives you a plain-language tour of the platform so that every decision in later chapters makes sense.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot is not one product. It is a collection of seven interconnected tools (called "Hubs") that all share the same database underneath. Think of it as seven departments in one building, all drawing from the same filing cabinet.</p>
+
+        <!-- 7 HUBS -->
+        <h2>THE SEVEN HUBS</h2>
+
+        <div class="guide-grid">
+          <div class="card">
+            <span class="card-title">SMART CRM</span>
+            <span class="card-desc">The shared database at the centre of everything. Contacts, companies, deals, and tickets all live here. Every other Hub reads from and writes to this same database. When we talk about consolidation, this is the foundation we are unifying.</span>
+          </div>
+          <div class="card">
+            <span class="card-title">MARKETING HUB</span>
+            <span class="card-desc">Email campaigns, landing pages, forms, social media, ads, and automation workflows. This is where leads enter the system and get nurtured until they are ready for a conversation with sales. Business Units live here, which is why Marketing Hub Enterprise is central to consolidation.</span>
+          </div>
+          <div class="card">
+            <span class="card-title">SALES HUB</span>
+            <span class="card-desc">Deal pipelines, quotes, meeting scheduling, email sequences, and forecasting. Sales reps use this daily to track where each deal stands and what needs to happen next. In a consolidated portal, each product line gets its own pipeline but shares the same contact database.</span>
+          </div>
+          <div class="card">
+            <span class="card-title">SERVICE HUB</span>
+            <span class="card-desc">Ticket management, knowledge base, customer feedback surveys, and live chat. When a customer contacts support, the service rep sees the full history of that customer, including every deal and every email, because it all comes from the same CRM.</span>
+          </div>
+          <div class="card">
+            <span class="card-title">CONTENT HUB</span>
+            <span class="card-desc">Website pages, blog posts, and SEO tools. If you host your website on HubSpot, this is the Hub that powers it. In a multi-brand setup, each Business Unit can have its own blog and web pages with separate branding.</span>
+          </div>
+          <div class="card">
+            <span class="card-title">DATA HUB (OPERATIONS)</span>
+            <span class="card-desc">Data sync between HubSpot and other tools, data quality automation, and custom-coded workflow actions. This is the plumbing that keeps your data clean and connected. Especially important during and after migration when data integrity is critical.</span>
+          </div>
+          <div class="card">
+            <span class="card-title">COMMERCE HUB</span>
+            <span class="card-desc">Payment links, invoices, quotes, and subscription management. If you collect payments through HubSpot, this Hub handles it. Still relatively new compared to the others, but growing in capability.</span>
+          </div>
+        </div>
+
+        <!-- BREEZE AI -->
+        <h2>BREEZE AI</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot has added artificial intelligence capabilities across the platform under the brand name "Breeze." This is not a separate Hub. It is a layer of AI tools woven into the Hubs you already use.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Breeze can draft email copy, summarise contact activity, score leads, suggest next actions for sales reps, and generate reports from natural-language questions. The important thing to understand for consolidation is that AI features work better with more data. When all your customer data is in one portal instead of split across three, the AI has a complete picture to work from. Recommendations become more accurate, predictions improve, and summaries are actually complete.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Breeze includes three main components. Breeze Copilot is a chat assistant that lives inside HubSpot and can answer questions about your data, draft content, and perform tasks. Breeze Agents are automated AI workers that handle specific jobs like prospecting or content creation without manual input. Breeze Intelligence enriches your contact data by pulling in company information, job titles, and technology details from external databases.</p>
+
+        <!-- HOW DATA FLOWS -->
+        <h2>HOW DATA FLOWS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">All seven Hubs connect to the same CRM database. Here is a simplified view of how data moves through the system from first touch to ongoing customer relationship.</p>
+
+        <div class="flow">
+<pre>
+  VISITOR arrives on website (Content Hub)
+          |
+          v
+  Fills out a FORM (Marketing Hub)
+          |
+          v
+  CONTACT record created in CRM (Smart CRM)
+          |
+          v
+  Nurture WORKFLOW sends emails (Marketing Hub)
+          |
+          v
+  Lead is qualified, DEAL created (Sales Hub)
+          |
+          v
+  Deal won, customer onboarded
+          |
+          v
+  TICKET created for support issue (Service Hub)
+          |
+          v
+  All history visible on ONE TIMELINE (Smart CRM)
+</pre>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This flow only works properly when everything lives in one portal. When you have separate portals, the chain breaks. The form in Portal A creates a contact, but when that same person buys from Portal B, a completely new contact is created with no link to the first one. The timeline is split. The history is incomplete. And every team is working with partial information.</p>
+
+        <div class="callout">
+          <div class="callout-label">WHY THIS MATTERS</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">The entire value of HubSpot is that everything connects to one database. When you run separate portals, you are deliberately breaking that connection. Consolidation is not adding a feature. It is restoring the way the platform was designed to work in the first place.</p>
+        </div>
+
+        <!-- PRICING REFERENCE -->
+        <h2>PRICING REFERENCE</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot pricing varies by Hub and by tier. Here is a reference table showing the two tiers most relevant to a multi-brand consolidation. All prices are monthly, billed annually, as of early 2026.</p>
+
+        <table>
+          <tr>
+            <th>HUB</th>
+            <th>PROFESSIONAL</th>
+            <th>ENTERPRISE</th>
+          </tr>
+          <tr>
+            <td>Marketing Hub</td>
+            <td>$890/mo (2,000 contacts)</td>
+            <td>$3,600/mo (10,000 contacts)</td>
+          </tr>
+          <tr>
+            <td>Sales Hub</td>
+            <td>$100/mo per seat</td>
+            <td>$150/mo per seat</td>
+          </tr>
+          <tr>
+            <td>Service Hub</td>
+            <td>$100/mo per seat</td>
+            <td>$150/mo per seat</td>
+          </tr>
+          <tr>
+            <td>Content Hub</td>
+            <td>$500/mo</td>
+            <td>$1,500/mo</td>
+          </tr>
+          <tr>
+            <td>Operations Hub</td>
+            <td>$800/mo</td>
+            <td>$2,000/mo</td>
+          </tr>
+          <tr>
+            <td>Commerce Hub</td>
+            <td colspan="2" style="text-align:center">Free tools + payment processing fees</td>
+          </tr>
+        </table>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The critical thing to notice is that Marketing Hub Enterprise is where Business Units live. You need Marketing Hub Enterprise to run multiple brands from one portal. Chapter 5 covers the Professional vs Enterprise decision in detail, including a full cost comparison between running multiple Professional portals and one Enterprise portal.</p>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- TABLE OF CONTENTS (auto-generated by JS) -->
+        <div class="sidebar-heading">ON THIS PAGE</div>
+        <div id="toc-container"></div>
+
+        <!-- GUIDE NAVIGATION -->
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link active">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP NAV -->
+    <div class="step-nav">
+      <a href="01-executive-summary.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">Executive Summary</span></a>
+      <a href="03-current-state.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">Current State</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+    <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
+  </div>
+
+  <script src="js/guide.js"></script>
+</body>
+</html>

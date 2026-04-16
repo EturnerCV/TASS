@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 4: Pre-Migration Prep — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+      <div class="nav-links">
+        <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+        <a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a>
+        <a href="15-risk-register.html" class="nav-link">RISKS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AURORA HEADER -->
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Migration<span>/</span>Phase 4</div>
+      <span class="eyebrow eyebrow-sky">STEP 4 OF 6</span>
+      <h1 class="gradient-text">PHASE 4: PRE-MIGRATION PREP</h1>
+      <p class="mono">WEEK 4&ndash;5 &bull; 10 MIN READ</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE LAYOUT -->
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+
+      <!-- MAIN CONTENT -->
+      <article class="article-main">
+
+        <div class="callout expect">
+          <div class="callout-label">WHAT YOUR TEAM SHOULD EXPECT</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">A freeze date will be set. All teams must stop creating records in old portals from this date.</p>
+        </div>
+
+        <!-- WHAT THIS PHASE DOES -->
+        <h2>WHAT THIS PHASE DOES</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This is the final preparation phase before any data moves. Think of it as packing everything into labelled boxes and making sure the new house is ready to receive them. Nothing is migrated yet, but by the end of this phase, the target portal is fully configured and your source portals are frozen so no new data sneaks in during the move.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Every task in this phase exists to prevent problems during the actual migration. Skipping any step here means dealing with that problem under pressure during migration weekend, which is always harder and riskier.</p>
+
+        <!-- CONFIGURE BUSINESS UNITS -->
+        <h2>CONFIGURE BUSINESS UNITS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Business Units are the feature that lets one HubSpot portal manage multiple brands. Each of your product lines gets its own Business Unit, which means it gets its own logo, colour scheme, email templates, forms, and subscription preferences &mdash; all inside the same portal.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">In the target portal, create one Business Unit for each brand. Upload each brand's logo and set its primary colour. This ensures that any emails, forms, or landing pages created under that Business Unit automatically use the correct branding.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The default Business Unit is the one that was already in the portal before consolidation. The additional Business Units are added through the HubSpot Enterprise add-on. Each Business Unit can be assigned its own team of users so people only see the brand they work on.</p>
+
+        <!-- EMAIL DOMAIN SETUP -->
+        <h2>EMAIL DOMAIN SETUP</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Email authentication is one of the most critical steps in the entire migration. Three technologies protect your email deliverability: DKIM, SPF, and DMARC. These are DNS records that tell email providers (Gmail, Outlook, etc.) that your emails are legitimate and not spam.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Each brand's sending domain needs to be authenticated in the target portal. This involves adding specific DNS records to your domain provider. HubSpot provides the exact records to add &mdash; you copy them from HubSpot's settings and paste them into your DNS provider.</p>
+
+        <div class="callout danger">
+          <div class="callout-label">CRITICAL: DO NOT REMOVE BEFORE ADDING</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">You must add the email authentication records to the new target portal BEFORE removing them from the old source portals. If you remove them from the old portal first, there will be a gap where your emails have no authentication. During that gap, email providers may reject or spam-folder your messages. The correct order is: add to new, verify it works, then remove from old. Never the other way around.</p>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After adding the DNS records, HubSpot will verify them. This can take anywhere from a few minutes to 48 hours depending on your DNS provider. Plan for this delay and do not schedule migration weekend until all domains are verified.</p>
+
+        <!-- REBUILD NON-MIGRATABLE ASSETS -->
+        <h2>REBUILD NON-MIGRATABLE ASSETS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Some items in HubSpot cannot be migrated automatically between portals. These need to be rebuilt manually in the target portal. The main items that fall into this category are:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px"><strong>Workflows</strong> &mdash; Automation rules cannot be exported and imported. They need to be recreated from scratch. Use the screenshots and documentation from the audit phase as your blueprint.</li>
+          <li style="margin-bottom:8px"><strong>Reports and dashboards</strong> &mdash; Custom reports do not transfer between portals. Rebuild the ones you actually use (most teams find they only use a fraction of their existing reports).</li>
+          <li style="margin-bottom:8px"><strong>Email templates</strong> &mdash; These need to be recreated under the correct Business Unit so they use the right branding.</li>
+          <li style="margin-bottom:8px"><strong>Forms</strong> &mdash; Forms need to be rebuilt and assigned to the correct Business Unit. Old form embed codes on your websites will need to be updated after go-live.</li>
+          <li style="margin-bottom:8px"><strong>Sequences</strong> &mdash; Sales email sequences cannot be migrated. Recreate the ones your sales team actively uses.</li>
+        </ul>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This is usually the most time-consuming part of the preparation phase. Start with the workflows and templates that are actively in use. Anything that has not been used in the last 90 days can probably be left behind.</p>
+
+        <!-- SET UP TEAMS -->
+        <h2>SET UP TEAMS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Create the team structure in the target portal before migration. Each brand should have its own team, and there should be a top-level leadership team that can see everything across all brands.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Teams control what each person can see and do. A sales rep on the Product A team should only see Product A deals and contacts by default. A marketing manager might need access to all brands for cross-brand campaigns. Set these permissions now so they are ready when users are invited after migration.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Do not invite users yet. That happens after the data is migrated. For now, just create the team structure and permission sets.</p>
+
+        <!-- INSTALL DEDUP TOOL -->
+        <h2>INSTALL DEDUP TOOL</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">When records from multiple portals are imported into one portal, duplicates are inevitable. The same customer may exist in two or three source portals with slightly different details (different phone number, different email capitalisation, different company name spelling).</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Install a deduplication tool in the target portal before migration. HubSpot has a built-in duplicate management feature, but for a migration of this scale, a dedicated dedup tool from the HubSpot marketplace gives more control over matching rules and merge priorities.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Configure the dedup tool with your matching rules (for example: match contacts by email address, match companies by domain name). Test it with a small batch of sample data before migration weekend.</p>
+
+        <!-- EXPORT SAFETY BACKUPS -->
+        <h2>EXPORT SAFETY BACKUPS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before anything moves, export a complete backup of every source portal. This is your safety net. If something goes wrong during migration, you can always restore from these backups.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">For each source portal, export:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px">All contacts (CSV export from HubSpot)</li>
+          <li style="margin-bottom:8px">All companies (CSV export)</li>
+          <li style="margin-bottom:8px">All deals with associated contacts and companies (CSV export)</li>
+          <li style="margin-bottom:8px">All tickets (CSV export)</li>
+          <li style="margin-bottom:8px">Email campaign history and analytics (screenshot or export)</li>
+          <li style="margin-bottom:8px">Workflow configurations (screenshots of each workflow)</li>
+        </ul>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Store these backups in a shared drive that the project team can access. Label each file clearly with the portal name and export date. These backups should be kept for at least 90 days after migration.</p>
+
+        <!-- FREEZE SOURCE PORTALS -->
+        <h2>FREEZE SOURCE PORTALS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The freeze is the final step before migration begins. From the freeze date forward, no one should create new records, send new campaigns, or make changes in the source portals. Any new data created after the freeze will not be included in the migration.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Communicate the freeze date to all teams at least two weeks in advance. Make sure everyone understands:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px">The exact date and time the freeze begins</li>
+          <li style="margin-bottom:8px">Why the freeze is necessary (to prevent data from being left behind)</li>
+          <li style="margin-bottom:8px">What to do if they need to record something urgent (use a shared spreadsheet as a temporary holding area)</li>
+          <li style="margin-bottom:8px">How long the freeze will last (typically one weekend for the migration, then all new work goes into the target portal)</li>
+        </ul>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After the freeze, take one final export of each source portal. This becomes the definitive dataset that gets migrated. Any earlier backups are for safety; this final export is the one that actually moves.</p>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- TABLE OF CONTENTS (auto-generated by JS) -->
+        <div class="sidebar-heading">ON THIS PAGE</div>
+        <div id="toc-container"></div>
+
+        <!-- GUIDE NAVIGATION -->
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link active">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP NAV -->
+    <div class="step-nav">
+      <a href="08-migration-phase-3.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">Phase 3: Sandbox</span></a>
+      <a href="10-migration-phase-5.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">Phase 5: Execute</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+    <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
+  </div>
+
+  <script src="js/guide.js"></script>
+</body>
+</html>

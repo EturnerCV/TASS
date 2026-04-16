@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 3: Sandbox Testing — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+    <div class="nav-links">
+      <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+      <a href="06-migration-phase-1.html" class="nav-link active">MIGRATION</a>
+      <a href="15-risk-register.html" class="nav-link">RISKS</a>
+    </div>
+  </div></nav>
+
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Migration<span>/</span>Phase 3</div>
+      <span class="eyebrow eyebrow-sky">STEP 3 OF 6</span>
+      <h1 class="gradient-text">PHASE 3: SANDBOX TESTING</h1>
+      <p class="mono">WEEK 3&ndash;4 &bull; 10 MIN READ</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+      <article class="article-main">
+
+        <div class="callout expect">
+          <div class="callout-label">WHAT YOUR TEAM SHOULD EXPECT</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">No production impact. Testing happens in an isolated sandbox environment. Your team leads can verify their data looks correct in the test environment before anything real is touched.</p>
+        </div>
+
+        <h2>WHY TEST FIRST</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If something goes wrong in a sandbox, nothing is affected. Your real customers don't get wrong emails, your deal data doesn't get scrambled, and nobody's workflow breaks. You just delete the sandbox and start fresh.</p>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If something goes wrong in production, you're dealing with broken customer data, missed emails, angry teams, and a very stressful weekend. Always test first.</p>
+
+        <h2>WHAT IS A SANDBOX</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Think of it as a "practice copy" of your HubSpot portal. It copies your portal's configuration (properties, pipelines, workflows) but starts with an empty database. You can break things, test migrations, try new workflows — all without touching real data.</p>
+
+        <h3>HOW TO SET ONE UP</h3>
+        <ol style="margin:12px 0 24px 20px;color:var(--text2)">
+          <li style="margin-bottom:12px;font-size:17px">Go to <strong style="color:var(--text)">Settings</strong> (gear icon top right)</li>
+          <li style="margin-bottom:12px;font-size:17px">Click <strong style="color:var(--text)">Account Management</strong> in the left sidebar</li>
+          <li style="margin-bottom:12px;font-size:17px">Click <strong style="color:var(--text)">Sandboxes</strong></li>
+          <li style="margin-bottom:12px;font-size:17px">Click <strong style="color:var(--text)">Create Sandbox</strong> (top right)</li>
+          <li style="margin-bottom:12px;font-size:17px">Choose <strong style="color:var(--text)">Standard Sandbox</strong> and name it "Migration Test"</li>
+        </ol>
+
+        <div class="callout info">
+          <div class="callout-label">ON PROFESSIONAL TIER?</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">Sandboxes require Enterprise tier. If you're on Professional, you can create a free developer portal at <strong>developers.hubspot.com</strong> for basic testing. It won't have Business Units, but it can test data flows and API integrations.</p>
+        </div>
+
+        <h2>RUNNING THE TEST MIGRATION</h2>
+        <ol style="margin:12px 0 24px 20px;color:var(--text2)">
+          <li style="margin-bottom:12px;font-size:17px">Install the <strong style="color:var(--text)">HubSpot-to-HubSpot Migrator</strong> (by Datawarehouse.io) from the HubSpot App Marketplace</li>
+          <li style="margin-bottom:12px;font-size:17px">Install it in <strong style="color:var(--text)">both</strong> the source portal and your sandbox</li>
+          <li style="margin-bottom:12px;font-size:17px">In the migration tool, set the source and destination portals</li>
+          <li style="margin-bottom:12px;font-size:17px">Start the migration — let it run to completion</li>
+          <li style="margin-bottom:12px;font-size:17px">Large datasets may take several hours. This is normal.</li>
+        </ol>
+
+        <h2>VERIFICATION CHECKLIST</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After the test migration completes, verify each category:</p>
+        <table>
+          <tr><th>CHECK</th><th>SOURCE COUNT</th><th>SANDBOX COUNT</th><th>MATCH?</th></tr>
+          <tr><td>Contacts</td><td></td><td></td><td></td></tr>
+          <tr><td>Companies</td><td></td><td></td><td></td></tr>
+          <tr><td>Deals</td><td></td><td></td><td></td></tr>
+          <tr><td>Tickets</td><td></td><td></td><td></td></tr>
+          <tr><td>Custom objects</td><td></td><td></td><td></td></tr>
+          <tr><td>Custom properties</td><td></td><td></td><td></td></tr>
+          <tr><td>Associations (spot-check 10)</td><td></td><td></td><td></td></tr>
+          <tr><td>Engagements (notes, calls)</td><td></td><td></td><td></td></tr>
+          <tr><td>Files &amp; attachments</td><td></td><td></td><td></td></tr>
+          <tr><td>Workflows</td><td></td><td></td><td></td></tr>
+        </table>
+
+        <h2>TEST BUSINESS UNITS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After data is in the sandbox, test the Business Unit setup:</p>
+        <ol style="margin:12px 0 24px 20px;color:var(--text2)">
+          <li style="margin-bottom:10px;font-size:17px">Create a Business Unit for one product line</li>
+          <li style="margin-bottom:10px;font-size:17px">Assign migrated contacts to that Business Unit</li>
+          <li style="margin-bottom:10px;font-size:17px">Create a test list filtered by Business Unit — verify correct contacts appear</li>
+          <li style="margin-bottom:10px;font-size:17px">Create a test workflow with Business Unit as a trigger filter</li>
+        </ol>
+
+        <h2>TEST EMAIL SENDING</h2>
+        <ol style="margin:12px 0 24px 20px;color:var(--text2)">
+          <li style="margin-bottom:10px;font-size:17px">Connect at least one brand domain to the sandbox</li>
+          <li style="margin-bottom:10px;font-size:17px">Create a test email using that brand's template</li>
+          <li style="margin-bottom:10px;font-size:17px">Send to internal email addresses (yourself, colleagues)</li>
+          <li style="margin-bottom:10px;font-size:17px">Verify: arrives in inbox (not spam), from address correct, DKIM passes (check email headers)</li>
+        </ol>
+
+        <h2>WHAT DOESN'T MIGRATE</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Document everything that didn't come across. These will need to be manually recreated in Phase 4:</p>
+        <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px">Marketing email campaign performance data (open/click history)</li>
+          <li style="margin-bottom:8px">Historical web traffic analytics</li>
+          <li style="margin-bottom:8px">Reports and dashboards</li>
+          <li style="margin-bottom:8px">CTAs and landing page designs</li>
+          <li style="margin-bottom:8px">Knowledge base articles</li>
+          <li style="margin-bottom:8px">Chatflows and meeting links</li>
+          <li style="margin-bottom:8px">Playbooks, snippets, and saved views</li>
+          <li style="margin-bottom:8px">Brand kits and custom surveys</li>
+          <li style="margin-bottom:8px">Team structure and permissions</li>
+        </ul>
+
+      </article>
+
+      <aside class="sidebar">
+        <div id="toc-container"><div class="sidebar-heading">ON THIS PAGE</div></div>
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link active">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0"><div class="inner">
+    <div class="step-nav">
+      <a href="07-migration-phase-2.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">PHASE 2: CHOOSE TARGET</span></a>
+      <a href="09-migration-phase-4.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">PHASE 4: PRE-MIGRATION PREP</span></a>
+    </div>
+  </div></section>
+
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+  </div>
+  <script src="js/guide.js"></script>
+</body>
+</html>

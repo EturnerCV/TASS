@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP & AI Integration — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+  <nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+    <div class="nav-links"><a href="01-executive-summary.html" class="nav-link">START HERE</a><a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a><a href="15-risk-register.html" class="nav-link">RISKS</a></div>
+  </div></nav>
+
+  <section class="section aurora" style="padding-bottom:48px"><div class="inner">
+    <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Design<span>/</span>MCP &amp; AI</div>
+    <span class="eyebrow eyebrow-emerald">CHAPTER 13</span>
+    <h1 class="gradient-text">MCP &amp; AI INTEGRATION</h1>
+    <p class="mono">8 MIN READ</p>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="article-layout">
+    <article class="article-main">
+
+      <h2>WHAT IS MCP</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px"><strong>Model Context Protocol</strong> (MCP) lets AI assistants talk directly to your CRM. Instead of logging into HubSpot, clicking through menus, and manually pulling up data, you ask a question in plain English and get an answer instantly.</p>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Think of it as giving your AI assistant (like Claude, ChatGPT, or Copilot) a secure pass to read and update your HubSpot data. It can look up contacts, check deal status, find open tickets, and even create new records — all through conversation.</p>
+
+      <h2>HUBSPOT'S MCP SERVER</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot provides two types of MCP servers:</p>
+
+      <div class="card" style="margin-bottom:16px">
+        <span class="eyebrow eyebrow-sky">REMOTE SERVER</span>
+        <h3 style="color:var(--text);margin-top:0">CRM DATA ACCESS</h3>
+        <p>Connects any MCP-compatible AI tool to your CRM. Read and write access to your customer data.</p>
+        <p style="margin-top:12px"><strong style="color:var(--text)">Read &amp; Write:</strong> Contacts, Companies, Deals, Tickets, Products, Invoices, Quotes, Subscriptions, Orders, Line Items</p>
+        <p><strong style="color:var(--text)">Read Only:</strong> Campaigns, Metrics, Landing Pages, Website Pages, Blog Posts, Users, Teams, Roles</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <span class="eyebrow eyebrow-purple">DEVELOPER SERVER</span>
+        <h3 style="color:var(--text);margin-top:0">CLI-BASED TOOLS</h3>
+        <p>For developers building on HubSpot. Helps scaffold projects, manage apps, and test integrations through the command line.</p>
+      </div>
+
+      <h2>USE CASES PER TEAM</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Here's what each team can do with MCP after consolidation — just by asking their AI assistant:</p>
+
+      <div class="persona-grid">
+        <div class="persona-card">
+          <div class="persona-name">SALES</div>
+          <div class="persona-role">DEAL INTELLIGENCE</div>
+          <div class="surface" style="padding:16px;border-left:3px solid var(--sky)">
+            <p style="font-size:15px;margin:0;font-style:italic;color:var(--text2)">"Show me all deals closing this month over $10K"</p>
+          </div>
+          <p style="font-size:14px;margin-top:12px">Instantly see pipeline value, deal stages, and contact history — no clicking through filters.</p>
+        </div>
+        <div class="persona-card">
+          <div class="persona-name">MARKETING</div>
+          <div class="persona-role">CAMPAIGN ANALYTICS</div>
+          <div class="surface" style="padding:16px;border-left:3px solid var(--emerald)">
+            <p style="font-size:15px;margin:0;font-style:italic;color:var(--text2)">"What's the open rate on our Product A newsletter this quarter?"</p>
+          </div>
+          <p style="font-size:14px;margin-top:12px">Pull campaign metrics across brands without switching between dashboards.</p>
+        </div>
+        <div class="persona-card">
+          <div class="persona-name">SERVICE</div>
+          <div class="persona-role">CUSTOMER CONTEXT</div>
+          <div class="surface" style="padding:16px;border-left:3px solid var(--gold)">
+            <p style="font-size:15px;margin:0;font-style:italic;color:var(--text2)">"Find all open tickets for Company X across all products"</p>
+          </div>
+          <p style="font-size:14px;margin-top:12px">Get the full picture before calling a customer — every product, every ticket, one answer.</p>
+        </div>
+        <div class="persona-card">
+          <div class="persona-name">LEADERSHIP</div>
+          <div class="persona-role">EXECUTIVE REPORTING</div>
+          <div class="surface" style="padding:16px;border-left:3px solid var(--purple)">
+            <p style="font-size:15px;margin:0;font-style:italic;color:var(--text2)">"Revenue by product line this quarter vs last quarter"</p>
+          </div>
+          <p style="font-size:14px;margin-top:12px">Real-time executive summaries without waiting for someone to build a report.</p>
+        </div>
+      </div>
+
+      <h2>HOW MCP CHANGES AFTER CONSOLIDATION</h2>
+      <div class="comparison">
+        <div class="comparison-col before">
+          <h4>BEFORE (MULTI-PORTAL)</h4>
+          <ul>
+            <li>4 separate MCP connections needed</li>
+            <li>Each connection only sees one portal's data</li>
+            <li>"Find all tickets for Company X" returns incomplete results</li>
+            <li>Cross-product queries impossible</li>
+          </ul>
+        </div>
+        <div class="comparison-col after">
+          <h4>AFTER (UNIFIED PORTAL)</h4>
+          <ul>
+            <li>1 MCP connection</li>
+            <li>Complete view of all customer data</li>
+            <li>"Find all tickets for Company X" shows everything</li>
+            <li>"Revenue by product line" works natively</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>SETUP OVERVIEW</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Setting up MCP requires:</p>
+      <ol style="margin:12px 0 24px 20px;color:var(--text2)">
+        <li style="margin-bottom:10px;font-size:17px">Create a user-level app in HubSpot with the appropriate read/write scopes</li>
+        <li style="margin-bottom:10px;font-size:17px">Authenticate via OAuth 2.0 (transitioning to OAuth 2.1)</li>
+        <li style="margin-bottom:10px;font-size:17px">Connect your MCP-compatible AI client (Claude, ChatGPT, etc.)</li>
+        <li style="margin-bottom:10px;font-size:17px">Admins control which data the AI can access through scope permissions</li>
+      </ol>
+
+      <div class="callout info">
+        <div class="callout-label">AVAILABILITY</div>
+        <p style="margin:0;color:var(--text2);font-size:15px">HubSpot's MCP server is currently in public beta. Enterprise accounts get the most complete data access. Sensitive data properties (PHI, highly sensitive fields) are excluded from MCP access for security.</p>
+      </div>
+
+    </article>
+
+    <aside class="sidebar">
+      <div id="toc-container"><div class="sidebar-heading">ON THIS PAGE</div></div>
+      <div style="margin-top:32px">
+        <div class="sidebar-heading">GUIDE NAVIGATION</div>
+        <div class="sidebar-group-label">UNDERSTAND</div>
+        <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+        <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+        <a href="03-current-state.html" class="sidebar-link">Current State</a>
+        <div class="sidebar-group-label">DESIGN</div>
+        <a href="04-target-state.html" class="sidebar-link">Target State</a>
+        <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+        <a href="13-mcp-integration.html" class="sidebar-link active">MCP &amp; AI</a>
+        <div class="sidebar-group-label">MIGRATE</div>
+        <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+        <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+        <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+        <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+        <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+        <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+        <div class="sidebar-group-label">REFERENCE</div>
+        <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+        <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+        <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+        <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+      </div>
+    </aside>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="inner">
+    <div class="step-nav">
+      <a href="12-what-migrates.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">WHAT MIGRATES</span></a>
+      <a href="14-user-experience.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">USER EXPERIENCE</span></a>
+    </div>
+  </div></section>
+
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+  </div>
+  <script src="js/guide.js"></script>
+</body>
+</html>

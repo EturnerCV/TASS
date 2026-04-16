@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cost Analysis — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+  <nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+    <div class="nav-links"><a href="01-executive-summary.html" class="nav-link">START HERE</a><a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a><a href="15-risk-register.html" class="nav-link">RISKS</a></div>
+  </div></nav>
+
+  <section class="section aurora" style="padding-bottom:48px"><div class="inner">
+    <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Reference<span>/</span>Cost Analysis</div>
+    <span class="eyebrow eyebrow-gold">CHAPTER 16</span>
+    <h1 class="gradient-text">COST ANALYSIS</h1>
+    <p class="mono">6 MIN READ</p>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="article-layout">
+    <article class="article-main">
+
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The consolidation has upfront costs — migration tools, temporary overlap in subscriptions, and team time. But the ongoing savings from eliminating duplicate subscriptions and duplicate contact charges typically pay for the migration within 3-6 months.</p>
+
+      <h2>CURRENT COSTS (MULTI-PORTAL)</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Fill in your current numbers to see the total cost of running separate portals:</p>
+      <table>
+        <tr><th>COST ITEM</th><th>PER PORTAL</th><th>x PORTALS</th><th>MONTHLY TOTAL</th></tr>
+        <tr><td>HubSpot subscription</td><td>$___/mo</td><td>x ___</td><td>$___/mo</td></tr>
+        <tr><td>Sales seats</td><td>$___/seat</td><td>x ___ seats</td><td>$___/mo</td></tr>
+        <tr><td>Service seats</td><td>$___/seat</td><td>x ___ seats</td><td>$___/mo</td></tr>
+        <tr><td>Marketing contacts (with duplicates)</td><td>$___/tier</td><td>x ___</td><td>$___/mo</td></tr>
+        <tr><td>Add-ons</td><td>$___</td><td>x ___</td><td>$___/mo</td></tr>
+        <tr class="highlight"><td><strong>TOTAL CURRENT</strong></td><td></td><td></td><td><strong>$___/mo</strong></td></tr>
+      </table>
+
+      <h2>PROJECTED COSTS (SINGLE PORTAL)</h2>
+      <table>
+        <tr><th>COST ITEM</th><th>MONTHLY COST</th></tr>
+        <tr><td>HubSpot Enterprise (1 subscription)</td><td>$___/mo</td></tr>
+        <tr><td>Business Units add-on (per brand)</td><td>$___/mo</td></tr>
+        <tr><td>Sales seats (deduplicated — no more duplicate users)</td><td>$___/mo</td></tr>
+        <tr><td>Service seats (deduplicated)</td><td>$___/mo</td></tr>
+        <tr><td>Marketing contacts (deduplicated — paying once per person)</td><td>$___/mo</td></tr>
+        <tr class="highlight"><td><strong>TOTAL PROJECTED</strong></td><td><strong>$___/mo</strong></td></tr>
+      </table>
+
+      <h2>ONE-TIME MIGRATION COSTS</h2>
+      <table>
+        <tr><th>ITEM</th><th>ESTIMATED COST</th></tr>
+        <tr><td>HubSpot-to-HubSpot Migrator (Datawarehouse.io)</td><td>Contact for pricing</td></tr>
+        <tr><td>Deduplication tool (Insycle or Koalify) — 3 months</td><td>$200-500/mo</td></tr>
+        <tr><td>Managed migration service (optional — recommended for complex setups)</td><td>$5,000-15,000</td></tr>
+        <tr><td>Internal team time (6-8 weeks, part-time)</td><td>Allocated from existing headcount</td></tr>
+      </table>
+
+      <h2>WORKED EXAMPLE</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Here's how the math works for a typical 3-portal consolidation:</p>
+
+      <div class="comparison">
+        <div class="comparison-col before">
+          <h4>BEFORE: 3 PORTALS</h4>
+          <ul>
+            <li>3x Marketing Hub Pro @ $890/mo = <strong style="color:var(--red)">$2,670/mo</strong></li>
+            <li>6 Sales seats across portals @ $100 = $600/mo</li>
+            <li>4 Service seats across portals @ $100 = $400/mo</li>
+            <li>18,000 total contacts (3,200 duplicates) charged at higher tier</li>
+            <li style="margin-top:12px"><strong style="color:var(--red)">Total: ~$3,970/mo</strong></li>
+          </ul>
+        </div>
+        <div class="comparison-col after">
+          <h4>AFTER: 1 PORTAL</h4>
+          <ul>
+            <li>1x Marketing Hub Enterprise @ <strong style="color:var(--emerald)">$3,600/mo</strong></li>
+            <li>4 Sales seats (deduplicated) @ $150 = $600/mo</li>
+            <li>3 Service seats (deduplicated) @ $150 = $450/mo</li>
+            <li>14,800 unique contacts — lower tier, charged once</li>
+            <li style="margin-top:12px"><strong style="color:var(--emerald)">Total: ~$4,650/mo + BU add-on</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="surface" style="padding:24px;margin:24px 0;border-left:3px solid var(--sky)">
+        <p style="font-size:17px;line-height:1.7;margin:0 0 12px"><strong>"Wait — the Enterprise portal costs more?"</strong></p>
+        <p style="font-size:17px;line-height:1.7;margin:0">At face value, yes — the base subscription is higher. But factor in: contact tier savings from eliminating 3,200 duplicates, the cross-sell revenue you're currently missing (even a 5% cross-sell rate on 3,200 overlapping customers generates significant revenue), unified reporting that catches problems earlier, and the operational time saved by teams not managing 3 separate systems. The ROI isn't just in licensing savings — it's in revenue you're leaving on the table.</p>
+      </div>
+
+      <div class="callout success">
+        <div class="callout-label">EXPECTED ROI</div>
+        <p style="margin:0;color:var(--text2);font-size:15px">Companies with significant customer overlap (20%+ contacts appearing in multiple portals) typically see positive ROI within 3-6 months when factoring in licensing savings, reduced duplicate work, and cross-sell revenue. The migration investment is a one-time cost; the savings are permanent.</p>
+      </div>
+
+      <h2>NEGOTIATION TIPS</h2>
+      <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+        <li style="margin-bottom:12px;font-size:17px"><strong style="color:var(--text)">Bundle discount:</strong> HubSpot offers a "Customer Platform" bundle that discounts all hubs purchased together. Ask about this when upgrading to Enterprise.</li>
+        <li style="margin-bottom:12px;font-size:17px"><strong style="color:var(--text)">Migration support:</strong> Ask HubSpot for migration support credits — they have an interest in you consolidating (happier customer, less churn risk).</li>
+        <li style="margin-bottom:12px;font-size:17px"><strong style="color:var(--text)">Annual commitment:</strong> Annual prepay typically saves 10-20% vs monthly billing.</li>
+        <li style="margin-bottom:12px;font-size:17px"><strong style="color:var(--text)">Timing:</strong> End of quarter is when HubSpot reps are most flexible on pricing.</li>
+      </ul>
+
+    </article>
+
+    <aside class="sidebar">
+      <div id="toc-container"><div class="sidebar-heading">ON THIS PAGE</div></div>
+      <div style="margin-top:32px">
+        <div class="sidebar-heading">GUIDE NAVIGATION</div>
+        <div class="sidebar-group-label">UNDERSTAND</div>
+        <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+        <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+        <a href="03-current-state.html" class="sidebar-link">Current State</a>
+        <div class="sidebar-group-label">DESIGN</div>
+        <a href="04-target-state.html" class="sidebar-link">Target State</a>
+        <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+        <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+        <div class="sidebar-group-label">MIGRATE</div>
+        <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+        <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+        <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+        <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+        <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+        <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+        <div class="sidebar-group-label">REFERENCE</div>
+        <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+        <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+        <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+        <a href="16-cost-analysis.html" class="sidebar-link active">Cost Analysis</a>
+      </div>
+    </aside>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="inner">
+    <div class="step-nav">
+      <a href="15-risk-register.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">RISK REGISTER</span></a>
+      <a href="index.html" class="step-nav-btn next"><span class="step-label">FINISHED</span><span class="step-title">BACK TO GUIDE HOME</span></a>
+    </div>
+  </div></section>
+
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+  </div>
+  <script src="js/guide.js"></script>
+</body>
+</html>

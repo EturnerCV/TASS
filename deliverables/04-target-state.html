@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Target State: One Portal, Multiple Brands — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+      <div class="nav-links">
+        <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+        <a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a>
+        <a href="15-risk-register.html" class="nav-link">RISKS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AURORA HEADER -->
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Design<span>/</span>Target State</div>
+      <span class="eyebrow eyebrow-emerald">CHAPTER 04</span>
+      <h1 class="gradient-text">ONE PORTAL, MULTIPLE BRANDS</h1>
+      <p class="mono">10 MIN READ</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE LAYOUT -->
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+
+      <!-- MAIN CONTENT -->
+      <article class="article-main">
+
+        <!-- WHAT CHANGES -->
+        <h2>WHAT CHANGES</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Here is the simplest way to see the difference. The left column is how things work right now with separate portals. The right column is how they work after consolidation.</p>
+
+        <div class="comparison">
+          <div class="comparison-col before">
+            <h4>BEFORE (SEPARATE PORTALS)</h4>
+            <ul>
+              <li>3-4 separate databases</li>
+              <li>Duplicate contacts everywhere</li>
+              <li>Deal history split across portals</li>
+              <li>Each portal sends its own emails</li>
+              <li>Per-portal reporting only</li>
+              <li>3-4 separate invoices</li>
+              <li>Paying for the same person multiple times</li>
+            </ul>
+          </div>
+          <div class="comparison-col after">
+            <h4>AFTER (ONE UNIFIED PORTAL)</h4>
+            <ul>
+              <li>1 shared database</li>
+              <li>1 contact record per customer</li>
+              <li>All deals visible on one timeline</li>
+              <li>Brand-separated email campaigns</li>
+              <li>Cross-brand + per-brand reports</li>
+              <li>1 invoice</li>
+              <li>Paying once per person</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Every item in the "After" column is made possible by a HubSpot Enterprise feature called Business Units. This is the single most important feature behind the entire consolidation.</p>
+
+        <!-- HOW BUSINESS UNITS WORK -->
+        <h2>HOW BUSINESS UNITS WORK</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Think of Business Units as departments within one office, instead of separate offices in different buildings. Everyone shares the same reception desk (CRM database), the same meeting rooms (deal pipelines), and the same phone system (integrations). But each department has its own letterhead, its own email signature, and its own section of the website.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Here is exactly what stays separate per brand and what gets shared across all brands.</p>
+
+        <div class="card" style="margin-bottom:20px">
+          <span class="eyebrow eyebrow-emerald">SEPARATED PER BRAND</span>
+          <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Each brand gets its own version of these. Customers see only the brand they are interacting with, not the others.</p>
+          <ul style="margin:12px 0 0 20px;color:var(--text2)">
+            <li style="margin-bottom:8px">Logos and colour schemes</li>
+            <li style="margin-bottom:8px">Email templates</li>
+            <li style="margin-bottom:8px">Forms</li>
+            <li style="margin-bottom:8px">Landing pages</li>
+            <li style="margin-bottom:8px">Subscription preferences (customers choose which brands to hear from)</li>
+            <li style="margin-bottom:8px">Blog</li>
+            <li style="margin-bottom:8px">Reporting dashboards</li>
+            <li style="margin-bottom:8px">Marketing campaigns</li>
+            <li style="margin-bottom:8px">Social media accounts</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom:20px">
+          <span class="eyebrow eyebrow-sky">SHARED ACROSS BRANDS</span>
+          <p style="font-size:17px;line-height:1.8;margin-bottom:16px">These resources are shared by all brands. This is where the real power of consolidation comes from, because everyone is working from the same data.</p>
+          <ul style="margin:12px 0 0 20px;color:var(--text2)">
+            <li style="margin-bottom:8px">CRM database (contacts and companies)</li>
+            <li style="margin-bottom:8px">Deal pipelines (filtered by brand)</li>
+            <li style="margin-bottom:8px">Ticket pipelines</li>
+            <li style="margin-bottom:8px">Workflows</li>
+            <li style="margin-bottom:8px">Users and permissions</li>
+            <li style="margin-bottom:8px">Integrations</li>
+            <li style="margin-bottom:8px">Custom objects</li>
+            <li style="margin-bottom:8px">Cross-brand reporting</li>
+          </ul>
+        </div>
+
+        <!-- CUSTOMER JANE — AFTER -->
+        <h2>CUSTOMER JANE &mdash; AFTER</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">In the Current State chapter, we showed how Customer Jane's experience breaks down across separate portals. Here is what her journey looks like after consolidation. Every row is highlighted green because every interaction now works the way it should.</p>
+
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>WHAT HAPPENS NOW</th>
+          </tr>
+          <tr class="highlight">
+            <td>Jane buys Product A</td>
+            <td>A single contact record is created. A deal is opened in the Product A pipeline. Her Business Unit is tagged as Product A.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Jane buys Product B</td>
+            <td>The same contact record is used. A new deal is opened in the Product B pipeline. Product B is added to her Business Unit tags. No duplicate is created.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Jane contacts support</td>
+            <td>The service rep sees ALL of Jane's history across both products, all tickets, and the full timeline. Jane never has to repeat herself.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Marketing sends campaigns</td>
+            <td>One subscription centre. Jane controls which brands she hears from. She never gets duplicate emails from different portals on the same day.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Leadership asks for numbers</td>
+            <td>One dashboard shows the true customer count, total revenue per customer across all products, and cross-sell conversion rates.</td>
+          </tr>
+        </table>
+
+        <!-- CONTACT TAGGING -->
+        <h2>CONTACT TAGGING</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Every contact in the consolidated portal gets a special property called "Business Unit." This is a multiple-checkbox field, which means a single contact can belong to more than one brand at the same time.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">For example, Jane's contact record would look like this:</p>
+
+        <div class="card" style="margin-bottom:20px">
+          <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:16px;color:var(--text)">BUSINESS UNIT PROPERTY</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <label style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text2)">
+              <span style="display:inline-block;width:18px;height:18px;border:2px solid var(--emerald);border-radius:4px;background:rgba(52,211,153,0.15);position:relative">
+                <span style="position:absolute;top:1px;left:3px;color:var(--emerald);font-size:13px;font-weight:bold">&#10003;</span>
+              </span>
+              Product A
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text2)">
+              <span style="display:inline-block;width:18px;height:18px;border:2px solid var(--emerald);border-radius:4px;background:rgba(52,211,153,0.15);position:relative">
+                <span style="position:absolute;top:1px;left:3px;color:var(--emerald);font-size:13px;font-weight:bold">&#10003;</span>
+              </span>
+              Product B
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text2)">
+              <span style="display:inline-block;width:18px;height:18px;border:2px solid var(--subtle);border-radius:4px;background:transparent"></span>
+              Product C
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text2)">
+              <span style="display:inline-block;width:18px;height:18px;border:2px solid var(--subtle);border-radius:4px;background:transparent"></span>
+              Product D
+            </label>
+          </div>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This checkbox property is how marketing filters campaigns by brand, how sales filters their pipeline views, and how reports break down metrics per product line. It is the single property that makes the entire multi-brand system work.</p>
+
+        <!-- CROSS-SELL UNLOCKED -->
+        <h3>CROSS-SELL UNLOCKED</h3>
+
+        <div class="callout success">
+          <div class="callout-label">CROSS-SELL UNLOCKED</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">With one shared database and Business Unit tags on every contact, you can finally do things that were impossible before. You can run "customers who have Product A but not Product B" campaigns to drive cross-sell. You can see the total lifetime value of each customer across all product lines, not just within one portal. And you can identify your most valuable customers regardless of which product they originally bought. These are revenue opportunities that simply do not exist when customer data is split across separate portals.</p>
+        </div>
+
+        <!-- TARGET ARCHITECTURE -->
+        <h2>TARGET ARCHITECTURE</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Here is the recommended structure for pipelines, tickets, teams, and custom properties in the consolidated portal.</p>
+
+        <h3>DEAL PIPELINES</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Create one deal pipeline per product line. Each pipeline has its own stages that match how that product is sold. Sales reps filter their view to see only their pipeline, but leadership can see all pipelines in one dashboard.</p>
+
+        <table>
+          <tr>
+            <th>PIPELINE</th>
+            <th>BUSINESS UNIT</th>
+            <th>STAGES</th>
+          </tr>
+          <tr>
+            <td>Product A Sales</td>
+            <td>Product A</td>
+            <td>Qualified &rarr; Demo &rarr; Proposal &rarr; Negotiation &rarr; Closed Won / Closed Lost</td>
+          </tr>
+          <tr>
+            <td>Product B Sales</td>
+            <td>Product B</td>
+            <td>Qualified &rarr; Trial &rarr; Evaluation &rarr; Closed Won / Closed Lost</td>
+          </tr>
+          <tr>
+            <td>Product C Sales</td>
+            <td>Product C</td>
+            <td>Enquiry &rarr; Quote &rarr; Closed Won / Closed Lost</td>
+          </tr>
+        </table>
+
+        <h3>TICKET PIPELINES</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Support tickets can be handled in shared pipelines or separate ones depending on how different the support processes are for each product.</p>
+
+        <table>
+          <tr>
+            <th>PIPELINE</th>
+            <th>USE CASE</th>
+          </tr>
+          <tr>
+            <td>General Support</td>
+            <td>Shared across all brands. For enquiries that are not product-specific (billing, account changes, general questions).</td>
+          </tr>
+          <tr>
+            <td>Product A Support</td>
+            <td>Product-specific tickets that require specialised knowledge. Routed to the Product A service team.</td>
+          </tr>
+          <tr>
+            <td>Product B Support</td>
+            <td>Product-specific tickets routed to the Product B service team.</td>
+          </tr>
+        </table>
+
+        <h3>TEAMS AND PERMISSIONS</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Teams should be structured in a hierarchy that matches the brand structure. This lets you control who sees what and who can edit what.</p>
+
+        <table>
+          <tr>
+            <th>LEVEL</th>
+            <th>TEAM</th>
+            <th>ACCESS</th>
+          </tr>
+          <tr>
+            <td>Top level</td>
+            <td>Leadership</td>
+            <td>Full access to all brands, all data, all reports</td>
+          </tr>
+          <tr>
+            <td>Brand level</td>
+            <td>Product A Team</td>
+            <td>Full access to Product A deals, tickets, and campaigns. Read-only on other brands.</td>
+          </tr>
+          <tr>
+            <td>Brand level</td>
+            <td>Product B Team</td>
+            <td>Full access to Product B deals, tickets, and campaigns. Read-only on other brands.</td>
+          </tr>
+          <tr>
+            <td>Function level</td>
+            <td>Marketing (cross-brand)</td>
+            <td>Access to all brand campaigns. Cannot edit deals or tickets.</td>
+          </tr>
+        </table>
+
+        <h3>CUSTOM PROPERTIES FOR MIGRATION</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">During migration, three custom properties should be added to every record to maintain a clear audit trail. These are internal fields that your team uses to track where data came from.</p>
+
+        <table>
+          <tr>
+            <th>PROPERTY</th>
+            <th>TYPE</th>
+            <th>PURPOSE</th>
+          </tr>
+          <tr>
+            <td>Source Portal</td>
+            <td>Dropdown</td>
+            <td>Which portal the record was originally imported from (e.g., "Portal 1 - Product A")</td>
+          </tr>
+          <tr>
+            <td>Migration ID</td>
+            <td>Single-line text</td>
+            <td>The original record ID from the source portal, so you can trace any record back to where it came from</td>
+          </tr>
+          <tr>
+            <td>Migration Date</td>
+            <td>Date picker</td>
+            <td>The date the record was migrated, useful for filtering pre-migration vs post-migration data</td>
+          </tr>
+        </table>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- TABLE OF CONTENTS (auto-generated by JS) -->
+        <div class="sidebar-heading">ON THIS PAGE</div>
+        <div id="toc-container"></div>
+
+        <!-- GUIDE NAVIGATION -->
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link active">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP NAV -->
+    <div class="step-nav">
+      <a href="03-current-state.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">Current State</span></a>
+      <a href="05-professional-vs-enterprise.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">Pro vs Enterprise</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+    <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
+  </div>
+
+  <script src="js/guide.js"></script>
+</body>
+</html>

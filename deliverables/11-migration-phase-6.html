@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 6: Email Warm-Up &amp; Go-Live — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+      <div class="nav-links">
+        <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+        <a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a>
+        <a href="15-risk-register.html" class="nav-link">RISKS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AURORA HEADER -->
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Migration<span>/</span>Phase 6</div>
+      <span class="eyebrow eyebrow-sky">STEP 6 OF 6</span>
+      <h1 class="gradient-text">PHASE 6: EMAIL WARM-UP &amp; GO-LIVE</h1>
+      <p class="mono">WEEK 6&ndash;8 &bull; 8 MIN READ</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE LAYOUT -->
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+
+      <!-- MAIN CONTENT -->
+      <article class="article-main">
+
+        <div class="callout expect">
+          <div class="callout-label">WHAT YOUR TEAM SHOULD EXPECT</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">Email volume will be lower than normal for 4 weeks. This is intentional.</p>
+        </div>
+
+        <!-- WHY WARM-UP -->
+        <h2>WHY WARM-UP</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">When you move to a new HubSpot portal, email providers like Gmail and Outlook treat it as a brand-new sender, even if you have been sending emails from the same domain for years. This is because the sending infrastructure (IP addresses and server identity) has changed.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If you immediately send the same volume you were sending before, email providers will flag it as suspicious. A brand-new sender blasting thousands of emails on day one looks like spam. The result would be emails landing in spam folders, or worse, your domain getting temporarily blocked.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The warm-up process solves this by gradually increasing your sending volume over four weeks. You start small, let email providers see that your recipients are opening and clicking (proving you are legitimate), and steadily ramp up to full volume. By the end of the warm-up, your new sending infrastructure has built a reputation and your deliverability is back to normal.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This is not optional. Skipping the warm-up is the single fastest way to damage your email reputation after a migration.</p>
+
+        <!-- WARM-UP SCHEDULE -->
+        <h2>WARM-UP SCHEDULE</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The table below shows the recommended volume ramp for each week. The percentages are based on your normal total sending volume across all brands. Apply this schedule to each brand's sending independently.</p>
+
+        <table>
+          <tr>
+            <th>WEEK</th>
+            <th>VOLUME</th>
+            <th>AUDIENCE</th>
+            <th>NOTES</th>
+          </tr>
+          <tr>
+            <td>Week 1</td>
+            <td>10&ndash;15% of normal</td>
+            <td>Most engaged contacts only (opened or clicked in last 30 days)</td>
+            <td>These contacts are most likely to open, which signals to email providers that you are a legitimate sender.</td>
+          </tr>
+          <tr>
+            <td>Week 2</td>
+            <td>25&ndash;35% of normal</td>
+            <td>Engaged contacts (opened or clicked in last 90 days)</td>
+            <td>Expand to a broader engaged audience. Monitor bounce and spam rates daily.</td>
+          </tr>
+          <tr>
+            <td>Week 3</td>
+            <td>50&ndash;70% of normal</td>
+            <td>All active contacts (opened or clicked in last 6 months)</td>
+            <td>If metrics are healthy, you can push toward the higher end of the range.</td>
+          </tr>
+          <tr>
+            <td>Week 4</td>
+            <td>100% of normal</td>
+            <td>Full list (excluding hard bounces and unsubscribes)</td>
+            <td>Full volume resumed. Continue monitoring for another 2 weeks to confirm stability.</td>
+          </tr>
+        </table>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If at any point during the warm-up you see bounce rates above 2% or spam complaint rates above 0.1%, pause sending for 24 hours and investigate. It is better to slow down the warm-up than to push through and damage your sender reputation.</p>
+
+        <!-- DAILY MONITORING -->
+        <h2>DAILY MONITORING</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">During the warm-up period, someone on the team needs to check email metrics every day. This is a 5-minute task but it is essential. Here are the thresholds to watch:</p>
+
+        <table>
+          <tr>
+            <th>METRIC</th>
+            <th>HEALTHY</th>
+            <th>WARNING</th>
+            <th>ACTION REQUIRED</th>
+          </tr>
+          <tr>
+            <td>Bounce rate</td>
+            <td>Below 1%</td>
+            <td>1&ndash;2%</td>
+            <td>Above 2% &mdash; pause and clean list</td>
+          </tr>
+          <tr>
+            <td>Spam complaint rate</td>
+            <td>Below 0.05%</td>
+            <td>0.05&ndash;0.1%</td>
+            <td>Above 0.1% &mdash; pause and review content</td>
+          </tr>
+          <tr>
+            <td>Open rate</td>
+            <td>Above 25%</td>
+            <td>15&ndash;25%</td>
+            <td>Below 15% &mdash; check deliverability and subject lines</td>
+          </tr>
+          <tr>
+            <td>Unsubscribe rate</td>
+            <td>Below 0.3%</td>
+            <td>0.3&ndash;0.5%</td>
+            <td>Above 0.5% &mdash; review targeting and frequency</td>
+          </tr>
+        </table>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot's email health dashboard shows all of these metrics. Set up a daily reminder for the person responsible to check these numbers each morning during the warm-up period. If any metric enters the "Action Required" zone, pause sending immediately and raise it with the project team.</p>
+
+        <!-- KEEP OLD PORTALS -->
+        <h2>KEEP OLD PORTALS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After migration, do not cancel or delete the old source portals. Keep them in read-only mode for a minimum of 90 days. There are three important reasons for this:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px"><strong>Reference</strong> &mdash; If anyone needs to verify what a record looked like before migration, the original is still there to check against.</li>
+          <li style="margin-bottom:8px"><strong>Recovery</strong> &mdash; If a migration issue is discovered weeks later (for example, a batch of records that did not import correctly), the source data is still available to re-export and fix.</li>
+          <li style="margin-bottom:8px"><strong>Compliance</strong> &mdash; Some industries require data retention for specific periods. Keeping the old portals ensures you meet any regulatory obligations during the transition.</li>
+        </ul>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Downgrade the old portals to the free tier if possible to avoid paying for them during this period. The free tier still lets you view records but removes paid features. After 90 days with no issues, the old portals can be safely cancelled.</p>
+
+        <!-- 30-DAY POST-GO-LIVE REVIEW -->
+        <h2>30-DAY POST-GO-LIVE REVIEW</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Thirty days after the team starts working in the target portal, schedule a formal review meeting. This is the checkpoint that determines whether the migration is officially complete. The review should cover:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px"><strong>Data integrity</strong> &mdash; Are all records accounted for? Have any data issues been reported and resolved?</li>
+          <li style="margin-bottom:8px"><strong>Email deliverability</strong> &mdash; Are bounce, spam, and open rates stable and within healthy thresholds?</li>
+          <li style="margin-bottom:8px"><strong>User adoption</strong> &mdash; Is every team member actively using the target portal? Are there any holdouts still trying to use old portals?</li>
+          <li style="margin-bottom:8px"><strong>Workflow accuracy</strong> &mdash; Are the rebuilt workflows firing correctly? Have any automation errors been flagged?</li>
+          <li style="margin-bottom:8px"><strong>Integration health</strong> &mdash; Are all reconnected integrations working without errors?</li>
+          <li style="margin-bottom:8px"><strong>Reporting accuracy</strong> &mdash; Do the numbers in the new dashboards match expectations? Can leadership pull the reports they need?</li>
+          <li style="margin-bottom:8px"><strong>Outstanding issues</strong> &mdash; Is there a list of any remaining items that still need attention? Assign owners and deadlines.</li>
+        </ul>
+
+        <div class="callout success">
+          <div class="callout-label">MIGRATION COMPLETE</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">After 30 days of stable metrics, the migration is complete. All brands are operating from a single portal. Customer data is unified. Cross-brand reporting is live. The consolidation project can be formally closed, and the old portals can be scheduled for decommission after the 90-day hold.</p>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- TABLE OF CONTENTS (auto-generated by JS) -->
+        <div class="sidebar-heading">ON THIS PAGE</div>
+        <div id="toc-container"></div>
+
+        <!-- GUIDE NAVIGATION -->
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link active">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP NAV -->
+    <div class="step-nav">
+      <a href="10-migration-phase-5.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">Phase 5: Execute</span></a>
+      <a href="12-what-migrates.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">What Migrates</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+    <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
+  </div>
+
+  <script src="js/guide.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk Register — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+  <nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+    <div class="nav-links"><a href="01-executive-summary.html" class="nav-link">START HERE</a><a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a><a href="15-risk-register.html" class="nav-link active">RISKS</a></div>
+  </div></nav>
+
+  <section class="section aurora" style="padding-bottom:48px"><div class="inner">
+    <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Reference<span>/</span>Risk Register</div>
+    <span class="eyebrow eyebrow-gold">CHAPTER 15</span>
+    <h1 class="gradient-text">RISK REGISTER</h1>
+    <p class="mono">6 MIN READ</p>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="article-layout">
+    <article class="article-main">
+
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Every migration has risks. The goal isn't to eliminate risk — it's to know what could go wrong and have a plan for each scenario. Here are the 8 risks we track for every portal consolidation.</p>
+
+      <h2>RISK TABLE</h2>
+      <table>
+        <tr><th>RISK</th><th>LIKELIHOOD</th><th>IMPACT</th><th>MITIGATION</th></tr>
+        <tr>
+          <td>Duplicate contacts not fully resolved</td>
+          <td class="risk-high">HIGH</td>
+          <td class="risk-high">HIGH</td>
+          <td>Run dedup tool before AND after migration. Use fuzzy matching (name + company + phone), not just email.</td>
+        </tr>
+        <tr>
+          <td>Email reputation drops (spam)</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-high">CRITICAL</td>
+          <td>Follow 4-week warm-up schedule strictly. Start with engaged contacts only. Monitor bounce and complaint rates daily.</td>
+        </tr>
+        <tr>
+          <td>Workflows fire incorrectly</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-high">HIGH</td>
+          <td>Migrate all workflows PAUSED. Activate one at a time, test with sample records, then move to the next.</td>
+        </tr>
+        <tr>
+          <td>Property type conflicts</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-high">HIGH</td>
+          <td>Complete the property mapping table before migration. Resolve all same-name-different-type conflicts in advance.</td>
+        </tr>
+        <tr>
+          <td>Integration failures</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-med">MEDIUM</td>
+          <td>Document all integrations. Reconnect and test each one. Allow 1-2 days for integration debugging.</td>
+        </tr>
+        <tr>
+          <td>Lost deal/ticket associations</td>
+          <td class="risk-low">LOW</td>
+          <td class="risk-high">CRITICAL</td>
+          <td>Verify association counts pre vs post migration. Spot-check 20+ random records for correct links.</td>
+        </tr>
+        <tr>
+          <td>User adoption resistance</td>
+          <td class="risk-med">MEDIUM</td>
+          <td class="risk-med">MEDIUM</td>
+          <td>Training before go-live (not after). Per-team "where to find your stuff" guides. Migration champion per team.</td>
+        </tr>
+        <tr>
+          <td>Temporary licensing cost spike</td>
+          <td class="risk-high">HIGH</td>
+          <td class="risk-low">LOW</td>
+          <td>Budget for 2-3 months of overlap (old + new portals). Downgrade old portals to free tier after 90-day hold.</td>
+        </tr>
+      </table>
+
+      <h2>ROLLBACK PLAN</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If something goes critically wrong during migration, here's the safety net:</p>
+
+      <div class="callout success">
+        <div class="callout-label">ROLLBACK PROCEDURE</div>
+        <p style="margin:0;color:var(--text2);font-size:15px">
+          <strong>1.</strong> Stop all activity in the target portal — pause workflows, stop email sends.<br>
+          <strong>2.</strong> Re-activate source portals — they should still be intact and read-only.<br>
+          <strong>3.</strong> Resume operations from source portals — teams go back to their original portals.<br>
+          <strong>4.</strong> Diagnose the issue — what went wrong? Data? Workflows? Email?<br>
+          <strong>5.</strong> Fix in sandbox — resolve the issue, test the fix.<br>
+          <strong>6.</strong> Retry migration — run again with the fix in place.
+        </p>
+      </div>
+
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This is why source portals are kept read-only for 90 days — they're your safety net. Never delete source portal data during or immediately after migration.</p>
+
+    </article>
+
+    <aside class="sidebar">
+      <div id="toc-container"><div class="sidebar-heading">ON THIS PAGE</div></div>
+      <div style="margin-top:32px">
+        <div class="sidebar-heading">GUIDE NAVIGATION</div>
+        <div class="sidebar-group-label">UNDERSTAND</div>
+        <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+        <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+        <a href="03-current-state.html" class="sidebar-link">Current State</a>
+        <div class="sidebar-group-label">DESIGN</div>
+        <a href="04-target-state.html" class="sidebar-link">Target State</a>
+        <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+        <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+        <div class="sidebar-group-label">MIGRATE</div>
+        <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+        <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+        <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+        <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+        <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+        <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+        <div class="sidebar-group-label">REFERENCE</div>
+        <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+        <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+        <a href="15-risk-register.html" class="sidebar-link active">Risk Register</a>
+        <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+      </div>
+    </aside>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="inner">
+    <div class="step-nav">
+      <a href="14-user-experience.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">USER EXPERIENCE</span></a>
+      <a href="16-cost-analysis.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">COST ANALYSIS</span></a>
+    </div>
+  </div></section>
+
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+  </div>
+  <script src="js/guide.js"></script>
+</body>
+</html>

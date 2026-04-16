@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current State: How Multi-Portal Breaks — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+      <div class="nav-links">
+        <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+        <a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a>
+        <a href="15-risk-register.html" class="nav-link">RISKS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AURORA HEADER -->
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Understand<span>/</span>Current State</div>
+      <span class="eyebrow eyebrow-red">CHAPTER 03</span>
+      <h1 class="gradient-text">HOW MULTI-PORTAL BREAKS</h1>
+      <p class="mono">10 MIN READ</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE LAYOUT -->
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+
+      <!-- MAIN CONTENT -->
+      <article class="article-main">
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The previous chapter explained how HubSpot is designed to work: everything flows through one shared database. This chapter shows what happens when that design is broken by splitting data across multiple portals. The problems are not theoretical. They cascade through every team, every day.</p>
+
+        <!-- MEET CUSTOMER JANE -->
+        <h2>MEET CUSTOMER JANE</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Jane is a real type of customer that exists in your system right now. She buys more than one product from your company. Let us follow her journey across your separate portals and see exactly where things fall apart.</p>
+
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>WHAT HAPPENS</th>
+            <th>THE PROBLEM</th>
+          </tr>
+          <tr>
+            <td>Jane buys Product A</td>
+            <td>A contact record is created in Portal 1. A deal is tracked. Everything works fine at this point.</td>
+            <td>No problem yet. The trouble starts when Jane interacts with another product line.</td>
+          </tr>
+          <tr>
+            <td>Jane buys Product B</td>
+            <td>A completely new contact record is created in Portal 2. Portal 2 has no idea Jane already exists in Portal 1.</td>
+            <td>Jane is now a duplicate. Two records, two portals, no link between them. You are paying HubSpot for her twice.</td>
+          </tr>
+          <tr>
+            <td>Jane contacts support</td>
+            <td>The service rep in Portal 2 sees only Jane's Product B history. They have no visibility into her Product A purchase, her previous support tickets, or her full relationship with your company.</td>
+            <td>Jane has to explain her situation from scratch. She feels like your company does not know who she is, even though she has been a customer for years.</td>
+          </tr>
+          <tr>
+            <td>Marketing sends campaigns</td>
+            <td>Portal 1 sends Jane an email about a Product A promotion at 9am. Portal 2 sends her a Product B newsletter at 11am. Neither portal knows the other one sent anything.</td>
+            <td>Jane gets two emails from the same company in one morning. She cannot manage her preferences in one place. If she unsubscribes from Portal 1, she still gets emails from Portal 2.</td>
+          </tr>
+          <tr>
+            <td>Leadership asks for numbers</td>
+            <td>Each portal reports its own metrics. Jane counts as one customer in Portal 1 and one customer in Portal 2. Her total spend is split across two systems.</td>
+            <td>The company thinks it has more customers than it actually does. Revenue per customer looks lower than it really is. Cross-sell performance is invisible because there is no way to connect the dots.</td>
+          </tr>
+        </table>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Jane is not an edge case. In most multi-portal setups, 15 to 40 percent of contacts exist in more than one portal. Every one of those duplicates creates the same cascade of problems you just read about.</p>
+
+        <!-- SIX THINGS THAT BREAK -->
+        <h2>SIX THINGS THAT BREAK</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Jane's story illustrates the individual customer impact. But the problems go deeper than any one person. Here are the six systemic issues that multi-portal setups create across your entire operation.</p>
+
+        <div class="guide-grid">
+
+          <div class="card">
+            <span class="eyebrow eyebrow-red">PROBLEM 1</span>
+            <h4 style="margin:8px 0">Duplicate Contacts Everywhere</h4>
+            <p style="font-size:15px;color:var(--text2);margin:0">The same person exists as separate records in separate portals. There is no automatic deduplication across portals because they are completely independent systems. Every duplicate means you are paying HubSpot twice for the same contact, and your data is fragmented. Lists are inaccurate. Segmentation is unreliable. Your "10,000 contacts" might really be 7,000 unique people.</p>
+          </div>
+
+          <div class="card">
+            <span class="eyebrow eyebrow-red">PROBLEM 2</span>
+            <h4 style="margin:8px 0">Blind Service Reps</h4>
+            <p style="font-size:15px;color:var(--text2);margin:0">When a customer calls in, the service rep can only see what is in their portal. If the customer has bought products from other business units, that history is invisible. The rep asks questions the customer has already answered. The customer feels like your company does not care enough to remember them. This damages trust and increases handle time on every support call.</p>
+          </div>
+
+          <div class="card">
+            <span class="eyebrow eyebrow-red">PROBLEM 3</span>
+            <h4 style="margin:8px 0">Duplicate Emails</h4>
+            <p style="font-size:15px;color:var(--text2);margin:0">Each portal sends its own marketing emails independently. There is no coordination. A customer in two portals can receive two promotional emails in one day, two newsletters in one week, or contradictory offers from the same company. This harms your sender reputation, increases unsubscribe rates, and makes your brand look disorganised.</p>
+          </div>
+
+          <div class="card">
+            <span class="eyebrow eyebrow-gold">PROBLEM 4</span>
+            <h4 style="margin:8px 0">No Cross-Sell Visibility</h4>
+            <p style="font-size:15px;color:var(--text2);margin:0">When customer data is split across portals, you cannot see who buys Product A but not Product B. You cannot run cross-sell campaigns because you do not know which customers are candidates. This is revenue you are leaving on the table every single month, and you cannot even measure how much because the data to calculate it does not exist in any one system.</p>
+          </div>
+
+          <div class="card">
+            <span class="eyebrow eyebrow-gold">PROBLEM 5</span>
+            <h4 style="margin:8px 0">Inflated Costs</h4>
+            <p style="font-size:15px;color:var(--text2);margin:0">You are paying for multiple HubSpot subscriptions, multiple marketing contact tiers, multiple sales seats (often for the same reps who need access to all portals), and multiple service seats. Each duplicate contact is billed in every portal where it exists. The total cost of running three or four Professional portals often exceeds the cost of one Enterprise portal.</p>
+          </div>
+
+          <div class="card">
+            <span class="eyebrow eyebrow-gold">PROBLEM 6</span>
+            <h4 style="margin:8px 0">Impossible Reporting</h4>
+            <p style="font-size:15px;color:var(--text2);margin:0">There is no built-in way to create cross-portal reports in HubSpot. If leadership wants to see total company revenue, total customer count, or customer lifetime value across all product lines, someone has to manually export data from each portal and combine it in a spreadsheet. These reports are always late, often wrong, and impossible to keep up to date.</p>
+          </div>
+
+        </div>
+
+        <!-- REAL-WORLD EXAMPLE -->
+        <div class="callout">
+          <div class="callout-label">REAL-WORLD EXAMPLE</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">Consider a company with two portals. Portal A has 10,000 marketing contacts. Portal B has 8,000 marketing contacts. That looks like 18,000 contacts total. But after deduplication, only 14,800 are unique, meaning 3,200 contacts exist in both portals. At HubSpot's contact tier pricing, those 3,200 duplicates are being billed twice. The maths is simple:</p>
+          <p style="margin:16px 0 0;font-family:'DM Mono',monospace;font-size:16px;color:var(--text);letter-spacing:1px">10,000 + 8,000 &minus; 3,200 = 14,800 unique contacts</p>
+          <p style="margin:12px 0 0;color:var(--text2);font-size:15px">You are paying for 18,000 contacts across two invoices, but you only have 14,800 real people. That is 3,200 contacts you are paying for twice, every single month. In a three or four portal setup, the overlap gets even worse because the same high-value customers tend to appear in every portal.</p>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Every one of these problems gets worse over time. As your customer base grows and more people buy across product lines, the duplicate count increases, the reporting becomes less reliable, and the cost of running separate systems goes up. The next chapter shows what the consolidated state looks like and how each of these six problems is solved.</p>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- TABLE OF CONTENTS (auto-generated by JS) -->
+        <div class="sidebar-heading">ON THIS PAGE</div>
+        <div id="toc-container"></div>
+
+        <!-- GUIDE NAVIGATION -->
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link active">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP NAV -->
+    <div class="step-nav">
+      <a href="02-platform-overview.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">Platform Overview</span></a>
+      <a href="04-target-state.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">Target State</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+    <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
+  </div>
+
+  <script src="js/guide.js"></script>
+</body>
+</html>

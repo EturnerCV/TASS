@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 5: Execute Migration — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BARE BAYSIDE LABS</a>
+      <div class="nav-links">
+        <a href="01-executive-summary.html" class="nav-link">START HERE</a>
+        <a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a>
+        <a href="15-risk-register.html" class="nav-link">RISKS</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AURORA HEADER -->
+  <section class="section aurora" style="padding-bottom:48px">
+    <div class="inner">
+      <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Migration<span>/</span>Phase 5</div>
+      <span class="eyebrow eyebrow-sky">STEP 5 OF 6</span>
+      <h1 class="gradient-text">PHASE 5: EXECUTE MIGRATION</h1>
+      <p class="mono">WEEK 5&ndash;6 &bull; 10 MIN READ</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE LAYOUT -->
+  <section class="section" style="padding-top:0">
+    <div class="article-layout">
+
+      <!-- MAIN CONTENT -->
+      <article class="article-main">
+
+        <div class="callout expect">
+          <div class="callout-label">WHAT YOUR TEAM SHOULD EXPECT</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">Migration weekend. Some teams may see brief disruption. All new work goes into the target portal.</p>
+        </div>
+
+        <!-- MIGRATION ORDER -->
+        <h2>MIGRATION ORDER</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Source portals are migrated one at a time, never in parallel. This is deliberate. Migrating one portal, verifying it completely, and then moving to the next means you always know exactly where a problem came from if something goes wrong.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The recommended order is to start with the smallest portal (fewest records, simplest setup) and finish with the largest. This lets you learn from the first migration and apply those lessons to the bigger, more complex ones.</p>
+
+        <div class="card" style="margin-bottom:20px">
+          <span class="eyebrow eyebrow-sky">MIGRATION FLOW</span>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
+            <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:8px;padding:12px 16px;color:var(--text2);font-size:15px;text-align:center">
+              <strong style="color:var(--text)">Portal A</strong> (smallest) &rarr; Import &rarr; Verify &rarr; Confirm
+            </div>
+            <div style="text-align:center;color:var(--subtle);font-size:20px">&darr;</div>
+            <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:8px;padding:12px 16px;color:var(--text2);font-size:15px;text-align:center">
+              <strong style="color:var(--text)">Portal B</strong> (medium) &rarr; Import &rarr; Verify &rarr; Confirm
+            </div>
+            <div style="text-align:center;color:var(--subtle);font-size:20px">&darr;</div>
+            <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:8px;padding:12px 16px;color:var(--text2);font-size:15px;text-align:center">
+              <strong style="color:var(--text)">Portal C</strong> (largest) &rarr; Import &rarr; Verify &rarr; Confirm
+            </div>
+            <div style="text-align:center;color:var(--subtle);font-size:20px">&darr;</div>
+            <div style="background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:8px;padding:12px 16px;color:var(--text2);font-size:15px;text-align:center">
+              <strong style="color:var(--emerald)">All portals migrated</strong> &rarr; Deduplication &rarr; Final verification
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Do not begin the next portal until the previous one has been fully verified. Rushing through multiple portals at once creates a tangled mess that is extremely difficult to debug.</p>
+
+        <!-- PER-PORTAL STEPS -->
+        <h2>PER-PORTAL STEPS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">For each source portal, follow the same three-step process: run the migration tool, verify the record counts, and spot-check individual records.</p>
+
+        <h3>RUN THE MIGRATION TOOL</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Use the chosen migration tool (selected and tested during the sandbox phase) to import all records from the source portal into the target portal. The tool will map properties from the source to the target based on the mapping you configured during prep.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">During the import, the tool will tag every record with the "Source Portal" and "Migration Date" custom properties that were set up in Phase 4. This creates a permanent audit trail showing where each record came from.</p>
+
+        <h3>VERIFY RECORD COUNTS</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After the import completes, compare the numbers. The count of contacts, companies, deals, and tickets in the target portal should match the count from your final source export (plus any records that already existed in the target portal).</p>
+
+        <table>
+          <tr>
+            <th>OBJECT</th>
+            <th>SOURCE COUNT</th>
+            <th>TARGET COUNT (AFTER)</th>
+            <th>STATUS</th>
+          </tr>
+          <tr>
+            <td>Contacts</td>
+            <td>From final export</td>
+            <td>Should match</td>
+            <td>Verify</td>
+          </tr>
+          <tr>
+            <td>Companies</td>
+            <td>From final export</td>
+            <td>Should match</td>
+            <td>Verify</td>
+          </tr>
+          <tr>
+            <td>Deals</td>
+            <td>From final export</td>
+            <td>Should match</td>
+            <td>Verify</td>
+          </tr>
+          <tr>
+            <td>Tickets</td>
+            <td>From final export</td>
+            <td>Should match</td>
+            <td>Verify</td>
+          </tr>
+        </table>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If any count is off by more than a handful of records, stop and investigate before proceeding. Common causes include property mapping errors, required fields that were blank in the source, or records that were filtered out by the migration tool's settings.</p>
+
+        <h3>SPOT-CHECK INDIVIDUAL RECORDS</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Pick 10&ndash;15 records of each type at random and open them in both the source portal (read-only) and the target portal. Check that:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px">All property values match (name, email, phone, custom fields)</li>
+          <li style="margin-bottom:8px">Deal amounts and stages are correct</li>
+          <li style="margin-bottom:8px">Contact-to-company associations are intact</li>
+          <li style="margin-bottom:8px">Deal-to-contact associations are intact</li>
+          <li style="margin-bottom:8px">Notes and activity history came across</li>
+          <li style="margin-bottom:8px">The "Source Portal" and "Migration Date" tags are correct</li>
+        </ul>
+
+        <!-- DEDUPLICATION -->
+        <h2>DEDUPLICATION</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After all portals have been imported, the target portal will contain duplicate records. This is expected and normal. The same customer who exists in Portal A and Portal B now has two contact records in the target. The dedup tool installed in Phase 4 handles this.</p>
+
+        <h3>EMAIL-MATCH CONTACTS</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The primary matching rule for contacts is email address. If two contact records share the same email address, they are the same person. The dedup tool identifies these pairs and lets you choose which record to keep as the primary (usually the one with the most complete data) and which to merge in.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">When records merge, all activity history, deals, tickets, and notes from both records are combined onto the surviving record. Nothing is lost &mdash; the data is consolidated, not deleted.</p>
+
+        <h3>DOMAIN-MATCH COMPANIES</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">For companies, the primary matching rule is website domain. If two company records share the same domain (for example, "acme.com"), they are the same company. The dedup tool identifies these and merges them using the same primary-record logic as contacts.</p>
+
+        <h3>MERGE RULES</h3>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before running the dedup process, define clear merge rules so the tool knows which values to keep when two records conflict:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px"><strong>Most recently updated wins</strong> &mdash; For fields like phone number or address, keep the most recent value since it is more likely to be current.</li>
+          <li style="margin-bottom:8px"><strong>Most complete wins</strong> &mdash; For fields where one record has data and the other is blank, always keep the data.</li>
+          <li style="margin-bottom:8px"><strong>Combine multi-value fields</strong> &mdash; For fields like Business Unit tags, combine the values from both records so the merged record shows all brands the customer interacts with.</li>
+          <li style="margin-bottom:8px"><strong>Keep all activity</strong> &mdash; Never discard notes, emails, calls, or meetings. Merge all activity onto the surviving record.</li>
+        </ul>
+
+        <!-- ASSIGN BUSINESS UNITS -->
+        <h2>ASSIGN BUSINESS UNITS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After deduplication, every contact and company in the target portal needs a Business Unit tag. The "Source Portal" property makes this straightforward &mdash; any record that came from the Product A portal gets tagged with the Product A Business Unit. Records that came from multiple portals (identified during dedup) get tagged with all relevant Business Units.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This can be done with a bulk update or a simple workflow: if Source Portal equals "Portal 1 &mdash; Product A", set Business Unit to "Product A." Run one workflow per source portal.</p>
+
+        <!-- RECONNECT INTEGRATIONS -->
+        <h2>RECONNECT INTEGRATIONS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Any third-party tools that were connected to the old portals need to be reconnected to the target portal. Common integrations include:</p>
+
+        <ul style="margin:12px 0 20px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px">Website forms and tracking code (update the HubSpot tracking code on all websites)</li>
+          <li style="margin-bottom:8px">Email sync (reconnect individual user email accounts)</li>
+          <li style="margin-bottom:8px">Calendar sync (reconnect meeting scheduling links)</li>
+          <li style="margin-bottom:8px">Accounting software (reconnect to the target portal)</li>
+          <li style="margin-bottom:8px">Chat widgets (update embed codes on websites)</li>
+          <li style="margin-bottom:8px">Zapier or other automation tools (update API keys to point to target portal)</li>
+        </ul>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Test each integration after reconnecting to confirm data flows correctly. A broken integration can mean lost leads or missed customer messages.</p>
+
+        <!-- INVITE USERS -->
+        <h2>INVITE USERS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">With data migrated, deduplicated, tagged, and integrations reconnected, it is time to bring the team in. Invite users to the target portal and assign them to the teams created in Phase 4.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Consider a phased rollout rather than inviting everyone at once. Start with a small group of power users from each brand who can test their workflows and flag any issues. Once they confirm everything looks right, invite the rest of the team.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Provide each user with a brief orientation: where to find their deals, how to filter by their brand, and where to go if something looks wrong. A 15-minute video walkthrough is usually enough.</p>
+
+        <!-- POST-MIGRATION VERIFICATION -->
+        <h2>POST-MIGRATION VERIFICATION</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before declaring the migration complete, run through this verification checklist. Every item should pass before moving to the email warm-up phase.</p>
+
+        <div class="card" style="margin-bottom:20px">
+          <span class="eyebrow eyebrow-sky">VERIFICATION CHECKLIST</span>
+          <ul style="margin:16px 0 0 20px;color:var(--text2)">
+            <li style="margin-bottom:8px">Record counts match expected totals (contacts, companies, deals, tickets)</li>
+            <li style="margin-bottom:8px">Spot-check of 10+ records per object type shows correct data</li>
+            <li style="margin-bottom:8px">All contact-to-company associations are intact</li>
+            <li style="margin-bottom:8px">All deal-to-contact associations are intact</li>
+            <li style="margin-bottom:8px">Duplicate records have been merged</li>
+            <li style="margin-bottom:8px">Business Unit tags are assigned to all records</li>
+            <li style="margin-bottom:8px">Email domains are authenticated and verified</li>
+            <li style="margin-bottom:8px">All active integrations are reconnected and tested</li>
+            <li style="margin-bottom:8px">Workflows are rebuilt and activated</li>
+            <li style="margin-bottom:8px">Key reports and dashboards are functional</li>
+            <li style="margin-bottom:8px">Power users from each brand have confirmed their data looks correct</li>
+            <li style="margin-bottom:8px">All team members are invited and assigned to correct teams</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- TABLE OF CONTENTS (auto-generated by JS) -->
+        <div class="sidebar-heading">ON THIS PAGE</div>
+        <div id="toc-container"></div>
+
+        <!-- GUIDE NAVIGATION -->
+        <div style="margin-top:32px">
+          <div class="sidebar-heading">GUIDE NAVIGATION</div>
+          <div class="sidebar-group-label">UNDERSTAND</div>
+          <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+          <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+          <a href="03-current-state.html" class="sidebar-link">Current State</a>
+          <div class="sidebar-group-label">DESIGN</div>
+          <a href="04-target-state.html" class="sidebar-link">Target State</a>
+          <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+          <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+          <div class="sidebar-group-label">MIGRATE</div>
+          <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+          <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+          <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+          <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+          <a href="10-migration-phase-5.html" class="sidebar-link active">Phase 5: Execute</a>
+          <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+          <div class="sidebar-group-label">REFERENCE</div>
+          <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+          <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+          <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+          <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP NAV -->
+    <div class="step-nav">
+      <a href="09-migration-phase-4.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">Phase 4: Prep</span></a>
+      <a href="11-migration-phase-6.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">Phase 6: Go-Live</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+    <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
+  </div>
+
+  <script src="js/guide.js"></script>
+</body>
+</html>
