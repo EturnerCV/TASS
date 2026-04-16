@@ -399,31 +399,32 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
   max-width: 800px;
 }
 .step-nav-btn {
-  background: var(--surface);
-  border: 1px solid var(--border-subtle);
+  background: var(--surface2);
+  border: 2px solid var(--border);
   border-radius: 18px;
-  padding: 24px;
+  padding: 28px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  transition: border-color 0.4s cubic-bezier(0.32,0.72,0,1), transform 0.4s cubic-bezier(0.32,0.72,0,1);
+  gap: 8px;
+  transition: border-color 0.4s cubic-bezier(0.32,0.72,0,1), transform 0.4s cubic-bezier(0.32,0.72,0,1), background 0.4s;
 }
 .step-nav-btn:hover {
-  border-color: rgba(56,189,248,0.2);
+  border-color: var(--emerald);
+  background: rgba(52,211,153,0.05);
   transform: translateY(-4px);
 }
 .step-nav-btn .step-label {
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 2px;
-  color: var(--muted);
+  color: var(--emerald);
   text-transform: uppercase;
 }
 .step-nav-btn .step-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  letter-spacing: 1px;
+  font-size: 22px;
+  letter-spacing: 2px;
   color: var(--text);
   text-transform: uppercase;
 }
