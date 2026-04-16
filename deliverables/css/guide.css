@@ -20,10 +20,10 @@
   --red: #f87171;
   --pink: #f472b6;
   --orange: #fb923c;
-  --text: #e2e8f0;
-  --text2: #c4d5e8;
-  --muted: #94a3b8;
-  --subtle: #475569;
+  --text: #f1f5f9;
+  --text2: #e2e8f0;
+  --muted: #b0bec5;
+  --subtle: #78909c;
 }
 
 /* === RESET === */
@@ -49,6 +49,7 @@ a:hover { color: #7dd3fc; }
 img { max-width: 100%; display: block; }
 ::selection { background: rgba(56,189,248,0.25); color: var(--text); }
 p { color: var(--text2); }
+strong { color: var(--text); }
 
 /* === TYPOGRAPHY === */
 h1, h2, h3, h4, h5, h6 {
@@ -321,14 +322,14 @@ th {
   font-family: 'DM Mono', monospace;
   font-size: 13px;
   letter-spacing: 1px;
-  color: var(--muted);
+  color: var(--text2);
   text-transform: uppercase;
 }
 td {
   padding: 12px 14px;
   border-bottom: 1px solid var(--border-subtle);
   vertical-align: top;
-  color: var(--text2);
+  color: var(--text);
 }
 tr.highlight td { color: var(--emerald); font-weight: 600; }
 
@@ -487,7 +488,7 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 }
 .persona-before h4 { color: var(--red); }
 .persona-after h4 { color: var(--emerald); }
-.persona-before p, .persona-after p { font-size: 14px; margin: 0; }
+.persona-before p, .persona-after p { font-size: 14px; margin: 0; color: var(--text); }
 
 /* === TIER COMPARISON === */
 .tier-grid {
@@ -778,7 +779,7 @@ a.tl-step:hover .tl-content {
 .comparison-col.before h4 { color: var(--red); }
 .comparison-col.after h4 { color: var(--emerald); }
 .comparison-col ul { list-style: none; padding: 0; }
-.comparison-col li { font-size: 15px; color: var(--text2); padding: 5px 0; }
+.comparison-col li { font-size: 15px; color: var(--text); padding: 5px 0; }
 
 /* === FOOTER === */
 .guide-footer {
