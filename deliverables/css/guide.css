@@ -3,7 +3,7 @@
    Matches barebaysidelabs.com design system
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap');
 
 /* === VARIABLES === */
 :root {
@@ -38,7 +38,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 1.7;
   overflow-x: hidden;
@@ -59,10 +59,12 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 3px;
   line-height: 1.05;
 }
-h1 { font-size: clamp(36px, 5vw, 62px); letter-spacing: 4px; }
-h2 { font-size: clamp(28px, 4vw, 42px); margin-top: 48px; margin-bottom: 16px; }
-h3 { font-size: clamp(22px, 3vw, 30px); margin-top: 32px; margin-bottom: 12px; color: var(--emerald); }
-h4 { font-size: 22px; }
+h1 { font-size: clamp(44px, 6vw, 78px); letter-spacing: 4px; }
+h2 { font-size: clamp(36px, 5vw, 58px); margin-top: 48px; margin-bottom: 16px; }
+h3 { font-size: clamp(24px, 3vw, 34px); margin-top: 32px; margin-bottom: 12px; color: var(--emerald); }
+h4 { font-size: 26px; }
+h5 { font-size: 22px; }
+h6 { font-size: 18px; }
 
 .gradient-text {
   background: linear-gradient(135deg, #e2e8f0 0%, #38bdf8 100%);
@@ -79,7 +81,7 @@ h4 { font-size: 22px; }
 }
 
 /* === LAYOUT === */
-.section { padding: 80px 24px; position: relative; }
+.section { padding: 100px 24px; position: relative; }
 .section > * { position: relative; z-index: 1; }
 .inner { max-width: 1200px; margin: 0 auto; }
 .inner-narrow { max-width: 800px; margin: 0 auto; }
@@ -253,7 +255,7 @@ h4 { font-size: 22px; }
 .sidebar-link {
   display: block;
   padding: 10px 12px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: var(--text2);
   text-decoration: none;
@@ -285,7 +287,7 @@ h4 { font-size: 22px; }
 .toc-link {
   display: block;
   padding: 6px 12px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
   color: var(--muted);
   text-decoration: none;
@@ -309,7 +311,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
 }
 th {
@@ -651,7 +653,49 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
 }
 
 /* === AURORA BACKGROUND === */
-.aurora { background: linear-gradient(135deg, rgba(56,189,248,0.03), rgba(52,211,153,0.03), rgba(167,139,250,0.02)); }
+.aurora { position: relative; overflow: hidden; }
+.aurora::before {
+  content: ''; position: absolute; top: -40%; left: -20%;
+  width: 70%; height: 140%;
+  background: radial-gradient(ellipse at center, rgba(52,211,153,0.06) 0%, transparent 70%);
+  animation: aurora1 25s ease-in-out infinite alternate;
+  pointer-events: none; z-index: 0;
+}
+.aurora::after {
+  content: ''; position: absolute; top: -20%; right: -30%;
+  width: 60%; height: 120%;
+  background: radial-gradient(ellipse at center, rgba(56,189,248,0.05) 0%, transparent 70%);
+  animation: aurora2 30s ease-in-out infinite alternate;
+  pointer-events: none; z-index: 0;
+}
+@keyframes aurora1 {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(8%,5%) scale(1.1); }
+  100% { transform: translate(-5%,-3%) scale(0.95); }
+}
+@keyframes aurora2 {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-10%,8%) scale(1.05); }
+  100% { transform: translate(5%,-5%) scale(1.1); }
+}
+
+/* Glow pulse */
+.glow { animation: glow-breathe 3.5s ease-in-out infinite; }
+@keyframes glow-breathe {
+  0%, 100% { box-shadow: 0 0 20px rgba(52,211,153,0.15), 0 0 60px rgba(52,211,153,0.05); }
+  50% { box-shadow: 0 0 30px rgba(52,211,153,0.3), 0 0 80px rgba(52,211,153,0.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora::before, .aurora::after { animation: none; }
+  .glow { animation: none; }
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
