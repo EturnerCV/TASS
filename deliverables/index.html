@@ -55,7 +55,15 @@
               <div class="tl-num">01</div>
               <div><div class="tl-title">ENGAGE HUBSPOT PARTNER</div><div class="tl-meta">FIRST POINT OF CALL</div></div>
             </div>
-            <p class="tl-desc">Before anything else, engage a certified HubSpot Solutions Partner. They have direct access to HubSpot's migration support, can negotiate Enterprise pricing, and have done this before. A partner de-risks the entire project.</p>
+            <p class="tl-desc">Before anything else, engage a certified HubSpot Solutions Partner. This is not optional — partners have tools and access that you don't:</p>
+            <ul style="margin:12px 0 16px 20px;color:var(--text2);font-size:16px;line-height:1.7">
+              <li style="margin-bottom:8px"><strong style="color:var(--text)">Migration support credits</strong> — Partners can request HubSpot-funded migration assistance on your behalf</li>
+              <li style="margin-bottom:8px"><strong style="color:var(--text)">Enterprise pricing negotiation</strong> — Partners have direct lines to HubSpot's pricing team and can secure bundle discounts you can't get self-serve</li>
+              <li style="margin-bottom:8px"><strong style="color:var(--text)">Dedicated migration manager</strong> — HubSpot assigns a migration specialist to partner-led projects for direct support</li>
+              <li style="margin-bottom:8px"><strong style="color:var(--text)">Beta feature access</strong> — Partners get early access to migration tools, sandbox improvements, and MCP capabilities before general release</li>
+              <li style="margin-bottom:8px"><strong style="color:var(--text)">Portal-level diagnostics</strong> — Partners can run health checks and data quality scans that aren't available in the standard HubSpot UI</li>
+            </ul>
+            <p class="tl-desc">A partner de-risks the entire project. They've done this before — you haven't.</p>
             <span class="tl-who partner">HUBSPOT PARTNER</span>
           </div>
         </a>
@@ -68,8 +76,10 @@
               <div class="tl-num">02</div>
               <div><div class="tl-title">AI-POWERED DISCOVERY VIA MCP</div><div class="tl-meta">WEEK 1</div></div>
             </div>
-            <p class="tl-desc">Claude connects to each portal through HubSpot's MCP server. It reads every contact, company, deal, ticket, property, workflow, and integration — across all portals — and builds a complete map of your entire data landscape. What used to take weeks of manual spreadsheet work happens in hours. Claude flags duplicate contacts, identifies property conflicts, and documents what each portal contains, automatically.</p>
-            <p class="tl-desc" style="margin-top:8px"><strong style="color:var(--text)">How it works:</strong> MCP (Model Context Protocol) gives Claude secure, read-only access to your HubSpot data. You ask "Show me all custom properties across Portal 1 and Portal 2" — Claude pulls both, compares them, and highlights where field names differ for the same data. No manual exports. No spreadsheets.</p>
+            <p class="tl-desc">Claude connects to each portal through HubSpot's MCP server. It reads every contact, company, deal, ticket, property, workflow, and integration — across all portals — and builds a complete map of your entire data landscape. What used to take weeks of manual spreadsheet work happens in hours.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">How it works:</strong> MCP (Model Context Protocol) gives Claude secure, read-only access to your HubSpot data. You ask "Show me all custom properties across Portal 1 and Portal 2" — Claude pulls both, compares them, and highlights where field names differ for the same data. No manual exports. No spreadsheets.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Data integrity check:</strong> During discovery, Claude also verifies the health of your existing data — orphaned records (contacts with no company), broken associations (deals linked to deleted contacts), empty required fields, and inconsistent lifecycle stages. Problems found here get fixed before migration, not during.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Email account safety:</strong> Claude documents every email sending domain, its authentication status (DKIM, SPF, DMARC), sending reputation, and connected mailboxes across all portals. This becomes the email integrity baseline — nothing moves until every domain is accounted for and a protection plan is in place.</p>
             <span class="tl-who ai">CLAUDE + MCP</span>
           </div>
         </a>
@@ -82,9 +92,12 @@
               <div class="tl-num">03</div>
               <div><div class="tl-title">AUDIT &amp; MAP</div><div class="tl-meta">WEEK 1-2</div></div>
             </div>
-            <p class="tl-desc">Claude takes the MCP discovery data and generates every deliverable for this phase automatically: the property mapping table (which fields match, which conflict), the duplicate contact count (email-matched across portals), the integration inventory, and the email domain audit. The partner reviews Claude's output and validates the findings with your team leads.</p>
-            <span class="tl-who ai">CLAUDE + MCP</span>
-            <span class="tl-who partner" style="margin-left:8px">PARTNER REVIEW</span>
+            <p class="tl-desc">Claude takes the MCP discovery data and generates every deliverable for this phase automatically: the property mapping table (which fields match, which conflict), the duplicate contact count (email-matched across portals), the integration inventory, and the email domain audit.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Department head sign-off:</strong> Each department head reviews the audit for their portal. Sales VP confirms the deal data is accurate. Service Manager confirms ticket history is complete. Marketing Director confirms email lists and campaign data. Nobody's data moves until the person who owns it confirms it's correct.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Email integrity checkpoint:</strong> Every connected email account, shared inbox, and sending domain is documented. The partner confirms that no email routing, forwarding rules, or connected mailboxes will break during migration. Personal email connections (Gmail/Outlook sync) are flagged for re-authentication planning.</p>
+            <span class="tl-who ai">CLAUDE GENERATES</span>
+            <span class="tl-who partner" style="margin-left:8px">PARTNER REVIEWS</span>
+            <span class="tl-who internal" style="margin-left:8px">HEADS CONFIRM</span>
           </div>
         </a>
 
@@ -110,9 +123,12 @@
               <div class="tl-num">05</div>
               <div><div class="tl-title">SANDBOX TESTING</div><div class="tl-meta">WEEK 3-4</div></div>
             </div>
-            <p class="tl-desc">Run a full test migration in HubSpot's sandbox. Zero production risk. The partner runs the Datawarehouse.io migrator tool. After migration, Claude connects to the sandbox via MCP and cross-checks: "Do the record counts match the source? Are associations intact? Did all properties come across?" — automated verification instead of manual spot-checking.</p>
+            <p class="tl-desc">Run a full test migration in HubSpot's sandbox. Zero production risk. The partner runs the Datawarehouse.io migrator tool. After migration, Claude connects to the sandbox via MCP and cross-checks: "Do the record counts match the source? Are associations intact? Did all properties come across?"</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Department head walkthrough:</strong> Each department head gets sandbox access to verify their data personally. Sales VP spot-checks 20 deals — are amounts, stages, and contact associations correct? Service Manager checks ticket history — are notes and attachments there? Marketing Director verifies email lists and subscription preferences. This is the last gate before production migration.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Email sending test:</strong> Partner connects each brand's email domain to the sandbox and sends test emails. Team verifies: correct from address, correct branding, DKIM authentication passes, emails land in inbox not spam. Email integrity is confirmed before any production data moves.</p>
             <span class="tl-who partner">PARTNER EXECUTES</span>
             <span class="tl-who ai" style="margin-left:8px">CLAUDE VALIDATES</span>
+            <span class="tl-who internal" style="margin-left:8px">HEADS VERIFY</span>
           </div>
         </a>
 
@@ -124,7 +140,9 @@
               <div class="tl-num">06</div>
               <div><div class="tl-title">PRE-MIGRATION PREP</div><div class="tl-meta">WEEK 4-5</div></div>
             </div>
-            <p class="tl-desc">Configure Business Units, set up email domains (DKIM/SPF/DMARC), rebuild reports and dashboards, install deduplication tools, export safety backups. Set a freeze date — all teams stop creating records in old portals.</p>
+            <p class="tl-desc">Configure Business Units, rebuild reports and dashboards, install deduplication tools. Set a freeze date — all teams stop creating records in old portals from this point.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Email domain protection:</strong> Every brand's email domain is connected to the target portal <em>before</em> being removed from old portals. Both old and new portals run in parallel with the same authenticated domains — this is safe and expected. DKIM, SPF, and DMARC records are verified green in the new portal before any sending switches over. No domain is left unauthenticated at any point.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Full data backup:</strong> Every portal is exported as CSV before the freeze — contacts, companies, deals, tickets, custom objects, engagements. These backups are stored outside HubSpot (shared drive or cloud storage) as a "break glass" recovery option. Old portals remain read-only for 90 days after migration. Nothing is deleted. Your historical data is safe in three places: the target portal, the CSV exports, and the original portals (read-only).</p>
             <span class="tl-who partner">PARTNER CONFIGURES</span>
             <span class="tl-who internal" style="margin-left:8px">TEAMS FREEZE</span>
           </div>
@@ -152,7 +170,9 @@
               <div class="tl-num">08</div>
               <div><div class="tl-title">EMAIL WARM-UP &amp; GO-LIVE</div><div class="tl-meta">WEEK 6-8</div></div>
             </div>
-            <p class="tl-desc">Gradually ramp email volume over 4 weeks — start with your most engaged contacts, expand weekly. Monitor bounce rates, spam complaints, and inbox placement daily. Keep old portals read-only for 90 days as your safety net.</p>
+            <p class="tl-desc">Gradually ramp email volume over 4 weeks — start with your most engaged contacts (opened/clicked in last 30 days), expand weekly to 60-day, 90-day, then full list. This protects your domain reputation with email providers like Gmail and Outlook.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Email integrity maintained:</strong> All email sending history, subscription preferences, and unsubscribe lists carry over. If someone unsubscribed from Product A emails in the old portal, they stay unsubscribed in the new portal. DMARC/DKIM/SPF authentication is verified daily during warm-up. If any bounce rate exceeds 5% or spam complaints exceed 0.3%, sending pauses immediately until diagnosed.</p>
+            <p class="tl-desc"><strong style="color:var(--text)">Old portals as fallback:</strong> Old portals stay active in read-only mode throughout warm-up. If email deliverability degrades, the partner can temporarily re-route sending through the old portal while the issue is resolved. No emails are lost.</p>
             <span class="tl-who partner">PARTNER MONITORS</span>
             <span class="tl-who internal" style="margin-left:8px">MARKETING SENDS</span>
           </div>
