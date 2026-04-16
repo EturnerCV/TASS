@@ -38,36 +38,174 @@
     </div>
   </section>
 
-  <!-- EXECUTIVE WORKFLOW -->
-  <section class="section" style="padding-top:24px;padding-bottom:0">
-    <div class="inner">
-      <span class="eyebrow eyebrow-emerald">START TO FINISH</span>
-      <h2 style="margin-top:8px;margin-bottom:8px">THE FULL PROCESS</h2>
-      <p style="font-size:17px;margin-bottom:8px">Every step from discovery to handoff, in order.</p>
-      <div class="workflow-strip">
-        <a href="06-migration-phase-1.html" class="workflow-step"><div class="ws-box"><span class="ws-num">01</span><span class="ws-label">AUDIT &amp; MAP</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="07-migration-phase-2.html" class="workflow-step"><div class="ws-box"><span class="ws-num">02</span><span class="ws-label">CHOOSE TARGET</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="08-migration-phase-3.html" class="workflow-step"><div class="ws-box"><span class="ws-num">03</span><span class="ws-label">SANDBOX TEST</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="09-migration-phase-4.html" class="workflow-step"><div class="ws-box"><span class="ws-num">04</span><span class="ws-label">PREP &amp; FREEZE</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="10-migration-phase-5.html" class="workflow-step"><div class="ws-box"><span class="ws-num">05</span><span class="ws-label">MIGRATE DATA</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="11-migration-phase-6.html" class="workflow-step"><div class="ws-box"><span class="ws-num">06</span><span class="ws-label">EMAIL WARM-UP</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="13-mcp-integration.html" class="workflow-step"><div class="ws-box"><span class="ws-num">07</span><span class="ws-label">MCP &amp; AI SETUP</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <a href="14-user-experience.html" class="workflow-step"><div class="ws-box"><span class="ws-num">08</span><span class="ws-label">TEAM TRAINING</span></div></a>
-        <span class="workflow-arrow">&rarr;</span>
-        <div class="workflow-step"><div class="ws-box" style="border-color:rgba(52,211,153,0.3)"><span class="ws-num" style="color:var(--emerald)">DONE</span><span class="ws-label">PARTNER HANDOFF</span></div></div>
+  <!-- FULL PROCESS TIMELINE -->
+  <section class="section" style="padding-top:48px;padding-bottom:48px">
+    <div class="inner" style="max-width:800px">
+      <span class="eyebrow eyebrow-emerald reveal">START TO FINISH</span>
+      <h2 style="margin-top:8px;margin-bottom:12px" class="reveal stagger-1">THE FULL PROCESS</h2>
+      <p style="font-size:18px;margin-bottom:0" class="reveal stagger-2">Every step from first conversation to ongoing support. Scroll down to see the complete journey.</p>
+
+      <div class="timeline">
+
+        <!-- STEP 1: HUBSPOT PARTNER -->
+        <a href="01-executive-summary.html" class="tl-step gold reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">01</div>
+              <div><div class="tl-title">ENGAGE HUBSPOT PARTNER</div><div class="tl-meta">FIRST POINT OF CALL</div></div>
+            </div>
+            <p class="tl-desc">Before anything else, engage a certified HubSpot Solutions Partner. They have direct access to HubSpot's migration support, can negotiate Enterprise pricing, and have done this before. A partner de-risks the entire project.</p>
+            <span class="tl-who partner">HUBSPOT PARTNER</span>
+          </div>
+        </a>
+
+        <!-- STEP 2: CLAUDE MCP DISCOVERY -->
+        <a href="13-mcp-integration.html" class="tl-step purple reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">02</div>
+              <div><div class="tl-title">AI-POWERED DISCOVERY VIA MCP</div><div class="tl-meta">WEEK 1</div></div>
+            </div>
+            <p class="tl-desc">Claude connects to each portal through HubSpot's MCP server. It reads every contact, company, deal, ticket, property, workflow, and integration — across all portals — and builds a complete map of your entire data landscape. What used to take weeks of manual spreadsheet work happens in hours. Claude flags duplicate contacts, identifies property conflicts, and documents what each portal contains, automatically.</p>
+            <p class="tl-desc" style="margin-top:8px"><strong style="color:var(--text)">How it works:</strong> MCP (Model Context Protocol) gives Claude secure, read-only access to your HubSpot data. You ask "Show me all custom properties across Portal 1 and Portal 2" — Claude pulls both, compares them, and highlights where field names differ for the same data. No manual exports. No spreadsheets.</p>
+            <span class="tl-who ai">CLAUDE + MCP</span>
+          </div>
+        </a>
+
+        <!-- STEP 3: AUDIT & MAP -->
+        <a href="06-migration-phase-1.html" class="tl-step sky reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">03</div>
+              <div><div class="tl-title">AUDIT &amp; MAP</div><div class="tl-meta">WEEK 1-2</div></div>
+            </div>
+            <p class="tl-desc">Claude takes the MCP discovery data and generates every deliverable for this phase automatically: the property mapping table (which fields match, which conflict), the duplicate contact count (email-matched across portals), the integration inventory, and the email domain audit. The partner reviews Claude's output and validates the findings with your team leads.</p>
+            <span class="tl-who ai">CLAUDE + MCP</span>
+            <span class="tl-who partner" style="margin-left:8px">PARTNER REVIEW</span>
+          </div>
+        </a>
+
+        <!-- STEP 4: CHOOSE TARGET -->
+        <a href="07-migration-phase-2.html" class="tl-step sky reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">04</div>
+              <div><div class="tl-title">CHOOSE TARGET PORTAL</div><div class="tl-meta">WEEK 2</div></div>
+            </div>
+            <p class="tl-desc">Partner presents a recommendation with scored decision matrix. Leadership decides: keep the biggest portal, keep the best-configured, or start fresh. The MCP audit data feeds directly into the scoring.</p>
+            <span class="tl-who partner">PARTNER LEADS</span>
+            <span class="tl-who internal" style="margin-left:8px">LEADERSHIP DECIDES</span>
+          </div>
+        </a>
+
+        <!-- STEP 5: SANDBOX TEST -->
+        <a href="08-migration-phase-3.html" class="tl-step sky reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">05</div>
+              <div><div class="tl-title">SANDBOX TESTING</div><div class="tl-meta">WEEK 3-4</div></div>
+            </div>
+            <p class="tl-desc">Run a full test migration in HubSpot's sandbox. Zero production risk. The partner runs the Datawarehouse.io migrator tool. After migration, Claude connects to the sandbox via MCP and cross-checks: "Do the record counts match the source? Are associations intact? Did all properties come across?" — automated verification instead of manual spot-checking.</p>
+            <span class="tl-who partner">PARTNER EXECUTES</span>
+            <span class="tl-who ai" style="margin-left:8px">CLAUDE VALIDATES</span>
+          </div>
+        </a>
+
+        <!-- STEP 6: PRE-MIGRATION PREP -->
+        <a href="09-migration-phase-4.html" class="tl-step sky reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">06</div>
+              <div><div class="tl-title">PRE-MIGRATION PREP</div><div class="tl-meta">WEEK 4-5</div></div>
+            </div>
+            <p class="tl-desc">Configure Business Units, set up email domains (DKIM/SPF/DMARC), rebuild reports and dashboards, install deduplication tools, export safety backups. Set a freeze date — all teams stop creating records in old portals.</p>
+            <span class="tl-who partner">PARTNER CONFIGURES</span>
+            <span class="tl-who internal" style="margin-left:8px">TEAMS FREEZE</span>
+          </div>
+        </a>
+
+        <!-- STEP 7: EXECUTE MIGRATION -->
+        <a href="10-migration-phase-5.html" class="tl-step reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">07</div>
+              <div><div class="tl-title">EXECUTE MIGRATION</div><div class="tl-meta">WEEK 5-6</div></div>
+            </div>
+            <p class="tl-desc">Migrate data portal by portal. Verify record counts after each. Run deduplication (email-match contacts, domain-match companies). Assign Business Unit tags. Reconnect integrations. Invite users and assign seats.</p>
+            <span class="tl-who partner">PARTNER MIGRATES</span>
+            <span class="tl-who ai" style="margin-left:8px">CLAUDE VERIFIES</span>
+          </div>
+        </a>
+
+        <!-- STEP 8: EMAIL WARM-UP -->
+        <a href="11-migration-phase-6.html" class="tl-step reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">08</div>
+              <div><div class="tl-title">EMAIL WARM-UP &amp; GO-LIVE</div><div class="tl-meta">WEEK 6-8</div></div>
+            </div>
+            <p class="tl-desc">Gradually ramp email volume over 4 weeks — start with your most engaged contacts, expand weekly. Monitor bounce rates, spam complaints, and inbox placement daily. Keep old portals read-only for 90 days as your safety net.</p>
+            <span class="tl-who partner">PARTNER MONITORS</span>
+            <span class="tl-who internal" style="margin-left:8px">MARKETING SENDS</span>
+          </div>
+        </a>
+
+        <!-- STEP 9: MCP UNIFIED SETUP -->
+        <a href="13-mcp-integration.html" class="tl-step purple reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">09</div>
+              <div><div class="tl-title">CONNECT UNIFIED MCP</div><div class="tl-meta">WEEK 8-9</div></div>
+            </div>
+            <p class="tl-desc">With all data in one portal, replace 3-4 separate MCP connections with a single one. Claude now sees your entire customer base through one lens. Sales asks "Which Product A customers haven't tried Product B?" Marketing asks "Open rate by brand this quarter?" Service asks "Full ticket history for Company X across all products?" One connection, one answer, complete data.</p>
+            <span class="tl-who ai">CLAUDE + MCP</span>
+            <span class="tl-who partner" style="margin-left:8px">PARTNER CONFIGURES</span>
+          </div>
+        </a>
+
+        <!-- STEP 10: TEAM TRAINING -->
+        <a href="14-user-experience.html" class="tl-step reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-num">10</div>
+              <div><div class="tl-title">TEAM TRAINING &amp; ADOPTION</div><div class="tl-meta">WEEK 9-10</div></div>
+            </div>
+            <p class="tl-desc">Each team gets hands-on training in the new unified portal. Sales learns cross-sell views. Service learns unified ticket history. Marketing learns Business Unit campaigns. Leadership gets their new dashboards. One migration champion per team for ongoing support.</p>
+            <span class="tl-who partner">PARTNER TRAINS</span>
+            <span class="tl-who team" style="margin-left:8px">ALL TEAMS</span>
+          </div>
+        </a>
+
+        <!-- STEP 11: ONGOING PARTNER SUPPORT -->
+        <div class="tl-step gold reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-content" style="border-color:rgba(245,158,11,0.3)">
+            <div class="tl-header">
+              <div class="tl-num" style="font-size:24px">ONGOING</div>
+              <div><div class="tl-title">PARTNER SUPPORT &amp; OPTIMISATION</div><div class="tl-meta">MONTH 3+</div></div>
+            </div>
+            <p class="tl-desc">The partner stays engaged for ongoing optimisation — quarterly workflow reviews, new Business Unit setup as product lines grow, reporting refinement, and strategic CRM advisory. Claude via MCP handles day-to-day queries, data checks, and report generation autonomously.</p>
+            <span class="tl-who partner">HUBSPOT PARTNER</span>
+            <span class="tl-who ai" style="margin-left:8px">CLAUDE AUTONOMOUS</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- UNDERSTAND THE PROBLEM -->
-  <section class="section" style="padding-top:48px;padding-bottom:48px">
+  <section class="section" style="padding-top:0;padding-bottom:48px">
     <div class="inner">
       <span class="eyebrow eyebrow-red">UNDERSTAND THE PROBLEM</span>
       <h2 style="margin-top:8px;margin-bottom:24px">WHAT'S BROKEN AND WHY</h2>
@@ -221,5 +359,6 @@
     <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--subtle)">barebaysidelabs.com</p>
   </div>
 
+  <script src="js/guide.js"></script>
 </body>
 </html>

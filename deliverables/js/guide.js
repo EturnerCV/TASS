@@ -58,3 +58,20 @@
 
   tocLinks.forEach(function(t) { scrollSpy.observe(t.heading); });
 })();
+
+// === REVEAL ON SCROLL ===
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -80px 0px', threshold: 0.1 });
+
+  reveals.forEach(function(el) { revealObserver.observe(el); });
+})();

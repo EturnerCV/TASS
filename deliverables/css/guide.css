@@ -600,57 +600,133 @@ tr.highlight td { color: var(--emerald); font-weight: 600; }
   letter-spacing: 1px;
 }
 
-/* === WORKFLOW STRIP === */
-.workflow-strip {
-  display: flex;
-  gap: 0;
-  margin: 32px 0;
-  overflow-x: auto;
-  padding-bottom: 8px;
+/* === VERTICAL TIMELINE === */
+.timeline {
+  position: relative;
+  padding: 0;
+  margin: 40px 0;
 }
-.workflow-step {
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--emerald), var(--sky), var(--gold), var(--purple), var(--emerald));
+}
+.tl-step {
+  position: relative;
+  padding-left: 72px;
+  margin-bottom: 48px;
+  text-decoration: none;
+  display: block;
+}
+.tl-step:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: 16px;
+  top: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid var(--emerald);
+  background: var(--bg);
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 0;
-  text-decoration: none;
-  flex-shrink: 0;
+  justify-content: center;
 }
-.workflow-step .ws-box {
+.tl-dot .tl-dot-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--emerald);
+}
+.tl-step.sky .tl-dot { border-color: var(--sky); }
+.tl-step.sky .tl-dot .tl-dot-inner { background: var(--sky); }
+.tl-step.gold .tl-dot { border-color: var(--gold); }
+.tl-step.gold .tl-dot .tl-dot-inner { background: var(--gold); }
+.tl-step.purple .tl-dot { border-color: var(--purple); }
+.tl-step.purple .tl-dot .tl-dot-inner { background: var(--purple); }
+
+.tl-content {
   background: var(--surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 16px 20px;
-  text-align: center;
-  min-width: 120px;
-  transition: border-color 0.3s, transform 0.3s;
+  border-radius: 18px;
+  padding: 28px;
+  transition: border-color 0.4s cubic-bezier(0.32,0.72,0,1), transform 0.4s cubic-bezier(0.32,0.72,0,1);
 }
-.workflow-step:hover .ws-box {
-  border-color: rgba(56,189,248,0.3);
-  transform: translateY(-2px);
+a.tl-step:hover .tl-content {
+  border-color: rgba(56,189,248,0.2);
+  transform: translateY(-4px);
 }
-.workflow-step .ws-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 4px;
+.tl-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
 }
-.workflow-step .ws-label {
+.tl-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 14px;
-  letter-spacing: 1px;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--emerald);
+  min-width: 48px;
+}
+.tl-step.sky .tl-num { color: var(--sky); }
+.tl-step.gold .tl-num { color: var(--gold); }
+.tl-step.purple .tl-num { color: var(--purple); }
+
+.tl-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
   color: var(--text);
   text-transform: uppercase;
-  display: block;
 }
-.workflow-arrow {
-  color: var(--emerald);
-  font-size: 20px;
-  padding: 0 6px;
-  flex-shrink: 0;
-  align-self: center;
+.tl-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
 }
+.tl-desc {
+  font-size: 16px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.tl-who {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-top: 8px;
+}
+.tl-who.partner { color: var(--gold); background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); }
+.tl-who.internal { color: var(--sky); background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.25); }
+.tl-who.ai { color: var(--purple); background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.25); }
+.tl-who.team { color: var(--emerald); background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); }
+
+/* === REVEAL ANIMATION === */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+              transform 0.9s cubic-bezier(0.16,1,0.3,1),
+              filter 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.revealed { opacity: 1; transform: translateY(0); filter: blur(0); }
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.4s; }
 
 /* === NAV LOGO === */
 .nav-logo {
