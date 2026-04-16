@@ -55,52 +55,52 @@
       <table>
         <tr><th>RISK</th><th>LIKELIHOOD</th><th>IMPACT</th><th>MITIGATION</th></tr>
         <tr>
-          <td>Duplicate contacts not fully resolved</td>
-          <td class="risk-high">HIGH</td>
-          <td class="risk-high">HIGH</td>
-          <td>Run dedup tool before AND after migration. Use fuzzy matching (name + company + phone), not just email.</td>
+          <td data-label="Risk">Duplicate contacts not fully resolved</td>
+          <td data-label="Likelihood" class="risk-high">HIGH</td>
+          <td data-label="Impact" class="risk-high">HIGH</td>
+          <td data-label="Mitigation">Run dedup tool before AND after migration. Use fuzzy matching (name + company + phone), not just email.</td>
         </tr>
         <tr>
-          <td>Email reputation drops (spam)</td>
-          <td class="risk-med">MEDIUM</td>
-          <td class="risk-high">CRITICAL</td>
-          <td>Follow 4-week warm-up schedule strictly. Start with engaged contacts only. Monitor bounce and complaint rates daily.</td>
+          <td data-label="Risk">Email reputation drops (spam)</td>
+          <td data-label="Likelihood" class="risk-med">MEDIUM</td>
+          <td data-label="Impact" class="risk-high">CRITICAL</td>
+          <td data-label="Mitigation">Follow 4-week warm-up schedule strictly. Start with engaged contacts only. Monitor bounce and complaint rates daily.</td>
         </tr>
         <tr>
-          <td>Workflows fire incorrectly</td>
-          <td class="risk-med">MEDIUM</td>
-          <td class="risk-high">HIGH</td>
-          <td>Migrate all workflows PAUSED. Activate one at a time, test with sample records, then move to the next.</td>
+          <td data-label="Risk">Workflows fire incorrectly</td>
+          <td data-label="Likelihood" class="risk-med">MEDIUM</td>
+          <td data-label="Impact" class="risk-high">HIGH</td>
+          <td data-label="Mitigation">Migrate all workflows PAUSED. Activate one at a time, test with sample records, then move to the next.</td>
         </tr>
         <tr>
-          <td>Property type conflicts</td>
-          <td class="risk-med">MEDIUM</td>
-          <td class="risk-high">HIGH</td>
-          <td>Complete the property mapping table before migration. Resolve all same-name-different-type conflicts in advance.</td>
+          <td data-label="Risk">Property type conflicts</td>
+          <td data-label="Likelihood" class="risk-med">MEDIUM</td>
+          <td data-label="Impact" class="risk-high">HIGH</td>
+          <td data-label="Mitigation">Complete the property mapping table before migration. Resolve all same-name-different-type conflicts in advance.</td>
         </tr>
         <tr>
-          <td>Integration failures</td>
-          <td class="risk-med">MEDIUM</td>
-          <td class="risk-med">MEDIUM</td>
-          <td>Document all integrations. Reconnect and test each one. Allow 1-2 days for integration debugging.</td>
+          <td data-label="Risk">Integration failures</td>
+          <td data-label="Likelihood" class="risk-med">MEDIUM</td>
+          <td data-label="Impact" class="risk-med">MEDIUM</td>
+          <td data-label="Mitigation">Document all integrations. Reconnect and test each one. Allow 1-2 days for integration debugging.</td>
         </tr>
         <tr>
-          <td>Lost deal/ticket associations</td>
-          <td class="risk-low">LOW</td>
-          <td class="risk-high">CRITICAL</td>
-          <td>Verify association counts pre vs post migration. Spot-check 20+ random records for correct links.</td>
+          <td data-label="Risk">Lost deal/ticket associations</td>
+          <td data-label="Likelihood" class="risk-low">LOW</td>
+          <td data-label="Impact" class="risk-high">CRITICAL</td>
+          <td data-label="Mitigation">Verify association counts pre vs post migration. Spot-check 20+ random records for correct links.</td>
         </tr>
         <tr>
-          <td>User adoption resistance</td>
-          <td class="risk-med">MEDIUM</td>
-          <td class="risk-med">MEDIUM</td>
-          <td>Training before go-live (not after). Per-team "where to find your stuff" guides. Migration champion per team.</td>
+          <td data-label="Risk">User adoption resistance</td>
+          <td data-label="Likelihood" class="risk-med">MEDIUM</td>
+          <td data-label="Impact" class="risk-med">MEDIUM</td>
+          <td data-label="Mitigation">Training before go-live (not after). Per-team "where to find your stuff" guides. Migration champion per team.</td>
         </tr>
         <tr>
-          <td>Temporary licensing cost spike</td>
-          <td class="risk-high">HIGH</td>
-          <td class="risk-low">LOW</td>
-          <td>Budget for 2-3 months of overlap (old + new portals). Downgrade old portals to free tier after 90-day hold.</td>
+          <td data-label="Risk">Temporary licensing cost spike</td>
+          <td data-label="Likelihood" class="risk-high">HIGH</td>
+          <td data-label="Impact" class="risk-low">LOW</td>
+          <td data-label="Mitigation">Budget for 2-3 months of overlap (old + new portals). Downgrade old portals to free tier after 90-day hold.</td>
         </tr>
       </table>
 

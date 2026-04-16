@@ -1045,9 +1045,16 @@ a.tl-step:hover .tl-content {
   .nav-logo { height: 36px; }
   .nav-brand { font-size: 16px !important; letter-spacing: 2px !important; }
 
-  /* Table overflow fix */
-  table { display: block; overflow-x: auto; }
-  table th, table td { min-width: 80px; }
+  /* Table → stacked cards on mobile */
+  table { display: block; overflow-x: visible; }
+  thead { display: none; }
+  tbody { display: block; }
+  tr:has(th:first-child):not(:has(td)) { display: none; }
+  tr:has(td) { display: block; margin-bottom: 12px; padding: 16px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border-subtle); }
+  tr.highlight:has(td) { background: var(--surface2); border-color: var(--emerald); }
+  td { display: block; padding: 8px 0; border: none; border-bottom: 1px solid var(--border-subtle); min-width: 0; }
+  td:last-child { border-bottom: none; }
+  td::before { content: attr(data-label); display: block; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
 
   /* Flow block overflow */
   .flow { max-width: 100%; font-size: 11px; padding: 16px; white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word; }

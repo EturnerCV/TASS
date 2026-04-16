@@ -144,24 +144,24 @@
             <th>WHAT HAPPENS NOW</th>
           </tr>
           <tr class="highlight">
-            <td>Jane buys Product A</td>
-            <td>A single contact record is created. A deal is opened in the Product A pipeline. Her Business Unit is tagged as Product A.</td>
+            <td data-label="Event">Jane buys Product A</td>
+            <td data-label="What Happens Now">A single contact record is created. A deal is opened in the Product A pipeline. Her Business Unit is tagged as Product A.</td>
           </tr>
           <tr class="highlight">
-            <td>Jane buys Product B</td>
-            <td>The same contact record is used. A new deal is opened in the Product B pipeline. Product B is added to her Business Unit tags. No duplicate is created.</td>
+            <td data-label="Event">Jane buys Product B</td>
+            <td data-label="What Happens Now">The same contact record is used. A new deal is opened in the Product B pipeline. Product B is added to her Business Unit tags. No duplicate is created.</td>
           </tr>
           <tr class="highlight">
-            <td>Jane contacts support</td>
-            <td>The service rep sees ALL of Jane's history across both products, all tickets, and the full timeline. Jane never has to repeat herself.</td>
+            <td data-label="Event">Jane contacts support</td>
+            <td data-label="What Happens Now">The service rep sees ALL of Jane's history across both products, all tickets, and the full timeline. Jane never has to repeat herself.</td>
           </tr>
           <tr class="highlight">
-            <td>Marketing sends campaigns</td>
-            <td>One subscription centre. Jane controls which brands she hears from. She never gets duplicate emails from different portals on the same day.</td>
+            <td data-label="Event">Marketing sends campaigns</td>
+            <td data-label="What Happens Now">One subscription centre. Jane controls which brands she hears from. She never gets duplicate emails from different portals on the same day.</td>
           </tr>
           <tr class="highlight">
-            <td>Leadership asks for numbers</td>
-            <td>One dashboard shows the true customer count, total revenue per customer across all products, and cross-sell conversion rates.</td>
+            <td data-label="Event">Leadership asks for numbers</td>
+            <td data-label="What Happens Now">One dashboard shows the true customer count, total revenue per customer across all products, and cross-sell conversion rates.</td>
           </tr>
         </table>
 
@@ -267,19 +267,19 @@
             <th>STAGES</th>
           </tr>
           <tr>
-            <td>Product A Sales</td>
-            <td>Product A</td>
-            <td>Qualified &rarr; Demo &rarr; Proposal &rarr; Negotiation &rarr; Closed Won / Closed Lost</td>
+            <td data-label="Pipeline">Product A Sales</td>
+            <td data-label="Business Unit">Product A</td>
+            <td data-label="Stages">Qualified &rarr; Demo &rarr; Proposal &rarr; Negotiation &rarr; Closed Won / Closed Lost</td>
           </tr>
           <tr>
-            <td>Product B Sales</td>
-            <td>Product B</td>
-            <td>Qualified &rarr; Trial &rarr; Evaluation &rarr; Closed Won / Closed Lost</td>
+            <td data-label="Pipeline">Product B Sales</td>
+            <td data-label="Business Unit">Product B</td>
+            <td data-label="Stages">Qualified &rarr; Trial &rarr; Evaluation &rarr; Closed Won / Closed Lost</td>
           </tr>
           <tr>
-            <td>Product C Sales</td>
-            <td>Product C</td>
-            <td>Enquiry &rarr; Quote &rarr; Closed Won / Closed Lost</td>
+            <td data-label="Pipeline">Product C Sales</td>
+            <td data-label="Business Unit">Product C</td>
+            <td data-label="Stages">Enquiry &rarr; Quote &rarr; Closed Won / Closed Lost</td>
           </tr>
         </table>
 
@@ -292,16 +292,16 @@
             <th>USE CASE</th>
           </tr>
           <tr>
-            <td>General Support</td>
-            <td>Shared across all brands. For enquiries that are not product-specific (billing, account changes, general questions).</td>
+            <td data-label="Pipeline">General Support</td>
+            <td data-label="Use Case">Shared across all brands. For enquiries that are not product-specific (billing, account changes, general questions).</td>
           </tr>
           <tr>
-            <td>Product A Support</td>
-            <td>Product-specific tickets that require specialised knowledge. Routed to the Product A service team.</td>
+            <td data-label="Pipeline">Product A Support</td>
+            <td data-label="Use Case">Product-specific tickets that require specialised knowledge. Routed to the Product A service team.</td>
           </tr>
           <tr>
-            <td>Product B Support</td>
-            <td>Product-specific tickets routed to the Product B service team.</td>
+            <td data-label="Pipeline">Product B Support</td>
+            <td data-label="Use Case">Product-specific tickets routed to the Product B service team.</td>
           </tr>
         </table>
 
@@ -315,24 +315,24 @@
             <th>ACCESS</th>
           </tr>
           <tr>
-            <td>Top level</td>
-            <td>Leadership</td>
-            <td>Full access to all brands, all data, all reports</td>
+            <td data-label="Level">Top level</td>
+            <td data-label="Team">Leadership</td>
+            <td data-label="Access">Full access to all brands, all data, all reports</td>
           </tr>
           <tr>
-            <td>Brand level</td>
-            <td>Product A Team</td>
-            <td>Full access to Product A deals, tickets, and campaigns. Read-only on other brands.</td>
+            <td data-label="Level">Brand level</td>
+            <td data-label="Team">Product A Team</td>
+            <td data-label="Access">Full access to Product A deals, tickets, and campaigns. Read-only on other brands.</td>
           </tr>
           <tr>
-            <td>Brand level</td>
-            <td>Product B Team</td>
-            <td>Full access to Product B deals, tickets, and campaigns. Read-only on other brands.</td>
+            <td data-label="Level">Brand level</td>
+            <td data-label="Team">Product B Team</td>
+            <td data-label="Access">Full access to Product B deals, tickets, and campaigns. Read-only on other brands.</td>
           </tr>
           <tr>
-            <td>Function level</td>
-            <td>Marketing (cross-brand)</td>
-            <td>Access to all brand campaigns. Cannot edit deals or tickets.</td>
+            <td data-label="Level">Function level</td>
+            <td data-label="Team">Marketing (cross-brand)</td>
+            <td data-label="Access">Access to all brand campaigns. Cannot edit deals or tickets.</td>
           </tr>
         </table>
 
@@ -346,19 +346,19 @@
             <th>PURPOSE</th>
           </tr>
           <tr>
-            <td>Source Portal</td>
-            <td>Dropdown</td>
-            <td>Which portal the record was originally imported from (e.g., "Portal 1 - Product A")</td>
+            <td data-label="Property">Source Portal</td>
+            <td data-label="Type">Dropdown</td>
+            <td data-label="Purpose">Which portal the record was originally imported from (e.g., "Portal 1 - Product A")</td>
           </tr>
           <tr>
-            <td>Migration ID</td>
-            <td>Single-line text</td>
-            <td>The original record ID from the source portal, so you can trace any record back to where it came from</td>
+            <td data-label="Property">Migration ID</td>
+            <td data-label="Type">Single-line text</td>
+            <td data-label="Purpose">The original record ID from the source portal, so you can trace any record back to where it came from</td>
           </tr>
           <tr>
-            <td>Migration Date</td>
-            <td>Date picker</td>
-            <td>The date the record was migrated, useful for filtering pre-migration vs post-migration data</td>
+            <td data-label="Property">Migration Date</td>
+            <td data-label="Type">Date picker</td>
+            <td data-label="Purpose">The date the record was migrated, useful for filtering pre-migration vs post-migration data</td>
           </tr>
         </table>
 
