@@ -964,18 +964,19 @@ a.tl-step:hover .tl-content {
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-menu {
-  display: none;
   position: fixed;
   top: 72px;
   left: 0; right: 0; bottom: 0;
   background: var(--bg);
-  z-index: 9998;
+  z-index: 10000;
   overflow-y: auto;
   padding: 24px;
   opacity: 0;
-  transition: opacity 0.3s;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s, visibility 0.3s;
 }
-.mobile-menu.open { display: block; opacity: 1; }
+.mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
 
 .mobile-menu a {
   display: block;
@@ -1045,11 +1046,11 @@ a.tl-step:hover .tl-content {
   .nav-brand { font-size: 16px !important; letter-spacing: 2px !important; }
 
   /* Table overflow fix */
-  table { display: block; overflow-x: auto; white-space: nowrap; }
-  table th, table td { min-width: 100px; }
+  table { display: block; overflow-x: auto; }
+  table th, table td { min-width: 80px; }
 
   /* Flow block overflow */
-  .flow { max-width: 100%; font-size: 11px; padding: 16px; }
+  .flow { max-width: 100%; font-size: 11px; padding: 16px; white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word; }
 
   /* List padding */
   ul, ol { padding-left: 16px !important; margin-left: 0 !important; }
