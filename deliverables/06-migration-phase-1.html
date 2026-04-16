@@ -32,15 +32,20 @@
 
         <div class="callout expect">
           <div class="callout-label">WHAT YOUR TEAM SHOULD EXPECT</div>
-          <p style="margin:0;color:var(--text2);font-size:15px">Your team will be asked to export data and answer questions about how they use each portal. Allow 2-4 hours per team lead for interviews and data pulls.</p>
+          <p style="margin:0;color:var(--text2);font-size:15px">Claude connects to each portal via MCP and runs the full audit automatically. Department heads review the output and confirm accuracy. No manual data pulls needed from your team — allow 1-2 hours per team lead for review meetings only.</p>
         </div>
 
         <h2>WHAT THIS PHASE DOES</h2>
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before touching anything, you need to know exactly what exists in every portal. This phase is like taking a complete inventory of every room before you start packing boxes for a move. No data is changed, no records are moved. You're simply documenting what's there.</p>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before touching anything, you need to know exactly what exists in every portal. This phase builds a complete, verified map of your entire data landscape — every contact, company, deal, ticket, property, workflow, and integration across all portals.</p>
         <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Skipping this step is the single biggest cause of migration problems. Companies that jump straight to migration discover halfway through that two portals have the same field name storing different data, or that a critical integration was missed. The audit prevents all of this.</p>
 
-        <h2>PORTAL INVENTORY</h2>
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">For each portal, document everything in the table below. This becomes the master reference for the entire migration.</p>
+        <div class="callout success">
+          <div class="callout-label">MCP FAST-TRACKS THIS ENTIRE PHASE</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">Traditionally, this phase takes 2-3 weeks of manual work — someone exports CSVs, pastes into spreadsheets, and tries to compare fields by hand. That approach is slow and error-prone. With MCP, Claude connects directly to each portal's database via HubSpot's API, queries every object and property programmatically, and generates the complete audit in hours. No exports. No spreadsheets. No human error in the data collection.</p>
+        </div>
+
+        <h2>PORTAL INVENTORY VIA MCP</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Claude queries each portal through MCP and populates this inventory automatically — pulling live record counts, property schemas, workflow configurations, and integration connections directly from HubSpot's database.</p>
 
         <table>
           <tr><th>CATEGORY</th><th>PORTAL 1</th><th>PORTAL 2</th><th>PORTAL 3</th><th>PORTAL 4</th></tr>
@@ -50,25 +55,27 @@
           <tr><td>Total contacts</td><td></td><td></td><td></td><td></td></tr>
           <tr><td>Marketing contacts</td><td></td><td></td><td></td><td></td></tr>
           <tr><td>Companies</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Deals (total)</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Deals (open)</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Tickets (total)</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Tickets (open)</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Custom properties</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Deals (total / open / won)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Tickets (total / open)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Custom properties (count + types)</td><td></td><td></td><td></td><td></td></tr>
           <tr><td>Active workflows</td><td></td><td></td><td></td><td></td></tr>
           <tr><td>Email templates</td><td></td><td></td><td></td><td></td></tr>
           <tr><td>Forms</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Lists</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Deal pipelines</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Ticket pipelines</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Lists (active / static)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Deal pipelines + stages</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Ticket pipelines + statuses</td><td></td><td></td><td></td><td></td></tr>
           <tr><td>Connected integrations</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Email sending domain</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Email sending domains</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Orphaned records (no associations)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Empty required fields</td><td></td><td></td><td></td><td></td></tr>
         </table>
 
-        <h2>PROPERTY MAPPING</h2>
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Different teams often name the same field differently. "Phone Number" in Portal 1 might be "Phone" in Portal 2 and "Contact Phone" in Portal 3. Before migration, you need to map these so the same data doesn't end up in three separate fields in the target portal.</p>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The last two rows — orphaned records and empty required fields — are data integrity checks that Claude runs automatically. These are problems that need fixing <em>before</em> migration, not discovered during it.</p>
 
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Create a mapping table for every custom property across all portals. For each property, decide: is this the same data under a different name (merge), unique to one portal (keep), or conflicting?</p>
+        <h2>PROPERTY MAPPING — AUTOMATED CROSS-PORTAL ANALYSIS</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Different teams often name the same field differently. "Phone Number" in Portal 1 might be "Phone" in Portal 2 and "Contact Phone" in Portal 3. Claude queries the property schema from each portal via MCP, compares internal names, display names, and field types programmatically, and generates the full mapping table.</p>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This is database-level schema comparison — Claude reads the property definitions directly from HubSpot's API, not from exported files. It catches conflicts that a manual review would miss.</p>
 
         <table>
           <tr><th>PORTAL 1 NAME</th><th>PORTAL 2 NAME</th><th>PORTAL 3 NAME</th><th>TYPE</th><th>ACTION</th></tr>
@@ -78,38 +85,71 @@
         </table>
 
         <div class="callout danger">
-          <div class="callout-label">TYPE CONFLICT WARNING</div>
-          <p style="margin:0;color:var(--text2);font-size:15px">If two portals have a property with the same internal name but different field types (for example, "Status" as free text in one portal but a dropdown in another), the migration tool cannot merge them automatically. You must resolve these before migration — either rename one property or convert its type.</p>
+          <div class="callout-label">TYPE CONFLICT — AUTO-DETECTED BY MCP</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">If two portals have a property with the same internal name but different field types (for example, "Status" as free text in one portal but a dropdown in another), Claude flags this automatically. The migration tool cannot merge conflicting types — these must be resolved before migration by renaming or converting the property type. Claude identifies every conflict; the partner resolves them.</p>
         </div>
 
-        <h2>DUPLICATE ESTIMATION</h2>
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Before migration, estimate how many contacts exist in multiple portals. This tells you the scale of deduplication you'll need and how much you're currently overpaying.</p>
+        <h2>DUPLICATE DETECTION — DATABASE-LEVEL MATCHING</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Claude queries the contact records from each portal via MCP and runs cross-portal matching directly against the live data. This is a proper database-level comparison — matching on email address as the primary key, with secondary matching on company domain, phone number, and name combinations for records where email doesn't match exactly.</p>
 
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px"><strong>How to do it:</strong> Export the email address list from each portal as a CSV file. Use Excel's VLOOKUP or a simple dedup tool to count how many email addresses appear in more than one portal.</p>
+        <div class="callout danger">
+          <div class="callout-label">WHY NOT EXCEL</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">Manual CSV exports into spreadsheets introduce errors at every step — character encoding breaks on international names, date formats shift between systems, large datasets hit row limits, and VLOOKUP only matches on a single field. For enterprise datasets (10,000+ contacts per portal), this approach is unreliable. MCP queries the source data directly — no exports, no format conversion, no row limits, no encoding issues.</p>
+        </div>
+
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Claude generates a full duplicate report with confidence scores:</p>
+
+        <table>
+          <tr><th>MATCH TYPE</th><th>PORTAL 1 ∩ 2</th><th>PORTAL 1 ∩ 3</th><th>PORTAL 2 ∩ 3</th><th>ALL THREE</th></tr>
+          <tr><td>Exact email match (high confidence)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Same domain + similar name (medium)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Phone number match only (low)</td><td></td><td></td><td></td><td></td></tr>
+          <tr class="highlight"><td><strong>Total duplicates</strong></td><td></td><td></td><td></td><td></td></tr>
+          <tr class="highlight"><td><strong>True unique contacts</strong></td><td colspan="4" style="text-align:center"></td></tr>
+        </table>
 
         <div class="surface" style="padding:24px;margin:24px 0;border-left:3px solid var(--sky)">
-          <p style="font-size:17px;line-height:1.7;margin:0"><strong>Example:</strong> Portal 1 has <span style="font-family:'DM Mono',monospace;color:var(--sky)">10,000</span> contacts. Portal 2 has <span style="font-family:'DM Mono',monospace;color:var(--sky)">8,000</span> contacts. After comparing email addresses, <span style="font-family:'DM Mono',monospace;color:var(--gold)">3,200</span> appear in both portals. That means you have <span style="font-family:'DM Mono',monospace;color:var(--emerald)">14,800</span> unique customers — but you're paying HubSpot for <span style="font-family:'DM Mono',monospace;color:var(--red)">18,000</span> contact records. That's 3,200 records you're paying for twice.</p>
+          <p style="font-size:17px;line-height:1.7;margin:0"><strong>Example:</strong> Portal 1 has <span style="font-family:'DM Mono',monospace;color:var(--sky)">10,000</span> contacts. Portal 2 has <span style="font-family:'DM Mono',monospace;color:var(--sky)">8,000</span> contacts. MCP cross-reference finds <span style="font-family:'DM Mono',monospace;color:var(--gold)">3,200</span> exact email matches across both. That means you have <span style="font-family:'DM Mono',monospace;color:var(--emerald)">14,800</span> unique customers — but you're paying HubSpot for <span style="font-family:'DM Mono',monospace;color:var(--red)">18,000</span> contact records. That's 3,200 records you're paying for twice.</p>
         </div>
 
-        <h2>INTEGRATION INVENTORY</h2>
-        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">For every third-party app connected to any portal, document:</p>
+        <h2>DATA INTEGRITY ASSESSMENT</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Beyond just counting records, Claude runs a full data health check on each portal — identifying problems that will cause issues during migration if not fixed first:</p>
         <ul style="margin:12px 0 24px 20px;color:var(--text2)">
-          <li style="margin-bottom:8px">What app is connected?</li>
-          <li style="margin-bottom:8px">What data does it sync? (contacts, deals, both?)</li>
-          <li style="margin-bottom:8px">Which direction? (HubSpot → app, app → HubSpot, or both)</li>
-          <li style="margin-bottom:8px">Can the app connect to a different HubSpot portal?</li>
-          <li style="margin-bottom:8px">Will reconnecting require new credentials or re-authentication?</li>
+          <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Orphaned contacts</strong> — contacts with no company association (breaks company-level reporting after merge)</li>
+          <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Broken associations</strong> — deals linked to deleted contacts, tickets referencing removed companies</li>
+          <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Empty required fields</strong> — records missing critical data (email, company name, deal amount)</li>
+          <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Inconsistent lifecycle stages</strong> — same contact at different stages in different portals</li>
+          <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Stale records</strong> — contacts with no activity in 12+ months (clean up before migration, not after)</li>
+          <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Workflow conflicts</strong> — workflows across portals that would trigger on the same records after merge</li>
+        </ul>
+
+        <h2>INTEGRATION INVENTORY</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Claude queries each portal's connected apps via MCP and documents:</p>
+        <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+          <li style="margin-bottom:8px;font-size:17px">What app is connected and what data it syncs</li>
+          <li style="margin-bottom:8px;font-size:17px">Sync direction (HubSpot → app, app → HubSpot, or bidirectional)</li>
+          <li style="margin-bottom:8px;font-size:17px">Whether the app supports portal reassignment</li>
+          <li style="margin-bottom:8px;font-size:17px">OAuth/API key requirements for reconnection</li>
+          <li style="margin-bottom:8px;font-size:17px">Data dependencies (does the app fail if HubSpot IDs change?)</li>
         </ul>
 
         <h2>DELIVERABLES FROM THIS PHASE</h2>
+        <p style="font-size:17px;line-height:1.8;margin-bottom:16px">All generated by Claude via MCP, reviewed by the partner, confirmed by department heads:</p>
         <div class="surface" style="padding:24px;margin:24px 0;border:1px solid rgba(52,211,153,0.25)">
           <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Complete portal inventory table</li>
-            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Property mapping table with all conflicts identified</li>
-            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Duplicate contact count across portals</li>
-            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Integration inventory with reconnection plan</li>
+            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Complete portal inventory (live data, not exported snapshots)</li>
+            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Property mapping table with all type conflicts flagged</li>
+            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Cross-portal duplicate report with confidence scores</li>
+            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Data integrity report (orphans, broken links, stale records)</li>
+            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Integration inventory with reconnection requirements</li>
             <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Email domain and authentication audit</li>
+            <li style="padding:8px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:var(--emerald);flex-shrink:0;margin-top:10px"></span>Department head sign-off on each portal's data accuracy</li>
           </ul>
+        </div>
+
+        <div class="callout info">
+          <div class="callout-label">CSV EXPORTS — ONLY FOR BACKUP</div>
+          <p style="margin:0;color:var(--text2);font-size:15px">CSV exports still have a role — as safety backups stored outside HubSpot in case of emergency. But they are never used as the primary audit tool. The audit runs against live data via MCP. Exports are insurance, not analysis.</p>
         </div>
 
       </article>
