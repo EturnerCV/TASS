@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Enterprise Integration — HubSpot Consolidation Guide</title>
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+  <nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:12px"><img src="assets/logo-bbl-hq.png" alt="BBL" class="nav-logo">BARE BAYSIDE LABS</a>
+    <div class="nav-links"><a href="01-executive-summary.html" class="nav-link">START HERE</a><a href="06-migration-phase-1.html" class="nav-link">MIGRATION</a><a href="15-risk-register.html" class="nav-link">RISKS</a></div>
+  </div></nav>
+
+  <section class="section aurora" style="padding-bottom:48px"><div class="inner">
+    <div class="breadcrumb"><a href="index.html">Guide</a><span>/</span>Design<span>/</span>Microsoft Integration</div>
+    <span class="eyebrow eyebrow-purple">CHAPTER 17</span>
+    <h1 class="gradient-text">HUBSPOT + MICROSOFT ENTERPRISE</h1>
+    <p class="mono">10 MIN READ</p>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="article-layout">
+    <article class="article-main">
+
+      <p style="font-size:20px;line-height:1.8;margin-bottom:24px">Your organisation runs Microsoft's enterprise stack — Dynamics 365, Azure Active Directory, Power BI, Teams, SharePoint, and potentially Dataverse. HubSpot doesn't replace any of this. It needs to plug into it. Here's exactly how each system connects and what happens during consolidation.</p>
+
+      <h2>THE BIG PICTURE</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot handles marketing, sales pipeline, and service ticketing. Microsoft handles ERP, finance, identity, internal collaboration, and enterprise reporting. The two systems share customer data bidirectionally — when a deal closes in HubSpot, it creates a sales order in Dynamics. When a contact is updated in Dynamics, it syncs back to HubSpot.</p>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">During consolidation, every one of these connections must be preserved, tested, and re-verified. If you currently have 3-4 HubSpot portals each connected to Microsoft services, you're untangling multiple integration points and reconnecting them to one portal.</p>
+
+      <h2>DYNAMICS 365 — THE CORE INTEGRATION</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">This is the most critical Microsoft connection. HubSpot's native Dynamics 365 integration supports bidirectional sync of core CRM objects:</p>
+
+      <table>
+        <tr><th>HUBSPOT OBJECT</th><th>DYNAMICS 365 OBJECT</th><th>SYNC DIRECTION</th></tr>
+        <tr><td>Companies</td><td>Accounts</td><td>Bidirectional</td></tr>
+        <tr><td>Contacts</td><td>Contacts / Leads</td><td>Bidirectional</td></tr>
+        <tr><td>Deals</td><td>Opportunities</td><td>Bidirectional</td></tr>
+        <tr><td>Products</td><td>Products</td><td>Bidirectional</td></tr>
+        <tr><td>Invoices</td><td>Invoices</td><td>Bidirectional</td></tr>
+        <tr><td>Activities (meetings, calls, emails)</td><td>Appointments, Phone Calls, Emails</td><td>Bidirectional</td></tr>
+      </table>
+
+      <div class="callout info">
+        <div class="callout-label">SETUP REQUIREMENTS</div>
+        <p style="margin:0;color:var(--text2);font-size:15px">Super Admin in HubSpot + Global Admin in Azure AD. You can connect up to <strong>two Dynamics 365 instances</strong> per HubSpot portal. Base integration is free on all plans. Custom field mappings require Data Hub (paid). Automated sales order creation from deal workflows requires Sales Hub Professional or Enterprise.</p>
+      </div>
+
+      <h3>WHAT CHANGES DURING CONSOLIDATION</h3>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">If each of your 3-4 portals currently connects to Dynamics 365 separately:</p>
+      <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Before:</strong> 3-4 separate HubSpot → Dynamics sync connections. Same Dynamics account receives data from multiple portals. Potential for duplicate records in Dynamics too.</li>
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">After:</strong> 1 HubSpot → Dynamics sync connection. Clean, deduplicated data flowing from a single source. Business Unit tags in HubSpot map to business units or divisions in Dynamics.</li>
+      </ul>
+
+      <div class="callout danger">
+        <div class="callout-label">CRITICAL DURING MIGRATION</div>
+        <p style="margin:0;color:var(--text2);font-size:15px">Disconnect Dynamics integrations from source portals <strong>before</strong> migrating data to the target portal. If you migrate while the sync is active, Dynamics will see the incoming records as new and may create duplicates on the Microsoft side. Sequence: disconnect old sync → migrate data → reconnect sync on target portal → verify.</p>
+      </div>
+
+      <h2>AZURE ACTIVE DIRECTORY — IDENTITY &amp; ACCESS</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Azure AD (now Microsoft Entra ID) is how your organisation manages user identity. HubSpot connects to it for:</p>
+      <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">Single Sign-On (SSO)</strong> — users log into HubSpot with their Microsoft credentials. No separate HubSpot password.</li>
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">OAuth authentication</strong> — HubSpot's Dynamics integration and MCP connections authenticate through Azure AD.</li>
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">User provisioning</strong> — when someone joins or leaves in Azure AD, their HubSpot access can be managed centrally.</li>
+      </ul>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px"><strong>During consolidation:</strong> SSO configuration moves to the target portal. Global Admin grants HubSpot app permissions in Azure AD for the new portal. Old portal app registrations are revoked after migration is verified.</p>
+
+      <h2>POWER BI — ENTERPRISE REPORTING</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Power BI pulls data from HubSpot to build executive dashboards, cross-system reporting, and advanced analytics that combine CRM data with financial data from Dynamics.</p>
+
+      <h3>CONNECTION METHODS</h3>
+      <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">HubSpot API → Power BI</strong> — direct API connection, real-time data. Requires a connector (CData, Coupler.io, or custom).</li>
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">HubSpot → Dataverse → Power BI</strong> — sync HubSpot data to Microsoft Dataverse (the database behind Dynamics), then Power BI reads from Dataverse. Most enterprise approach.</li>
+        <li style="margin-bottom:10px;font-size:17px"><strong style="color:var(--text)">HubSpot Data Hub → Warehouse → Power BI</strong> — push HubSpot data to Snowflake/BigQuery via Data Hub, connect Power BI to the warehouse. Best for combining with non-Microsoft data sources.</li>
+      </ul>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px"><strong>During consolidation:</strong> Power BI reports that pulled from 3-4 separate HubSpot connections now pull from one. Every dashboard that referenced a specific portal's API key needs updating to the target portal's credentials. The upside — reports that previously showed partial data now show everything.</p>
+
+      <h2>MICROSOFT TEAMS — COLLABORATION</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">The HubSpot-Teams integration sends CRM notifications directly into Teams channels — new deals, ticket updates, lead assignments. Sales and service teams stay informed without switching apps.</p>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px"><strong>During consolidation:</strong> Reinstall the Teams integration on the target portal. Reconfigure which channels receive which notifications. With Business Units, you can route Product A notifications to the Product A channel and Product B to its own channel — cleaner than the current setup where each portal had its own Teams connection.</p>
+
+      <h2>MICROSOFT DATAVERSE — THE ENTERPRISE DATA LAYER</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Dataverse is the cloud database that underpins all of Dynamics 365 and the Power Platform (Power Apps, Power Automate, Power BI). If your organisation uses Dataverse as a central data hub, HubSpot data should flow into it.</p>
+
+      <div class="card" style="margin-bottom:20px">
+        <span class="eyebrow eyebrow-purple">ENTERPRISE ARCHITECTURE</span>
+        <h3 style="color:var(--text);margin-top:0">HOW DATA FLOWS</h3>
+        <div class="flow" style="font-size:14px">HubSpot (Marketing + Sales + Service)
+    ↕ bidirectional sync
+Dynamics 365 (ERP + Finance + Operations)
+    ↕ native connection
+Microsoft Dataverse (unified data layer)
+    ↕ read access
+Power BI (executive dashboards)
+Power Apps (custom business apps)
+Power Automate (workflow automation)</div>
+      </div>
+
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">After consolidation, this architecture becomes cleaner — one HubSpot portal feeding one Dynamics connection feeding one Dataverse instance. No more 3-4 parallel data streams creating conflicts and duplicates in your Microsoft stack.</p>
+
+      <h2>SHAREPOINT &amp; ONEDRIVE — DOCUMENT MANAGEMENT</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">HubSpot can link to SharePoint for document storage — proposals, contracts, and attachments stored in SharePoint and referenced from HubSpot deal records. During consolidation, document links in migrated records should still resolve to the same SharePoint locations. Test a sample of document links after migration to verify.</p>
+
+      <h2>OUTLOOK — EMAIL &amp; CALENDAR</h2>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:16px">Individual users connect their Outlook accounts to HubSpot for email tracking and calendar sync. During consolidation:</p>
+      <ul style="margin:12px 0 24px 20px;color:var(--text2)">
+        <li style="margin-bottom:10px;font-size:17px">Each user needs to reconnect their Outlook account to the target portal</li>
+        <li style="margin-bottom:10px;font-size:17px">Historical email tracking data migrates with the contact records</li>
+        <li style="margin-bottom:10px;font-size:17px">Calendar sync (meetings) needs re-authentication per user</li>
+        <li style="margin-bottom:10px;font-size:17px">The HubSpot Outlook add-in must be reinstalled pointing to the new portal</li>
+      </ul>
+
+      <h2>CONSOLIDATION CHECKLIST — MICROSOFT STACK</h2>
+      <div class="surface" style="padding:24px;margin:24px 0;border:1px solid rgba(167,139,250,0.25)">
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Disconnect Dynamics 365 sync from all source portals before migration</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Reconnect Dynamics 365 to target portal — verify bidirectional sync</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Update Azure AD app registration — revoke old portal, grant new portal</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Reconfigure SSO to point to target portal</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Update Power BI connections — new API credentials for target portal</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Reinstall Teams integration on target portal — reconfigure channel routing</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Verify Dataverse sync if applicable</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Test SharePoint document links on migrated records</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Each user reconnects Outlook + calendar + reinstalls add-in</li>
+          <li style="padding:10px 0;color:var(--text2);display:flex;align-items:flex-start;gap:10px;font-size:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:10px"></span>Verify MCP OAuth through Azure AD for AI-powered access</li>
+        </ul>
+      </div>
+
+      <div class="callout success">
+        <div class="callout-label">THE PAYOFF</div>
+        <p style="margin:0;color:var(--text2);font-size:15px">After consolidation, your Microsoft stack connects to one HubSpot portal instead of 3-4. Power BI dashboards show complete data. Dynamics sync is clean and deduplicated. Teams notifications are organised by Business Unit. SSO works through one app registration. The complexity drops dramatically — and so does the maintenance burden on IT.</p>
+      </div>
+
+    </article>
+
+    <aside class="sidebar">
+      <div id="toc-container"><div class="sidebar-heading">ON THIS PAGE</div></div>
+      <div style="margin-top:32px">
+        <div class="sidebar-heading">GUIDE NAVIGATION</div>
+        <div class="sidebar-group-label" style="color:var(--purple)">OVERVIEW</div>
+        <a href="index.html#full-process" class="sidebar-link">Full Process Timeline</a>
+        <div class="sidebar-group-label" style="color:var(--gold)">UNDERSTAND</div>
+        <a href="01-executive-summary.html" class="sidebar-link">Executive Summary</a>
+        <a href="02-platform-overview.html" class="sidebar-link">Platform Overview</a>
+        <a href="03-current-state.html" class="sidebar-link">Current State</a>
+        <div class="sidebar-group-label" style="color:var(--emerald)">DESIGN</div>
+        <a href="04-target-state.html" class="sidebar-link">Target State</a>
+        <a href="05-professional-vs-enterprise.html" class="sidebar-link">Pro vs Enterprise</a>
+        <a href="13-mcp-integration.html" class="sidebar-link">MCP &amp; AI</a>
+        <a href="17-microsoft-integration.html" class="sidebar-link active">Microsoft Enterprise</a>
+        <div class="sidebar-group-label" style="color:var(--sky)">MIGRATE</div>
+        <a href="06-migration-phase-1.html" class="sidebar-link">Phase 1: Audit</a>
+        <a href="07-migration-phase-2.html" class="sidebar-link">Phase 2: Choose Target</a>
+        <a href="08-migration-phase-3.html" class="sidebar-link">Phase 3: Sandbox</a>
+        <a href="09-migration-phase-4.html" class="sidebar-link">Phase 4: Prep</a>
+        <a href="10-migration-phase-5.html" class="sidebar-link">Phase 5: Execute</a>
+        <a href="11-migration-phase-6.html" class="sidebar-link">Phase 6: Go-Live</a>
+        <div class="sidebar-group-label" style="color:var(--gold)">REFERENCE</div>
+        <a href="12-what-migrates.html" class="sidebar-link">What Migrates</a>
+        <a href="14-user-experience.html" class="sidebar-link">User Experience</a>
+        <a href="15-risk-register.html" class="sidebar-link">Risk Register</a>
+        <a href="16-cost-analysis.html" class="sidebar-link">Cost Analysis</a>
+      </div>
+    </aside>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="inner">
+    <div class="step-nav">
+      <a href="13-mcp-integration.html" class="step-nav-btn prev"><span class="step-label">PREVIOUS</span><span class="step-title">MCP &amp; AI INTEGRATION</span></a>
+      <a href="14-user-experience.html" class="step-nav-btn next"><span class="step-label">NEXT</span><span class="step-title">USER EXPERIENCE</span></a>
+    </div>
+  </div></section>
+
+  <div class="guide-footer">
+    <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--text);text-transform:uppercase">Bare Bayside Labs</p>
+    <p style="margin-top:4px;color:var(--muted)">Marketing systems that actually work.</p>
+  </div>
+  <script src="js/guide.js"></script>
+</body>
+</html>
