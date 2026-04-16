@@ -31,8 +31,6 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -40,6 +38,7 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
   font-size: 20px;
+  font-weight: 500;
   line-height: 1.7;
   overflow-x: hidden;
 }
