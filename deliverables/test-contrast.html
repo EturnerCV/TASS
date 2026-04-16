@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option A — Full Colour Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #ffffff;
+      color: #1a1a2e;
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.7;
+      padding: 48px 24px;
+    }
+    .inner { max-width: 800px; margin: 0 auto; }
+
+    h1, h2, h3, h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; text-transform: uppercase; color: #0f172a; line-height: 1.05; }
+    h1 { font-size: 48px; letter-spacing: 4px; margin-bottom: 16px; }
+    h2 { font-size: 36px; margin: 48px 0 16px; }
+    h3 { font-size: 26px; margin: 32px 0 12px; }
+    p { color: #334155; margin-bottom: 16px; }
+    strong { color: #0f172a; }
+
+    /* Surface / cards */
+    .surface { background: #f4f6fa; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px; margin: 20px 0; }
+    .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px; padding: 28px; margin-bottom: 16px; transition: border-color 0.3s, transform 0.3s; }
+    .card:hover { border-color: #93c5fd; transform: translateY(-4px); }
+
+    /* Mono text */
+    .mono { font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 1px; color: #64748b; }
+
+    /* Eyebrows */
+    .eyebrow { display: inline-block; font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 18px; border-radius: 100px; margin-bottom: 20px; }
+    .eyebrow-emerald { color: #047857; background: #d1fae5; border: 1px solid #6ee7b7; }
+    .eyebrow-sky { color: #0369a1; background: #dbeafe; border: 1px solid #93c5fd; }
+    .eyebrow-gold { color: #92400e; background: #fef3c7; border: 1px solid #fcd34d; }
+    .eyebrow-red { color: #991b1b; background: #fee2e2; border: 1px solid #fca5a5; }
+    .eyebrow-purple { color: #5b21b6; background: #ede9fe; border: 1px solid #c4b5fd; }
+
+    /* Tags */
+    .tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 1px; padding: 4px 12px; border-radius: 100px; margin-top: 8px; margin-right: 6px; }
+    .tag-partner { color: #92400e; background: #fef3c7; border: 1px solid #fcd34d; }
+    .tag-lead { color: #0f172a; background: #e2e8f0; border: 1px solid #cbd5e1; font-weight: 600; }
+    .tag-ai { color: #5b21b6; background: #ede9fe; border: 1px solid #c4b5fd; }
+    .tag-internal { color: #0369a1; background: #dbeafe; border: 1px solid #93c5fd; }
+    .tag-team { color: #047857; background: #d1fae5; border: 1px solid #6ee7b7; }
+
+    /* Callouts */
+    .callout { border-left: 3px solid #f59e0b; padding: 20px 24px; margin: 24px 0; background: #fffbeb; border-radius: 0 12px 12px 0; }
+    .callout.danger { border-left-color: #ef4444; background: #fef2f2; }
+    .callout.success { border-left-color: #10b981; background: #ecfdf5; }
+    .callout.info { border-left-color: #3b82f6; background: #eff6ff; }
+    .callout.expect { border-left-color: #8b5cf6; background: #f5f3ff; }
+    .callout-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600; }
+    .callout .callout-label { color: #b45309; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout.success .callout-label { color: #059669; }
+    .callout.info .callout-label { color: #2563eb; }
+    .callout.expect .callout-label { color: #7c3aed; }
+
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+    .stat { text-align: center; padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+    .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; }
+    .stat-value.positive { color: #059669; }
+    .stat-value.neutral { color: #2563eb; }
+    .stat-value.warning { color: #d97706; }
+    .stat-value.negative { color: #dc2626; }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: 13px; color: #64748b; margin-top: 8px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; }
+    th { text-align: left; padding: 12px 14px; border-bottom: 2px solid #e2e8f0; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 1px; color: #64748b; text-transform: uppercase; }
+    td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    tr.highlight td { color: #059669; font-weight: 600; }
+
+    /* Comparison */
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+    .comparison-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px; padding: 24px; }
+    .comparison-col h4 { font-size: 18px; letter-spacing: 2px; margin-bottom: 14px; }
+    .comparison-col.before h4 { color: #dc2626; }
+    .comparison-col.after h4 { color: #059669; }
+    .comparison-col ul { list-style: none; padding: 0; }
+    .comparison-col li { font-size: 15px; color: #334155; padding: 5px 0; }
+
+    /* Timeline dot */
+    .tl-demo { position: relative; padding-left: 60px; margin: 40px 0; }
+    .tl-demo::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #10b981, #3b82f6, #f59e0b, #8b5cf6); }
+    .tl-dot { position: absolute; left: 10px; top: 4px; width: 26px; height: 26px; border-radius: 50%; border: 3px solid #10b981; background: #fff; display: flex; align-items: center; justify-content: center; }
+    .tl-dot-inner { width: 10px; height: 10px; border-radius: 50%; background: #10b981; }
+
+    /* Step nav */
+    .step-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    .step-nav-btn { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 18px; padding: 28px; text-decoration: none; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.3s, transform 0.3s; }
+    .step-nav-btn:hover { border-color: #10b981; transform: translateY(-4px); }
+    .step-label { font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 2px; color: #059669; text-transform: uppercase; }
+    .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: #0f172a; text-transform: uppercase; }
+
+    /* Risk colours */
+    .risk-high { color: #dc2626; font-weight: 600; }
+    .risk-med { color: #d97706; font-weight: 600; }
+    .risk-low { color: #059669; }
+
+    /* Footer */
+    .footer { text-align: center; padding: 48px; border-top: 1px solid #e2e8f0; margin-top: 48px; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="inner">
+
+    <div style="text-align:center;margin-bottom:48px">
+      <span class="eyebrow eyebrow-sky">FULL COLOUR TEST — OPTION A LIGHT MODE</span>
+      <h1>HUBSPOT MULTI-PORTAL CONSOLIDATION</h1>
+      <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:24px">
+        <span class="mono">PROJECT LEAD: EDWARD TURNER</span>
+        <span class="mono">30-90 DAY TIMELINE</span>
+        <span class="mono">APRIL 2026</span>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-value negative">3-4</div><div class="stat-label">SEPARATE PORTALS</div></div>
+      <div class="stat"><div class="stat-value warning">2-4x</div><div class="stat-label">DUPLICATE CONTACTS</div></div>
+      <div class="stat"><div class="stat-value positive">1</div><div class="stat-label">UNIFIED PORTAL</div></div>
+      <div class="stat"><div class="stat-value neutral">90</div><div class="stat-label">DAY TIMELINE</div></div>
+    </div>
+
+    <!-- ALL EYEBROW VARIANTS -->
+    <h2>EYEBROW BADGES</h2>
+    <span class="eyebrow eyebrow-emerald">EMERALD</span>
+    <span class="eyebrow eyebrow-sky">SKY BLUE</span>
+    <span class="eyebrow eyebrow-gold">GOLD</span>
+    <span class="eyebrow eyebrow-red">RED / WARNING</span>
+    <span class="eyebrow eyebrow-purple">PURPLE / AI</span>
+
+    <!-- ALL TAG VARIANTS -->
+    <h2>ROLE TAGS</h2>
+    <span class="tag tag-lead">EDWARD — PROJECT LEAD</span>
+    <span class="tag tag-partner">HUBSPOT PARTNER</span>
+    <span class="tag tag-ai">CLAUDE + MCP</span>
+    <span class="tag tag-internal">IT APPROVES</span>
+    <span class="tag tag-team">ALL TEAMS</span>
+
+    <!-- ALL CALLOUT VARIANTS -->
+    <h2>CALLOUT BOXES</h2>
+    <div class="callout"><div class="callout-label">WARNING — GOLD</div><p style="margin:0">Properties with the same name but different types cannot be auto-migrated. Resolve before migration.</p></div>
+    <div class="callout danger"><div class="callout-label">DANGER — RED</div><p style="margin:0">Never remove a domain from the old portal before it's fully set up on the new portal.</p></div>
+    <div class="callout success"><div class="callout-label">SUCCESS — GREEN</div><p style="margin:0">After 30 days of stable metrics, the migration is complete.</p></div>
+    <div class="callout info"><div class="callout-label">INFO — BLUE</div><p style="margin:0">HubSpot's MCP server is in public beta. Enterprise accounts get the most complete access.</p></div>
+    <div class="callout expect"><div class="callout-label">WHAT YOUR TEAM SHOULD EXPECT — PURPLE</div><p style="margin:0">Your team will be asked to export data and answer questions. Allow 2-4 hours per team lead.</p></div>
+
+    <!-- TABLE -->
+    <h2>DATA TABLE</h2>
+    <table>
+      <tr><th>RISK</th><th>LIKELIHOOD</th><th>IMPACT</th><th>MITIGATION</th></tr>
+      <tr><td>Duplicate contacts not resolved</td><td class="risk-high">HIGH</td><td class="risk-high">HIGH</td><td>Dedup before AND after migration</td></tr>
+      <tr><td>Email reputation drops</td><td class="risk-med">MEDIUM</td><td class="risk-high">CRITICAL</td><td>4-week warm-up schedule</td></tr>
+      <tr><td>Lost associations</td><td class="risk-low">LOW</td><td class="risk-high">CRITICAL</td><td>Spot-check 20+ records</td></tr>
+    </table>
+
+    <!-- COMPARISON -->
+    <h2>BEFORE VS AFTER</h2>
+    <div class="comparison">
+      <div class="comparison-col before"><h4>BEFORE</h4><ul><li>3-4 separate databases</li><li>Duplicate contacts everywhere</li><li>Each portal sends its own emails</li><li>No cross-sell visibility</li></ul></div>
+      <div class="comparison-col after"><h4>AFTER</h4><ul><li>1 shared database</li><li>1 contact per customer</li><li>Brand-separated campaigns</li><li>Cross-sell campaigns possible</li></ul></div>
+    </div>
+
+    <!-- TIMELINE STEP -->
+    <h2>TIMELINE STEP</h2>
+    <div class="tl-demo">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#059669;line-height:1">03</span>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;text-transform:uppercase">AI-POWERED DISCOVERY VIA MCP</div><div class="mono">WEEK 2-3</div></div>
+        </div>
+        <p>Claude connects to each portal through HubSpot's MCP server. It reads every contact, company, deal, ticket, property, workflow, and integration — across all portals.</p>
+        <span class="tag tag-lead">EDWARD — PROJECT LEAD</span>
+        <span class="tag tag-ai">CLAUDE + MCP</span>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <h2>CONTENT CARD</h2>
+    <div class="card">
+      <span class="eyebrow eyebrow-gold">ACCESS</span>
+      <h3 style="margin-top:0">MIGRATION SUPPORT CREDITS</h3>
+      <p>HubSpot allocates migration support budgets to partners. Your partner can request HubSpot-funded assistance — dedicated migration specialists from HubSpot's own team.</p>
+    </div>
+
+    <!-- STEP NAV -->
+    <h2>PAGE NAVIGATION</h2>
+    <div class="step-nav">
+      <a href="#" class="step-nav-btn"><span class="step-label">&larr; PREVIOUS</span><span class="step-title">PRO VS ENTERPRISE</span></a>
+      <a href="#" class="step-nav-btn" style="text-align:right"><span class="step-label">NEXT &rarr;</span><span class="step-title">PHASE 2: CHOOSE TARGET</span></a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:#0f172a;text-transform:uppercase">Bare Bayside Labs</p>
+      <p style="margin-top:4px;color:#64748b">Marketing systems that actually work.</p>
+      <p style="margin-top:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:#94a3b8">&copy; 2026 Bare Bayside Labs. All rights reserved.</p>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -5,7 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap');
 
-/* === VARIABLES === */
+/* === VARIABLES — DARK MODE (default) === */
 :root {
   --bg: #080c14;
   --surface: #0d1525;
@@ -24,7 +24,90 @@
   --text2: #e2e8f0;
   --muted: #b0bec5;
   --subtle: #78909c;
+  --copyright: #b0bec5;
 }
+
+/* === VARIABLES — LIGHT MODE === */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f4f6fa;
+  --surface2: #f8fafc;
+  --border: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --sky: #2563eb;
+  --emerald: #059669;
+  --gold: #d97706;
+  --gold-bright: #b45309;
+  --purple: #7c3aed;
+  --red: #dc2626;
+  --pink: #db2777;
+  --orange: #ea580c;
+  --text: #0f172a;
+  --text2: #334155;
+  --muted: #64748b;
+  --subtle: #94a3b8;
+  --copyright: #334155;
+}
+
+/* Light mode overrides for elements that need different treatment */
+[data-theme="light"] .nav {
+  background: rgba(255,255,255,0.92);
+  border-bottom-color: #e2e8f0;
+}
+[data-theme="light"] .gradient-text {
+  background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme="light"] .aurora::before { background: radial-gradient(ellipse at center, rgba(5,150,105,0.04) 0%, transparent 70%); }
+[data-theme="light"] .aurora::after { background: radial-gradient(ellipse at center, rgba(37,99,235,0.04) 0%, transparent 70%); }
+[data-theme="light"] ::selection { background: rgba(37,99,235,0.2); }
+[data-theme="light"] .eyebrow-emerald { color: #047857; background: #d1fae5; border-color: #6ee7b7; }
+[data-theme="light"] .eyebrow-sky { color: #0369a1; background: #dbeafe; border-color: #93c5fd; }
+[data-theme="light"] .eyebrow-gold { color: #92400e; background: #fef3c7; border-color: #fcd34d; }
+[data-theme="light"] .eyebrow-red { color: #991b1b; background: #fee2e2; border-color: #fca5a5; }
+[data-theme="light"] .eyebrow-purple { color: #5b21b6; background: #ede9fe; border-color: #c4b5fd; }
+[data-theme="light"] .callout { background: #fffbeb; border-left-color: #f59e0b; }
+[data-theme="light"] .callout.danger { background: #fef2f2; border-left-color: #ef4444; }
+[data-theme="light"] .callout.success { background: #ecfdf5; border-left-color: #10b981; }
+[data-theme="light"] .callout.info { background: #eff6ff; border-left-color: #3b82f6; }
+[data-theme="light"] .callout.expect { background: #f5f3ff; border-left-color: #8b5cf6; }
+[data-theme="light"] .tl-who.lead { color: #0f172a; background: #e2e8f0; border-color: #cbd5e1; }
+[data-theme="light"] .tl-who.partner { color: #92400e; background: #fef3c7; border-color: #fcd34d; }
+[data-theme="light"] .tl-who.ai { color: #5b21b6; background: #ede9fe; border-color: #c4b5fd; }
+[data-theme="light"] .tl-who.internal { color: #0369a1; background: #dbeafe; border-color: #93c5fd; }
+[data-theme="light"] .tl-who.team { color: #047857; background: #d1fae5; border-color: #6ee7b7; }
+[data-theme="light"] .breadcrumb { background: rgba(241,245,249,0.8); border-color: #e2e8f0; }
+[data-theme="light"] .step-nav-btn { background: #f8fafc; border-color: #e2e8f0; }
+[data-theme="light"] .step-nav-btn:hover { border-color: #10b981; background: #ecfdf5; }
+[data-theme="light"] .comparison-col.before h4 { color: #dc2626; }
+[data-theme="light"] .comparison-col.after h4 { color: #059669; }
+[data-theme="light"] .risk-high { color: #dc2626; }
+[data-theme="light"] .risk-med { color: #d97706; }
+[data-theme="light"] .risk-low { color: #059669; }
+[data-theme="light"] .persona-before { background: #fef2f2; border-left-color: #ef4444; }
+[data-theme="light"] .persona-after { background: #ecfdf5; border-left-color: #10b981; }
+[data-theme="light"] ::-webkit-scrollbar-track { background: #f1f5f9; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* === THEME TOGGLE === */
+.theme-toggle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+.theme-toggle:hover { border-color: var(--sky); color: var(--text); }
 
 /* === RESET === */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }

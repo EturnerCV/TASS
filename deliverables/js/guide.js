@@ -75,3 +75,33 @@
 
   reveals.forEach(function(el) { revealObserver.observe(el); });
 })();
+
+// === THEME TOGGLE (dark/light) ===
+(function() {
+  // Check saved preference
+  var saved = localStorage.getItem('hsc-theme');
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+  // Find toggle button
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  function updateLabel() {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    btn.textContent = isLight ? '\u2600 LIGHT' : '\u263D DARK';
+  }
+
+  updateLabel();
+
+  btn.addEventListener('click', function() {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('hsc-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('hsc-theme', 'light');
+    }
+    updateLabel();
+  });
+})();
